@@ -12,7 +12,6 @@ public class MessageScript : MonoBehaviour
     [SerializeField] GameObject cornerBR;
     [SerializeField] GameObject leftFill;
     [SerializeField] GameObject rightFill;
-
     void Start()
     {
         text = "Hello everybody my name is markiplier and welcome to the worlds quietest letsplay";
@@ -30,21 +29,21 @@ public class MessageScript : MonoBehaviour
     Vector2 FindSize(TMP_Text text)
     {
         Vector2 size;
-        size.x = 0.2f+text.renderedWidth/60f;
+        size.x = text.renderedWidth/60f;
         size.y = (int)text.renderedHeight/60f;
         return size;
     }
     void PlaceCorners(Vector3 size)
     {
-        float offset = 0.2f;
-        cornerBL.transform.position = (transform.position - size/2f) + Vector3.left*offset;
-        cornerTL.transform.position = cornerBL.transform.position + new Vector3(0, size.y);
-        cornerBR.transform.position = cornerBL.transform.position + new Vector3(size.x+ 2 * offset,0);
-        cornerTR.transform.position = cornerTL.transform.position + new Vector3(size.x+ 2 * offset, 0);
+        Vector3 offset = new Vector3(0.128f, -0.064f);
+        cornerBL.transform.position = (transform.position - size / 2f) - offset;
+        cornerTL.transform.position = cornerBL.transform.position + new Vector3(0, size.y+2*offset.y);
+        cornerBR.transform.position = cornerBL.transform.position + new Vector3(size.x+ 2 * offset.x,0);
+        cornerTR.transform.position = cornerTL.transform.position + new Vector3(size.x+ 2 * offset.x, 0);
 
-        leftFill.transform.localScale = new Vector2(0.1f,size.y-offset);
-        leftFill.transform.position = cornerBL.transform.position + new Vector3(offset-0.05f, 0.5f*size.y);
+        leftFill.transform.localScale = new Vector2(0.2555555f, size.y+4*offset.y);
+        leftFill.transform.position = cornerBL.transform.position + new Vector3(offset.x -0.5f* leftFill.transform.localScale.x, size.y*0.5f+offset.y);
         rightFill.transform.localScale = leftFill.transform.localScale;
-        rightFill.transform.position = leftFill.transform.position + Vector3.right*(size.x+ 0.1f);
+        rightFill.transform.position = leftFill.transform.position + Vector3.right*(size.x+ leftFill.transform.localScale.x);
     }
 }
