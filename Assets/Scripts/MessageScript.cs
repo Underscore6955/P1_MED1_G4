@@ -1,26 +1,23 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MessageScript : MonoBehaviour
 {
     public string text;
-    [SerializeField] TMP_Text textField;
-    [SerializeField] GameObject testBox;
+    public Image image;
+    public int players;
+    public TMP_Text textField;
+    public GameObject testBox;
+    public Transform bottomPos;
     [SerializeField] GameObject cornerTL;
     [SerializeField] GameObject cornerTR;
     [SerializeField] GameObject cornerBL;
     [SerializeField] GameObject cornerBR;
     [SerializeField] GameObject leftFill;
     [SerializeField] GameObject rightFill;
-    void Start()
+    private void Start()
     {
-        text = "Hello everybody my name is markiplier and welcome to the worlds quietest letsplay";
-        textField.text = text;
-        
-    }
-    private void Update()
-    {
-        Debug.Log(textField.renderedWidth);
         Vector2 size = FindSize(textField);
         testBox.transform.localScale = size;
         PlaceCorners(size);
@@ -28,6 +25,7 @@ public class MessageScript : MonoBehaviour
 
     Vector2 FindSize(TMP_Text text)
     {
+        
         Vector2 size;
         size.x = text.renderedWidth/60f;
         size.y = (int)text.renderedHeight/60f;
