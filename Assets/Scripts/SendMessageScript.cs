@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
+using System.IO;
 
 public class SendMessageScript : MonoBehaviour
 {
@@ -15,39 +16,20 @@ public class SendMessageScript : MonoBehaviour
     [SerializeField] GameObject messagePrefab;
     [SerializeField] Transform content;
     [SerializeField] float xOffset;
-    private void Start()
-    {
-        StartCoroutine(SendMessage());
-    }
-    IEnumerator SendMessage()
-    {
-        string n = "A";
-        for (int i = 0; i < 60; i++) 
-        {
-            n += "A";
-            StartCoroutine(SendText(n, Random.Range(0,2) == 1? 1 : -1 , null));
-            yield return new WaitForSeconds(0.1f);
-        }
-        
-    }
-    IEnumerator SendText(string text, int players, Image image)
+    public IEnumerator SendText((string text, int players, Image image) data)
     {
         GameObject newText = Instantiate(messagePrefab,content);
         newText.SetActive(true);
         MessageScript newTextScript = newText.GetComponentInChildren<MessageScript>();
-        newTextScript.textField.text = text;
+        newTextScript.textField.text = data.text;
         newTextScript.textField.ForceMeshUpdate();
         Canvas.ForceUpdateCanvases();
-        newTextScript.players = players;
-        newTextScript.image = image;
+        newTextScript.players = data.players;
+        newTextScript.image = data.image;
         yield return null;
         newText.transform.position = FindNextPos(newTextScript);
         GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
         lastMessage = newText;
-    }
-    string GetNextText()
-    {
-        return "Balls";
     }
     Vector2 FindNextPos(MessageScript thisMessage)
     {
@@ -69,7 +51,7 @@ public class SendMessageScript : MonoBehaviour
     {
         topScroll = thisMessage.gameObject.transform.Find("topIndicator");
         GetComponent<Scrollable>().contentTop = topScroll;
-        return new Vector2(FindNextX(thisMessage), content.transform.position.y);
+        return new Vector2(FindNextX(thisMessage), content.transform.position.y -0.5f * (thisMessage.topPos.position.y - thisMessage.bottomPos.position.y));
     }
     float FindNextX(MessageScript thisMessage)
     {

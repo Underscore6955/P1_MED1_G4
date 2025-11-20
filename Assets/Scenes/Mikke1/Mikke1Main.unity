@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 463372342}
   - component: {fileID: 463372344}
   - component: {fileID: 463372345}
+  - component: {fileID: 463372346}
   m_Layer: 0
   m_Name: ScrollArea
   m_TagString: Untagged
@@ -443,7 +444,7 @@ MonoBehaviour:
   scrollArea: {fileID: 463372336}
   messagePrefab: {fileID: 844565717877064653, guid: 6dca7f9dea426d74080ce999d6069930, type: 3}
   content: {fileID: 1611224487}
-  xOffset: 5
+  xOffset: 7
 --- !u!114 &463372345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +460,19 @@ MonoBehaviour:
   content: {fileID: 1611224486}
   contentTop: {fileID: 0}
   contentBottom: {fileID: 0}
+--- !u!114 &463372346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463372334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7995e2e7efc1542bafd8b9f82d24bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testFile: {fileID: 4900000, guid: 9bf4ca16815e1554a9cef0757f2eb618, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
