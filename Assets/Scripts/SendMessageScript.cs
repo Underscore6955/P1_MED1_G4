@@ -16,14 +16,7 @@ public class SendMessageScript : MonoBehaviour
     [SerializeField] GameObject messagePrefab;
     [SerializeField] Transform content;
     [SerializeField] float xOffset;
-    private void Start()
-    {
-        for (int i = 0; i<4;i++)
-        {
-            StartCoroutine(SendText(GetComponent<GetText>().BuildNextText(i)));
-        }
-    }
-    IEnumerator SendText((string text, int players, Image image) data)
+    public IEnumerator SendText((string text, int players, Image image) data)
     {
         GameObject newText = Instantiate(messagePrefab,content);
         newText.SetActive(true);
@@ -58,7 +51,7 @@ public class SendMessageScript : MonoBehaviour
     {
         topScroll = thisMessage.gameObject.transform.Find("topIndicator");
         GetComponent<Scrollable>().contentTop = topScroll;
-        return new Vector2(FindNextX(thisMessage), content.transform.position.y);
+        return new Vector2(FindNextX(thisMessage), content.transform.position.y -0.5f * (thisMessage.topPos.position.y - thisMessage.bottomPos.position.y));
     }
     float FindNextX(MessageScript thisMessage)
     {
