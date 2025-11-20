@@ -10,12 +10,14 @@ public class MessageScript : MonoBehaviour
     public TMP_Text textField;
     public GameObject testBox;
     public Transform bottomPos;
+    public Transform topPos;
     [SerializeField] GameObject cornerTL;
     [SerializeField] GameObject cornerTR;
     [SerializeField] GameObject cornerBL;
     [SerializeField] GameObject cornerBR;
     [SerializeField] GameObject leftFill;
     [SerializeField] GameObject rightFill;
+    public Transform width;
     private void Start()
     {
         Vector2 size = FindSize(textField);
