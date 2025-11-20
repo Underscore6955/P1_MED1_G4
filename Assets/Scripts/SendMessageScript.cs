@@ -21,41 +21,14 @@ public class SendMessageScript : MonoBehaviour
     }
     IEnumerator SendMessage()
     {
-        StartCoroutine(SendText("HAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("Bye", -1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("sus", -1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SendText("weeeeee", 1, null));
+        string n = "A";
+        for (int i = 0; i < 60; i++) 
+        {
+            n += "A";
+            StartCoroutine(SendText(n, Random.Range(0,2) == 1? 1 : -1 , null));
+            yield return new WaitForSeconds(0.1f);
+        }
+        
     }
     IEnumerator SendText(string text, int players, Image image)
     {
@@ -69,12 +42,8 @@ public class SendMessageScript : MonoBehaviour
         newTextScript.image = image;
         yield return null;
         newText.transform.position = FindNextPos(newTextScript);
-        content.GetComponent<RectTransform>().sizeDelta = new Vector2(content.GetComponent<RectTransform>().sizeDelta.x, (content.InverseTransformPoint(topScroll.position).y - content.InverseTransformPoint(newTextScript.bottomPos.position).y));
+        GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
         lastMessage = newText;
-    }
-    private void Update()
-    {
-        
     }
     string GetNextText()
     {
@@ -91,12 +60,20 @@ public class SendMessageScript : MonoBehaviour
     }
     Vector2 FindNextText(MessageScript thisMessage)
     {
-        return new Vector2(scrollArea.transform.position.x + thisMessage.players * xOffset,BottomPrevTextY() - ((thisMessage.players != lastMessage.GetComponentInChildren<MessageScript>().players) ? 0.3f:0.1f));
+        return new Vector2(FindNextX(thisMessage), 
+            BottomPrevTextY() -
+            0.5f*(thisMessage.topPos.position.y-thisMessage.bottomPos.position.y)
+            -((thisMessage.players != lastMessage.GetComponentInChildren<MessageScript>().players) ? 0.3f:0.1f));
     }
     Vector2 FindFirstPos(MessageScript thisMessage)
     {
         topScroll = thisMessage.gameObject.transform.Find("topIndicator");
-        return new Vector2(scrollArea.transform.position.x+thisMessage.players*xOffset,scrollArea.transform.position.y+2.5f);
+        GetComponent<Scrollable>().contentTop = topScroll;
+        return new Vector2(FindNextX(thisMessage), content.transform.position.y);
+    }
+    float FindNextX(MessageScript thisMessage)
+    {
+        return content.transform.position.x + thisMessage.players*xOffset- thisMessage.players*(thisMessage.width.position.x - thisMessage.bottomPos.position.x);
     }
     Vector2 FindNextImg(MessageScript thisMessage)
     {
