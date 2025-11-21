@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MessageScript : MonoBehaviour
 {
@@ -23,10 +24,30 @@ public class MessageScript : MonoBehaviour
         testBox.transform.localScale = size;
         PlaceCorners(size);
     }
+    public void CheckÍfPlayers()
+    {
+        if (players == 1)
+        {
+            foreach (Image img in transform.parent.GetComponentsInChildren<Image>())
+            {
+                Debug.Log("herro");
+                img.color = new Color(144f/256f, 238f / 256f, 144f / 256f);
+            }
+        }
+        else
+        {
+            Image imgBL = cornerBL.GetComponent<Image>();
+            Image imgBR = cornerBR.GetComponent<Image>();
+            Sprite spriteBL = imgBL.sprite;
+            imgBL.sprite = imgBR.sprite;
+            imgBR.sprite = spriteBL;
+            imgBL.transform.localScale = Vector3.Scale(imgBL.transform.localScale,new Vector3(-1,1,1));
+            imgBR.transform.localScale = Vector3.Scale(imgBR.transform.localScale, new Vector3(-1, 1, 1));
+        }
+    }
 
     Vector2 FindSize(TMP_Text text)
-    {
-        
+    {   
         Vector2 size;
         size.x = text.renderedWidth/(1/text.rectTransform.localScale.y);
         size.y = (int)text.renderedHeight / (1 / text.rectTransform.localScale.y);
@@ -34,13 +55,14 @@ public class MessageScript : MonoBehaviour
     }
     void PlaceCorners(Vector3 size)
     {
-        Vector3 offset = new Vector3(0.128f, -0.064f);
+        RectTransform cornerRT = cornerTL.GetComponent<RectTransform>();
+        Vector3 offset = new Vector3(0.4f*cornerRT.rect.width, -0.2f * cornerRT.rect.width);
         cornerBL.transform.position = (transform.position - size / 2f) - offset;
         cornerTL.transform.position = cornerBL.transform.position + new Vector3(0, size.y+2*offset.y);
         cornerBR.transform.position = cornerBL.transform.position + new Vector3(size.x+ 2 * offset.x,0);
         cornerTR.transform.position = cornerTL.transform.position + new Vector3(size.x+ 2 * offset.x, 0);
 
-        leftFill.transform.localScale = new Vector2(0.2555555f, size.y+4*offset.y);
+        leftFill.transform.localScale = new Vector2(cornerRT.rect.width*cornerRT.localScale.x, size.y+4*offset.y);
         leftFill.transform.position = cornerBL.transform.position + new Vector3(offset.x -0.5f* leftFill.transform.localScale.x, size.y*0.5f+offset.y);
         rightFill.transform.localScale = leftFill.transform.localScale;
         rightFill.transform.position = leftFill.transform.position + Vector3.right*(size.x+ leftFill.transform.localScale.x);
