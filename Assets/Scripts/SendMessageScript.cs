@@ -33,12 +33,15 @@ public class SendMessageScript : MonoBehaviour
     }
     Vector2 FindNextPos(MessageScript thisMessage)
     {
-        if (lastMessage != null) 
+        if (lastMessage != null)
         {
             if (thisMessage.image) return FindNextImg(thisMessage);
             return FindNextText(thisMessage);
-        } 
-        else return FindFirstPos(thisMessage);
+        }
+        else 
+        {
+            return FindFirstPos(thisMessage); 
+        }
     }
     Vector2 FindNextText(MessageScript thisMessage)
     {

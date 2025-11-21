@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 463372344}
   - component: {fileID: 463372345}
   - component: {fileID: 463372346}
+  - component: {fileID: 463372347}
   m_Layer: 0
   m_Name: ScrollArea
   m_TagString: Untagged
@@ -472,7 +473,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7995e2e7efc1542bafd8b9f82d24bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testFile: {fileID: 4900000, guid: 9bf4ca16815e1554a9cef0757f2eb618, type: 3}
+  textFile: {fileID: 4900000, guid: 9bf4ca16815e1554a9cef0757f2eb618, type: 3}
+  choiceFile: {fileID: 4900000, guid: 8ad656c105bde2942a53a947db75ff42, type: 3}
+  dataFileName: 
+--- !u!114 &463372347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463372334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f876fd1f9a3085f44a4343322cb77dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curLine: 0
+  choiceButtonPrefab: {fileID: 9078830230912866807, guid: 80cae0ff90d3afb45bbf74aa71fb8be2, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
