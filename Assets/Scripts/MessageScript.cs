@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class MessageScript : MonoBehaviour
 {
-    public string text;
     public Image image;
     public int players;
     public TMP_Text textField;

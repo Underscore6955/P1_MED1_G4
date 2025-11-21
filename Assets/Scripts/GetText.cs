@@ -3,32 +3,44 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class GetText : MonoBehaviour
 {
-    [SerializeField] TextAsset testFile;
+    [SerializeField] TextAsset textFile;
+    public TextAsset choiceFile;
+    [SerializeField] string dataFileName;
     string[] lines;
+    ChoiceTracker CT;
+    public SendMessageScript SMS;
+    public bool choosing = false;
     void Start()
     {
-        lines = testFile.text.Split('\n');
-        FindAction(0);
-        FindAction(1);
+        CT = GetComponent<ChoiceTracker>();
+        SMS = GetComponent<SendMessageScript>();
+        lines = textFile.text.Split('\n');
+        StartCoroutine(FindAction(0));
     }
-    public void FindAction(int line)
+    public IEnumerator FindAction(int line)
     {
         if (lines[line][0] == '"')
         {
             StartCoroutine(GetComponent<SendMessageScript>().SendText(BuildNextText(line)));
+            yield return new WaitForSeconds(1);
+            CT.curLine++;
+        }
+        else if (lines[line][0] == '~')
+        {
+            yield break;
         }
         else
         {
-            Tuple<List<string>,int> choice = BuildChoice(line);
-            foreach(string s in choice.Item1)
-            {
-                Debug.Log(s);
-            }
-            Debug.Log(choice.Item2);
+            choosing = true;
+            CT.BuildChoice(BuildChoice(line));
+            while (choosing) yield return null;
+            yield return new WaitForSeconds(1);
         }
+        StartCoroutine(FindAction(CT.curLine));
     }
     (string, int, Image) BuildNextText(int line)
     {
@@ -44,7 +56,7 @@ public class GetText : MonoBehaviour
         }
         return (textBuild, lineText[1] == '*' ? 1 : -1, null);
     }
-    Tuple<List<string>, int> BuildChoice(int line)
+    (List<string>, int) BuildChoice(int line)
     {
         List<string> listToReturn = new List<string>();
         string lineText = lines[line];
@@ -59,6 +71,6 @@ public class GetText : MonoBehaviour
             }
             else textBuild += lineText[i];
         }
-        return Tuple.Create(listToReturn,num);
+        return (listToReturn,num);
     }
 }
