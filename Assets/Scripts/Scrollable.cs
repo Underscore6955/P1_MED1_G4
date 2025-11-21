@@ -14,7 +14,7 @@ public class Scrollable : MonoBehaviour
     }
     private void Update()
     {
-        if (contentTop) curScroll = Mathf.Clamp(curScroll + Input.mouseScrollDelta.y, 0, Mathf.Clamp(MaxScroll()-6f,0,Mathf.Infinity));
+        if (contentTop) curScroll = Mathf.Clamp(curScroll + Input.mouseScrollDelta.y, 0, Mathf.Clamp(MaxScroll()-(0.5f*transform.localScale.y),0,Mathf.Infinity));
         if (contentTop) ScrollToPos(MaxScroll()-curScroll);
     }
     void ScrollToPos(float pos)

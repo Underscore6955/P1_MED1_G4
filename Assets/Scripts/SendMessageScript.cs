@@ -26,6 +26,7 @@ public class SendMessageScript : MonoBehaviour
         Canvas.ForceUpdateCanvases();
         newTextScript.players = data.players;
         newTextScript.image = data.image;
+        newTextScript.CheckÍfPlayers();
         yield return null;
         newText.transform.position = FindNextPos(newTextScript);
         GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
