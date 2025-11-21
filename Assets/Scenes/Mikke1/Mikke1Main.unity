@@ -476,6 +476,8 @@ MonoBehaviour:
   textFile: {fileID: 4900000, guid: 9bf4ca16815e1554a9cef0757f2eb618, type: 3}
   choiceFile: {fileID: 4900000, guid: 8ad656c105bde2942a53a947db75ff42, type: 3}
   dataFileName: 
+  SMS: {fileID: 0}
+  choosing: 0
 --- !u!114 &463372347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curLine: 0
   choiceButtonPrefab: {fileID: 9078830230912866807, guid: 80cae0ff90d3afb45bbf74aa71fb8be2, type: 3}
+  GT: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

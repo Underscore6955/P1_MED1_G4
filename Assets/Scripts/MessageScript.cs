@@ -28,8 +28,8 @@ public class MessageScript : MonoBehaviour
     {
         
         Vector2 size;
-        size.x = text.renderedWidth/60f;
-        size.y = (int)text.renderedHeight/60f;
+        size.x = text.renderedWidth/(1/text.rectTransform.localScale.y);
+        size.y = (int)text.renderedHeight / (1 / text.rectTransform.localScale.y);
         return size;
     }
     void PlaceCorners(Vector3 size)
