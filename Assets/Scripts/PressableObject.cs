@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PressableObject : MonoBehaviour
 {
-    BoxCollider2D bc;
+    public BoxCollider2D bc;
     bool holdable;
     private void Start()
     {

@@ -22,12 +22,11 @@ public class SendMessageScript : MonoBehaviour
         newText.SetActive(true);
         MessageScript newTextScript = newText.GetComponentInChildren<MessageScript>();
         newTextScript.textField.text = data.text;
-        newTextScript.textField.ForceMeshUpdate();
-        Canvas.ForceUpdateCanvases();
         newTextScript.players = data.players;
         newTextScript.image = data.image;
-        newTextScript.CheckÍfPlayers();
+        newTextScript.CheckIfPlayers();
         yield return null;
+        newTextScript.Sizing();
         newText.transform.position = FindNextPos(newTextScript);
         GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
         lastMessage = newText;

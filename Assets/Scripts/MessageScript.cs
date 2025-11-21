@@ -1,7 +1,7 @@
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class MessageScript : MonoBehaviour
 {
@@ -18,19 +18,18 @@ public class MessageScript : MonoBehaviour
     [SerializeField] GameObject leftFill;
     [SerializeField] GameObject rightFill;
     public Transform width;
-    private void Start()
+    public void Sizing()
     {
         Vector2 size = FindSize(textField);
         testBox.transform.localScale = size;
         PlaceCorners(size);
     }
-    public void CheckÍfPlayers()
+    public void CheckIfPlayers()
     {
         if (players == 1)
         {
             foreach (Image img in transform.parent.GetComponentsInChildren<Image>())
             {
-                Debug.Log("herro");
                 img.color = new Color(144f/256f, 238f / 256f, 144f / 256f);
             }
         }
@@ -46,7 +45,7 @@ public class MessageScript : MonoBehaviour
         }
     }
 
-    Vector2 FindSize(TMP_Text text)
+    public static Vector2 FindSize(TMP_Text text)
     {   
         Vector2 size;
         size.x = text.renderedWidth/(1/text.rectTransform.localScale.y);

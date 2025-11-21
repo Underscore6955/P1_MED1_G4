@@ -2,27 +2,36 @@ using System;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class ChoiceTracker : MonoBehaviour
 {
     public int curLine = 0;
     [SerializeField] GameObject choiceButtonPrefab;
+    public List<GameObject> buttons = new List<GameObject>();
     public GetText GT;
+    [SerializeField] Transform choiceCanvas;
     private void Start()
     {
         GT = GetComponent<GetText>();
     }
-    public void BuildChoice((List<string> choicesText,int choiceIndex) data)
+    public IEnumerator BuildChoice((List<string> choicesText,int choiceIndex) data)
     {
         for (int i = 0; i < data.choicesText.Count; i++)
         {
-            GameObject curObj = Instantiate(choiceButtonPrefab);
+            GameObject curObj = Instantiate(choiceButtonPrefab,choiceCanvas);
+            curObj.SetActive(true);
             ChoiceButton curCB = curObj.GetComponent<ChoiceButton>();
             curCB.CT = this;
-            curCB.text = data.choicesText[i];
+            curCB.textElement.text = data.choicesText[i];
             curCB.choiceIndex = data.choiceIndex;
             curCB.choiceValue = i;
-            curObj.transform.position = new Vector2(8.3f,2*i);
+            curObj.transform.position = choiceCanvas.transform.position-new Vector3(0,i);
+            buttons.Add(curObj);
+            yield return null;
+            Vector2 curScale = MessageScript.FindSize(curCB.textElement);
+            curCB.button.transform.localScale = curScale;
+            curCB.bc.size = curScale;
         }
     }
     public int FindChoice(int choiceIndex, int choiceValue)

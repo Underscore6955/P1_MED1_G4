@@ -36,8 +36,10 @@ public class GetText : MonoBehaviour
         else
         {
             choosing = true;
-            CT.BuildChoice(BuildChoice(line));
+            StartCoroutine(CT.BuildChoice(BuildChoice(line)));
             while (choosing) yield return null;
+            foreach (GameObject g in CT.buttons) { Destroy(g); }
+            CT.buttons.Clear();
             yield return new WaitForSeconds(1);
         }
         StartCoroutine(FindAction(CT.curLine));
