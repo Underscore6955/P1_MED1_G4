@@ -48,8 +48,8 @@ public class MessageScript : MonoBehaviour
     public static Vector2 FindSize(TMP_Text text)
     {   
         Vector2 size;
-        size.x = text.renderedWidth/(1/text.rectTransform.localScale.y);
-        size.y = (int)text.renderedHeight / (1 / text.rectTransform.localScale.y);
+        size.x = text.renderedWidth*text.rectTransform.localScale.y;
+        size.y = (int)text.renderedHeight*text.rectTransform.localScale.y;
         return size;
     }
     void PlaceCorners(Vector3 size)
