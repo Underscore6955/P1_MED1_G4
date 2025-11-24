@@ -22,7 +22,7 @@ public class MessageScript : MonoBehaviour
     {
         Vector2 size = FindSize(textField);
         testBox.transform.localScale = size;
-        PlaceCorners(size);
+        if (cornerBL) PlaceCorners(size);
     }
     public void CheckIfPlayers()
     {
