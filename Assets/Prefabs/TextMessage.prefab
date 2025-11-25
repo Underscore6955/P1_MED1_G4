@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfc99ba00fd3fa48b54d6a4531fa928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 2800000, guid: 33a8665f4082ecd41bedafc43962af52, type: 3}
   players: 0
   textField: {fileID: 4139357357953073044}
   testBox: {fileID: 1897472987384416177}
@@ -217,6 +217,7 @@ MonoBehaviour:
   cornerBR: {fileID: 3122989466205295006}
   leftFill: {fileID: 2026879223105118870}
   rightFill: {fileID: 2906721889656426861}
+  imgPrefab: {fileID: 2395252014459278042, guid: b965da4b4655dc349921ab6a4cec7308, type: 3}
   width: {fileID: 4200519147039532264}
 --- !u!222 &2016910576500815583
 CanvasRenderer:

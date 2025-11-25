@@ -1,23 +1,42 @@
+using System;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MessageScript : MonoBehaviour
 {
-    public Image image;
+    public Texture2D image;
     public int players;
     public TMP_Text textField;
     public GameObject testBox;
     public Transform bottomPos;
     public Transform topPos;
+    static int imgSize = 4;
     [SerializeField] GameObject cornerTL;
     [SerializeField] GameObject cornerTR;
     [SerializeField] GameObject cornerBL;
     [SerializeField] GameObject cornerBR;
     [SerializeField] GameObject leftFill;
     [SerializeField] GameObject rightFill;
+    [SerializeField] GameObject imgPrefab;
     public Transform width;
+    RectTransform curImg;
+    public void BuildImg()
+    {
+        curImg = Instantiate(imgPrefab, transform.parent).GetComponent<RectTransform>();
+        curImg.gameObject.GetComponent<RawImage>().texture = image;
+        curImg.sizeDelta = new Vector2(image.width, image.height);
+        Vector2 newSize = Vector2.one * (imgSize / (float)MathF.Max(image.width, image.height));
+        curImg.localScale = newSize;
+    }
+    public void findImgPos(SendMessageScript location)
+    {
+        Vector2 loc = location.FindNextNotFirst(curImg.sizeDelta.x * curImg.localScale.x, location.content.transform.position.x, players, curImg.sizeDelta.y * curImg.localScale.y); ;
+        bottomPos = curImg.Find("Bottom");
+        curImg.transform.position = loc;
+    }
     public void Sizing()
     {
         Vector2 size = FindSize(textField);

@@ -44,19 +44,19 @@ public class GetText : MonoBehaviour
         }
         StartCoroutine(FindAction(CT.curLine));
     }
-    (string, int, Image) BuildNextText(int line)
+    (string, int, Texture2D) BuildNextText(int line)
     {
         string lineText = lines[line];
         string textBuild = "";
         string imgNameBuild = null;
         bool img = false;
-        for (int i = 2; i < lineText.Length; i++)
+        for (int i = 2; i < lineText.Length-1; i++)
         {
-            if (lineText[i] == '|') { img = true; }
+            if (lineText[i] == '|') { img = true; continue; }
             if (img) imgNameBuild += lineText[i];
             else textBuild += lineText[i];
         }
-        return (textBuild, lineText[1] == '*' ? 1 : -1, null);
+        return (textBuild, lineText[1] == '*' ? 1 : -1, FindImg(imgNameBuild));
     }
     (List<string>, int) BuildChoice(int line)
     {
@@ -74,5 +74,9 @@ public class GetText : MonoBehaviour
             else textBuild += lineText[i];
         }
         return (listToReturn,num);
+    }
+    Texture2D FindImg(string name)
+    {
+        return Resources.Load<Texture2D>("Test/" + name);
     }
 }
