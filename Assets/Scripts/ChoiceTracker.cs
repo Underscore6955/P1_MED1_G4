@@ -41,6 +41,9 @@ public class ChoiceTracker : MonoBehaviour
         {
             string lineText = lines[i];
             string numBuild = "";
+            // ONLY WORKS IF CHOICE INDEX IS SORTED CORRECTLY 
+            // Example: choiceIndex = 1, it checks index 2, then 4, then 7, then 9, then 10, checks the first digit of 10, which is 1
+            // FIX LATER!!!!
             for (int j = 0; j < ("" + choiceIndex).Length; j++)
             {
                 numBuild += lineText[j];
