@@ -16,10 +16,11 @@ public class ViewManager : MonoBehaviour
     }
     static void UpdateOrder()
     {
-        for (int i = sortOrder.Count; i > 0; i--)
+        for (int i = sortOrder.Count-1; i >= 0; i--)
         {
             GameObject obj = sortOrder[i];
-            obj.GetComponent<Canvas>().sortingOrder = 100 + i;
+            obj.transform.position = new Vector3(obj.transform.position.x,obj.transform.position.y,90-i);
+            obj.GetComponent<Canvas>().sortingOrder = 90 + i;
         }
     }
 }

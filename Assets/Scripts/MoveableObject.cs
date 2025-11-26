@@ -6,6 +6,7 @@ public class MoveableObject : PressableObject
     public override void Pressed()
     {
         StartCoroutine(Holding());
+        ViewManager.AddToOrder(gameObject);
     }
     public override void Release()
     {
