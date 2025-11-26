@@ -26,10 +26,7 @@ public class MessageScript : MonoBehaviour
     public void BuildImg()
     {
         curImg = Instantiate(imgPrefab, transform.parent).GetComponent<RectTransform>();
-        curImg.gameObject.GetComponent<RawImage>().texture = image;
-        curImg.sizeDelta = new Vector2(image.width, image.height);
-        Vector2 newSize = Vector2.one * (imgSize / (float)MathF.Max(image.width, image.height));
-        curImg.localScale = newSize;
+        curImg.localScale = OSMechanics.ResizeImageToSize(image,curImg,imgSize);
     }
     public void findImgPos(SendMessageScript location)
     {

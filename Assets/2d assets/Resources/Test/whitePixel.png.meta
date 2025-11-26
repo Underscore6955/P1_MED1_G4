@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d25c81d20a3064c4ba44cbf2dcf33d24
+guid: 83dbc0965afafdd4e8dc9ca8497807c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3621514106046554489
-    second: hooorse_0
+      213: 7261178827251065652
+    second: whitePixel_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hooorse_0
+      name: whitePixel_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 266
-        height: 190
+        width: 1
+        height: 1
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 971a8ff44e3324230800000000000000
-      internalID: 3621514106046554489
+      spriteID: 43323e80ca3e4c460800000000000000
+      internalID: 7261178827251065652
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      hooorse_0: 3621514106046554489
+      whitePixel_0: 7261178827251065652
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
