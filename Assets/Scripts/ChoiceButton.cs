@@ -13,7 +13,7 @@ public class ChoiceButton : PressableObject
     public string filePath;
     public ChoiceTracker CT;
     public GameObject button;
-    public override void Pressed()
+    public override void Release()
     {
         StartCoroutine(SendMessage());
     }
