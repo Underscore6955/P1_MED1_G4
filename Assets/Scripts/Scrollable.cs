@@ -5,12 +5,13 @@ public class Scrollable : MonoBehaviour
 {
     [SerializeField] GameObject content;
     float curScroll = 0;
-    float origin;
+    Transform origin;
     public Transform contentTop;
     public Transform contentBottom;
     private void Start()
     {
-        origin=content.transform.position.y;
+        origin = Instantiate(new GameObject(),content.transform.parent).transform;
+        origin.transform.position = content.transform.position;
     }
     private void Update()
     {
@@ -19,7 +20,7 @@ public class Scrollable : MonoBehaviour
     }
     void ScrollToPos(float pos)
     {
-        content.transform.position = new Vector2(content.transform.position.x, origin+pos);
+        content.transform.position = new Vector2(content.transform.position.x, origin.position.y+pos);
     }
     float MaxScroll()
     {

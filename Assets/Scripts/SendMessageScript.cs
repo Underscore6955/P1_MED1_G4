@@ -7,6 +7,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 public class SendMessageScript : MonoBehaviour
 {
@@ -14,42 +15,46 @@ public class SendMessageScript : MonoBehaviour
     Transform topScroll;
     [SerializeField] Transform scrollArea;
     [SerializeField] GameObject messagePrefab;
-    [SerializeField] Transform content;
+    public Transform content;
     [SerializeField] float xOffset;
-    public IEnumerator SendText((string text, int players, Image image) data)
+    public IEnumerator SendText((string text, int players, Texture2D image) data)
     {
-        GameObject newText = Instantiate(messagePrefab,content);
+        GameObject newText = Instantiate(messagePrefab, content);
         newText.SetActive(true);
         MessageScript newTextScript = newText.GetComponentInChildren<MessageScript>();
         newTextScript.textField.text = data.text;
-        newTextScript.textField.ForceMeshUpdate();
-        Canvas.ForceUpdateCanvases();
         newTextScript.players = data.players;
         newTextScript.image = data.image;
-        newTextScript.CheckÍfPlayers();
+        newTextScript.CheckIfPlayers();
         yield return null;
+        newTextScript.Sizing();
         newText.transform.position = FindNextPos(newTextScript);
-        GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
         lastMessage = newText;
+        if (newTextScript.image) { newTextScript.BuildImg(); newTextScript.findImgPos(this); }
+        GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
     }
     Vector2 FindNextPos(MessageScript thisMessage)
     {
         if (lastMessage != null)
         {
-            if (thisMessage.image) return FindNextImg(thisMessage);
-            return FindNextText(thisMessage);
+            return FindNextNotFirst(thisMessage);
         }
         else 
         {
             return FindFirstPos(thisMessage); 
         }
     }
-    Vector2 FindNextText(MessageScript thisMessage)
+    Vector2 FindNextNotFirst(MessageScript thisMessage)
     {
         return new Vector2(FindNextX(thisMessage), 
             BottomPrevTextY() -
             0.5f*(thisMessage.topPos.position.y-thisMessage.bottomPos.position.y)
-            -((thisMessage.players != lastMessage.GetComponentInChildren<MessageScript>().players) ? 0.3f:0.1f));
+            -((thisMessage.players == 0 ? 0 :
+            (thisMessage.players != lastMessage.GetComponentInChildren<MessageScript>().players) ? 0.3f:0.1f)));
+    }
+    public Vector2 FindNextNotFirst(float width, float center, int players, float height)
+    {
+        return new Vector2(FindNextX(width,center,players), BottomPrevTextY() - 0.5f * (height)-0.1f);
     }
     Vector2 FindFirstPos(MessageScript thisMessage)
     {
@@ -61,9 +66,9 @@ public class SendMessageScript : MonoBehaviour
     {
         return content.transform.position.x + thisMessage.players*xOffset- thisMessage.players*(thisMessage.width.position.x - thisMessage.bottomPos.position.x);
     }
-    Vector2 FindNextImg(MessageScript thisMessage)
+    float FindNextX(float width, float center, int players)
     {
-        return Vector2.zero;
+        return center + players * xOffset - players * width*0.5f;
     }
     float BottomPrevTextY()
     {

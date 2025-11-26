@@ -2,28 +2,26 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using System.Collections;
+using TMPro;
+using UnityEngine.UI;
 
 public class ChoiceButton : PressableObject
 {
     public int choiceIndex {  private get; set; }
     public int choiceValue { private get; set; }
-    public string text;
+    public TMP_Text textElement;
     public string filePath;
     public ChoiceTracker CT;
-    public override void Pressed()
+    public GameObject button;
+    public override void Release()
     {
         StartCoroutine(SendMessage());
     }
     IEnumerator SendMessage()
     {
         CT.curLine = CT.FindChoice(choiceIndex, choiceValue);
-        yield return StartCoroutine(CT.GT.SMS.SendText((text, 1, null)));
+        yield return StartCoroutine(CT.GT.SMS.SendText((textElement.text, 1, null)));
         CT.GT.choosing = false;
-    }
-
-    private void Update()
-    {
-        if (!CT.GT.choosing) { Destroy(gameObject); }
     }
 
     void FileUpdate()

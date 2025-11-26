@@ -1,36 +1,54 @@
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
+using System;
 using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class MessageScript : MonoBehaviour
 {
-    public Image image;
+    public Texture2D image;
     public int players;
     public TMP_Text textField;
     public GameObject testBox;
     public Transform bottomPos;
     public Transform topPos;
+    static int imgSize = 4;
     [SerializeField] GameObject cornerTL;
     [SerializeField] GameObject cornerTR;
     [SerializeField] GameObject cornerBL;
     [SerializeField] GameObject cornerBR;
     [SerializeField] GameObject leftFill;
     [SerializeField] GameObject rightFill;
+    [SerializeField] GameObject imgPrefab;
     public Transform width;
-    private void Start()
+    RectTransform curImg;
+    public void BuildImg()
+    {
+        curImg = Instantiate(imgPrefab, transform.parent).GetComponent<RectTransform>();
+        curImg.gameObject.GetComponent<RawImage>().texture = image;
+        curImg.sizeDelta = new Vector2(image.width, image.height);
+        Vector2 newSize = Vector2.one * (imgSize / (float)MathF.Max(image.width, image.height));
+        curImg.localScale = newSize;
+    }
+    public void findImgPos(SendMessageScript location)
+    {
+        Vector2 loc = location.FindNextNotFirst(curImg.sizeDelta.x * curImg.localScale.x, location.content.transform.position.x, players, curImg.sizeDelta.y * curImg.localScale.y); ;
+        bottomPos = curImg.Find("Bottom");
+        curImg.transform.position = loc;
+    }
+    public void Sizing()
     {
         Vector2 size = FindSize(textField);
         testBox.transform.localScale = size;
-        PlaceCorners(size);
+        if (cornerBL) PlaceCorners(size);
     }
-    public void CheckÍfPlayers()
+    public void CheckIfPlayers()
     {
         if (players == 1)
         {
             foreach (Image img in transform.parent.GetComponentsInChildren<Image>())
             {
-                Debug.Log("herro");
                 img.color = new Color(144f/256f, 238f / 256f, 144f / 256f);
             }
         }
@@ -46,11 +64,11 @@ public class MessageScript : MonoBehaviour
         }
     }
 
-    Vector2 FindSize(TMP_Text text)
+    public static Vector2 FindSize(TMP_Text text)
     {   
         Vector2 size;
-        size.x = text.renderedWidth/(1/text.rectTransform.localScale.y);
-        size.y = (int)text.renderedHeight / (1 / text.rectTransform.localScale.y);
+        size.x = text.renderedWidth*text.rectTransform.localScale.y;
+        size.y = (int)text.renderedHeight*text.rectTransform.localScale.y;
         return size;
     }
     void PlaceCorners(Vector3 size)
