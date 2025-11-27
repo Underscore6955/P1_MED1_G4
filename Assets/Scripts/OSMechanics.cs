@@ -11,9 +11,11 @@ public class OSMechanics : MonoBehaviour
     public static OSMechanics mechInstance;
     static Dictionary<GameObject, (Vector3, Vector3)> minimized = new Dictionary<GameObject, (Vector3, Vector3)>();
     List<GameObject> resizing = new List<GameObject>();
+    [SerializeField] RectTransform desktopCanvas;
     private void Start()
     {
         mechInstance = this;
+        desktopCanvas.sizeDelta = new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight);
     }
     public void OpenApp(GameObject app, Texture2D icon)
     {

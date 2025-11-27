@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class BottomOSBar : MonoBehaviour
 {
-    [SerializeField] Transform canvasAssign;
-    static Transform canvasObj;
+    [SerializeField] RectTransform canvasAssign;
+    static RectTransform canvasObj;
     public static Dictionary<GameObject,GameObject> apps = new Dictionary<GameObject,GameObject>();
     private void Start()
     {
         canvasObj = canvasAssign;
+        canvasObj.sizeDelta = new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight);
     }
     public static void AddToBar(GameObject app, Texture2D icon)
     {

@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e374c3a47d44c49bd09ea6274ecd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  desktopCanvas: {fileID: 329358801}
 --- !u!4 &115631147
 Transform:
   m_ObjectHideFlags: 0
@@ -543,7 +544,7 @@ GameObject:
   - component: {fileID: 463372349}
   - component: {fileID: 463372351}
   m_Layer: 0
-  m_Name: ScrollArea
+  m_Name: MessageApp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
