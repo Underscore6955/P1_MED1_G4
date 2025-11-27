@@ -49,7 +49,6 @@ public class OSMechanics : MonoBehaviour
             app.transform.position += locStop;
             yield return null;
         }
-        Debug.Log(size);
         app.transform.position = loc;
         app.transform.localScale = size;
        
