@@ -27,6 +27,7 @@ public class SendMessageScript
         lastMessage = newText;
         if (newTextScript.image) { newTextScript.BuildImg(); newTextScript.findImgPos(chat); }
         chat.gameObject.GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
+        chat.bottomScroll = newTextScript.bottomPos;
     }
     Vector2 FindNextPos(MessageScript thisMessage)
     {
@@ -55,6 +56,7 @@ public class SendMessageScript
     {
         topScroll = thisMessage.gameObject.transform.Find("topIndicator");
         chat.gameObject.GetComponent<Scrollable>().contentTop = topScroll;
+        chat.topScroll = topScroll;
         return new Vector2(FindNextX(thisMessage), chat.content.transform.position.y -0.5f * (thisMessage.topPos.position.y - thisMessage.bottomPos.position.y));
     }
     float FindNextX(MessageScript thisMessage)

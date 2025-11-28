@@ -19,7 +19,7 @@ public class GetText
     {
         if (lines[line][0] == '"')
         {
-            chat.StartCoroutine(chat.SMS.SendText(BuildNextText(line)));
+            chat.StartCoroutine(chat.SMS.SendText(BuildNextText(lines,line)));
             yield return new WaitForSeconds(1);
             chat.CT.curLine++;
         }
@@ -38,9 +38,9 @@ public class GetText
         }
         chat.StartCoroutine(FindAction(chat.CT.curLine));
     }
-    (string, int, Texture2D) BuildNextText(int line)
+    public static (string, int, Texture2D) BuildNextText(string[] curLines,int line)
     {
-        string lineText = lines[line];
+        string lineText = curLines[line];
         string textBuild = "";
         string imgNameBuild = null;
         bool img = false;
@@ -69,7 +69,7 @@ public class GetText
         }
         return (listToReturn,num);
     }
-    Texture2D FindImg(string name)
+    static Texture2D FindImg(string name)
     {
         return Resources.Load<Texture2D>("Test/" + name);
     }

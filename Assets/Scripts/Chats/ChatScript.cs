@@ -10,6 +10,8 @@ public class ChatScript : MonoBehaviour
 
     public Transform content;
     public float xOffset;
+    [HideInInspector] public Transform topScroll;
+    [HideInInspector] public Transform bottomScroll;
 
     public TextAsset textFile;
     public TextAsset choiceFile;
@@ -20,6 +22,8 @@ public class ChatScript : MonoBehaviour
     public static GameObject choiceButtonPrefab;
     [SerializeField] GameObject messagePrefabAssign;
     [SerializeField] GameObject choiceButtonPrefabAssign;
+
+    [SerializeField] Scrollable scroll;
     private void Awake()
     {
         SMS = new SendMessageScript(this);
@@ -28,5 +32,15 @@ public class ChatScript : MonoBehaviour
         if(messagePrefabAssign) messagePrefab = messagePrefabAssign;
         if(choiceButtonPrefabAssign) choiceButtonPrefab = choiceButtonPrefabAssign;
         GT.StartChat();
+    }
+    private void OnEnable()
+    {
+        scroll.enabled = true;
+        scroll.contentTop = topScroll;
+        scroll.contentBottom = bottomScroll;
+    }
+    private void OnDisable()
+    {
+        scroll.enabled = false;   
     }
 }
