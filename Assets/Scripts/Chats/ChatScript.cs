@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
+using static UnityEngine.UI.Image;
 
 public class ChatScript : MonoBehaviour 
 {
@@ -23,6 +25,9 @@ public class ChatScript : MonoBehaviour
     [SerializeField] GameObject messagePrefabAssign;
     [SerializeField] GameObject choiceButtonPrefabAssign;
 
+    bool started;
+    public bool open {  get; private set; }
+
     [SerializeField] Scrollable scroll;
     private void Awake()
     {
@@ -31,16 +36,31 @@ public class ChatScript : MonoBehaviour
         GT = new GetText(this);
         if(messagePrefabAssign) messagePrefab = messagePrefabAssign;
         if(choiceButtonPrefabAssign) choiceButtonPrefab = choiceButtonPrefabAssign;
-        GT.StartChat();
+        Close();
     }
-    private void OnEnable()
+    public void Open()
     {
+        content.position += Vector3.left * 100f;
+        open = true;
+        if (!started)
+        {
+            scroll.origin = Instantiate(new GameObject(), content.transform.parent).transform;
+            started = true;
+            scroll.origin.transform.position = content.transform.position;
+            GT.StartChat(); 
+        }
         scroll.enabled = true;
+        scroll.content = content.gameObject;
         scroll.contentTop = topScroll;
         scroll.contentBottom = bottomScroll;
+        scroll.curScroll = 0;
+        choiceCanvas.gameObject.SetActive(true);
     }
-    private void OnDisable()
+    public void Close()
     {
-        scroll.enabled = false;   
+        open = false;
+        scroll.enabled = false;
+        choiceCanvas.gameObject.SetActive(false);
+        content.position -= Vector3.left*100f;
     }
 }

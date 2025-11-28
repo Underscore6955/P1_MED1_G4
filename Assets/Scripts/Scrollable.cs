@@ -3,19 +3,15 @@ using UnityEngine.InputSystem;
 
 public class Scrollable : MonoBehaviour
 {
-    [SerializeField] GameObject content;
-    float curScroll = 0;
-    Transform origin;
+    public GameObject content;
+    public float curScroll = 0;
+    public Transform origin;
     public Transform contentTop;
     public Transform contentBottom;
     [SerializeField] Collider2D scrollArea;
-    private void Start()
-    {
-        origin = Instantiate(new GameObject(),content.transform.parent).transform;
-        origin.transform.position = content.transform.position;
-    }
     private void Update()
     {
+        if (content == null) return;
         if (Input.mouseScrollDelta.y != 0 && IsHovered()) FindScroll();
         if (contentTop) ScrollToPos(MaxScroll() - curScroll);
     }

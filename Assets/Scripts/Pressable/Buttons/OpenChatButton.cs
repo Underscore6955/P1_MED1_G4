@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class OpenChatButton : MonoBehaviour
+public class OpenChatButton : PressableObject
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] ChatScript chat;
+    public override void Pressed()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (chat.gameObject.activeSelf) 
+        {
+            if (!chat.open) chat.Open(); else chat.Close(); 
+        }
     }
 }

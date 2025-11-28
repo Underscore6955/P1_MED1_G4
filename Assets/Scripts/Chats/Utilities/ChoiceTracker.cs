@@ -12,6 +12,7 @@ public class ChoiceTracker
     public ChoiceTracker(ChatScript chat) { this.chat = chat; }
     public IEnumerator BuildChoice((List<string> choicesText,int choiceIndex) data)
     {
+        while (!chat.open) yield return null;
         for (int i = 0; i < data.choicesText.Count; i++)
         {
             GameObject curObj = GameObject.Instantiate(ChatScript.choiceButtonPrefab,chat.choiceCanvas);
