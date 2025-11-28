@@ -10,7 +10,7 @@ public class ChoiceButton : PressableObject
     public int choiceValue { private get; set; }
     public TMP_Text textElement;
     public string filePath;
-    public ChoiceTracker CT;
+    public ChatScript chat;
     public GameObject button;
     public override void Release()
     {
@@ -18,9 +18,9 @@ public class ChoiceButton : PressableObject
     }
     IEnumerator SendMessage()
     {
-        CT.curLine = CT.FindChoice(choiceIndex, choiceValue);
-        yield return StartCoroutine(CT.GT.SMS.SendText((textElement.text, 1, null)));
-        CT.GT.choosing = false;
+        chat.CT.curLine = chat.CT.FindChoice(choiceIndex, choiceValue);
+        yield return StartCoroutine(chat.SMS.SendText((textElement.text, 1, null)));
+        chat.choosing = false;
     }
 
     void FileUpdate()

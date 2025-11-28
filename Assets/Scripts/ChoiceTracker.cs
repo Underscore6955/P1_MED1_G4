@@ -4,29 +4,24 @@ using Unity.Collections;
 using UnityEngine;
 using System.Collections;
 
-public class ChoiceTracker : MonoBehaviour
+public class ChoiceTracker 
 {
+    ChatScript chat;
     public int curLine = 0;
-    [SerializeField] GameObject choiceButtonPrefab;
     public List<GameObject> buttons = new List<GameObject>();
-    public GetText GT;
-    [SerializeField] Transform choiceCanvas;
-    private void Start()
-    {
-        GT = GetComponent<GetText>();
-    }
+    public ChoiceTracker(ChatScript chat) { this.chat = chat; }
     public IEnumerator BuildChoice((List<string> choicesText,int choiceIndex) data)
     {
         for (int i = 0; i < data.choicesText.Count; i++)
         {
-            GameObject curObj = Instantiate(choiceButtonPrefab,choiceCanvas);
+            GameObject curObj = GameObject.Instantiate(ChatScript.choiceButtonPrefab,chat.choiceCanvas);
             curObj.SetActive(true);
             ChoiceButton curCB = curObj.GetComponent<ChoiceButton>();
-            curCB.CT = this;
+            curCB.chat = chat;
             curCB.textElement.text = data.choicesText[i];
             curCB.choiceIndex = data.choiceIndex;
             curCB.choiceValue = i;
-            curObj.transform.position = choiceCanvas.transform.position-new Vector3(0,i);
+            curObj.transform.position = chat.choiceCanvas.transform.position-new Vector3(0,i);
             buttons.Add(curObj);
             yield return null;
             Vector2 curScale = MessageScript.FindSize(curCB.textElement);
@@ -36,7 +31,7 @@ public class ChoiceTracker : MonoBehaviour
     }
     public int FindChoice(int choiceIndex, int choiceValue)
     {
-        string[] lines = GT.choiceFile.text.Split('\n');
+        string[] lines = chat.choiceFile.text.Split('\n');
         for (int i = 0; i < lines.Length; i++)
         {
             string lineText = lines[i];

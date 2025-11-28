@@ -5,29 +5,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class GetText : MonoBehaviour
+public class GetText 
 {
-    [SerializeField] TextAsset textFile;
-    public TextAsset choiceFile;
-    [SerializeField] string dataFileName;
+    ChatScript chat;
     string[] lines;
-    ChoiceTracker CT;
-    public SendMessageScript SMS;
-    public bool choosing = false;
-    void Start()
+    public GetText(ChatScript chat) { this.chat = chat; }
+    public void StartChat()
     {
-        CT = GetComponent<ChoiceTracker>();
-        SMS = GetComponent<SendMessageScript>();
-        lines = textFile.text.Split('\n');
-        StartCoroutine(FindAction(0));
+        lines = chat.textFile.text.Split('\n');
+        chat.StartCoroutine(FindAction(0));
     }
     public IEnumerator FindAction(int line)
     {
         if (lines[line][0] == '"')
         {
-            StartCoroutine(GetComponent<SendMessageScript>().SendText(BuildNextText(line)));
+            chat.StartCoroutine(chat.SMS.SendText(BuildNextText(line)));
             yield return new WaitForSeconds(1);
-            CT.curLine++;
+            chat.CT.curLine++;
         }
         else if (lines[line][0] == '~')
         {
@@ -35,14 +29,14 @@ public class GetText : MonoBehaviour
         }
         else
         {
-            choosing = true;
-            StartCoroutine(CT.BuildChoice(BuildChoice(line)));
-            while (choosing) yield return null;
-            foreach (GameObject g in CT.buttons) { Destroy(g); }
-            CT.buttons.Clear();
+            chat.choosing = true;
+            chat.StartCoroutine(chat.CT.BuildChoice(BuildChoice(line)));
+            while (chat.choosing) yield return null;
+            foreach (GameObject g in chat.CT.buttons) { GameObject.Destroy(g); }
+            chat.CT.buttons.Clear();
             yield return new WaitForSeconds(1);
         }
-        StartCoroutine(FindAction(CT.curLine));
+        chat.StartCoroutine(FindAction(chat.CT.curLine));
     }
     (string, int, Texture2D) BuildNextText(int line)
     {

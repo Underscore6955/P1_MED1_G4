@@ -28,9 +28,9 @@ public class MessageScript : MonoBehaviour
         curImg = Instantiate(imgPrefab, transform.parent).GetComponent<RectTransform>();
         curImg.localScale = OSMechanics.ResizeImageToSize(image,curImg,imgSize);
     }
-    public void findImgPos(SendMessageScript location)
+    public void findImgPos(ChatScript chat)
     {
-        Vector2 loc = location.FindNextNotFirst(curImg.sizeDelta.x * curImg.localScale.x, location.content.transform.position.x, players, curImg.sizeDelta.y * curImg.localScale.y); ;
+        Vector2 loc = chat.SMS.FindNextNotFirst(curImg.sizeDelta.x * curImg.localScale.x, chat.content.transform.position.x, players, curImg.sizeDelta.y * curImg.localScale.y); ;
         bottomPos = curImg.Find("Bottom");
         curImg.transform.position = loc;
     }
