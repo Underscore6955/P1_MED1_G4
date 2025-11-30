@@ -10,7 +10,6 @@ public class SendMessageScript
 {
     ChatScript chat;
     public GameObject lastMessage;
-    Transform topScroll;
     public SendMessageScript(ChatScript chat) { this.chat = chat; }
     public IEnumerator SendText((string text, int players, Texture2D image) data)
     {
@@ -55,9 +54,7 @@ public class SendMessageScript
     }
     Vector2 FindFirstPos(MessageScript thisMessage)
     {
-        topScroll = thisMessage.gameObject.transform.Find("topIndicator");
-        chat.gameObject.GetComponent<Scrollable>().contentTop = topScroll;
-        chat.topScroll = topScroll;
+        chat.gameObject.GetComponent<Scrollable>().contentTop = thisMessage.gameObject.transform.Find("topIndicator");
         return new Vector2(FindNextX(thisMessage), chat.content.transform.position.y -0.5f * (thisMessage.topPos.position.y - thisMessage.bottomPos.position.y));
     }
     float FindNextX(MessageScript thisMessage)
