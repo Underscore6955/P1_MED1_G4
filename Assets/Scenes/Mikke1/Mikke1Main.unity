@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bc: {fileID: 351621023}
-  chat: {fileID: 463372353}
+  chat: {fileID: 0}
 --- !u!61 &351621023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -849,10 +849,9 @@ GameObject:
   - component: {fileID: 463372345}
   - component: {fileID: 463372348}
   - component: {fileID: 463372349}
-  - component: {fileID: 463372352}
-  - component: {fileID: 463372353}
   - component: {fileID: 463372354}
   - component: {fileID: 463372355}
+  - component: {fileID: 463372356}
   m_Layer: 0
   m_Name: MessageApp
   m_TagString: Untagged
@@ -991,54 +990,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.95, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &463372352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463372334}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ff163a140cc264492eb7aae3963eff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choiceCanvas: {fileID: 1440646768}
-  content: {fileID: 1611224487}
-  xOffset: 5
-  topScroll: {fileID: 0}
-  bottomScroll: {fileID: 0}
-  textFile: {fileID: 4900000, guid: 9bf4ca16815e1554a9cef0757f2eb618, type: 3}
-  choiceFile: {fileID: 4900000, guid: 8ad656c105bde2942a53a947db75ff42, type: 3}
-  choosing: 0
-  dataFileName: 
-  messagePrefabAssign: {fileID: 844565717877064653, guid: 6dca7f9dea426d74080ce999d6069930, type: 3}
-  choiceButtonPrefabAssign: {fileID: 5420535651261952562, guid: dc93681aa388c6d47b1f551af82ab0c6, type: 3}
-  scroll: {fileID: 463372345}
---- !u!114 &463372353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463372334}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ff163a140cc264492eb7aae3963eff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choiceCanvas: {fileID: 389880010}
-  content: {fileID: 1766051871}
-  xOffset: 5
-  topScroll: {fileID: 0}
-  bottomScroll: {fileID: 0}
-  textFile: {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
-  choiceFile: {fileID: 0}
-  choosing: 0
-  dataFileName: 
-  messagePrefabAssign: {fileID: 0}
-  choiceButtonPrefabAssign: {fileID: 0}
-  scroll: {fileID: 463372345}
 --- !u!114 &463372354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1079,6 +1030,31 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &463372356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463372334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2279ddc0e10e18245957216f30d85c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xOffset: 5
+  chatTexts:
+  - {fileID: 4900000, guid: 9bf4ca16815e1554a9cef0757f2eb618, type: 3}
+  - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
+  choiceTexts:
+  - {fileID: 4900000, guid: 8ad656c105bde2942a53a947db75ff42, type: 3}
+  - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
+  openChatButtons:
+  - {fileID: 2129509837}
+  - {fileID: 351621022}
+  messagePrefab: {fileID: 844565717877064653, guid: 6dca7f9dea426d74080ce999d6069930, type: 3}
+  choicePrefab: {fileID: 5420535651261952562, guid: dc93681aa388c6d47b1f551af82ab0c6, type: 3}
+  scroll: {fileID: 463372345}
 --- !u!1 &481350980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,7 +1991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bc: {fileID: 2129509838}
-  chat: {fileID: 463372352}
+  chat: {fileID: 0}
 --- !u!61 &2129509838
 BoxCollider2D:
   m_ObjectHideFlags: 0

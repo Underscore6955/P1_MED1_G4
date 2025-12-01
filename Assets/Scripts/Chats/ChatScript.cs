@@ -27,7 +27,7 @@ public class ChatScript : MonoBehaviour
     public bool open {  get; private set; }
 
     public Scrollable scroll;
-    private void Awake()
+    public void InitiateChat()
     {
         SMS = new SendMessageScript(this);
         CT = new ChoiceTracker(this);

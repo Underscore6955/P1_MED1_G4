@@ -25,9 +25,14 @@ public class ChatApp : MonoBehaviour
             curChat.scroll = this.scroll;
 
             curChat.content = Instantiate(new GameObject(), transform).transform;
+            curChat.content.localScale = new Vector3(0.1f, 0.2f, 1f);
+            curChat.content.gameObject.SetActive(true);
             curChat.choiceCanvas = Instantiate(new GameObject(), transform).transform;
-            curChat.choiceCanvas.gameObject.AddComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+            curChat.choiceCanvas.gameObject.SetActive(true);
+            curChat.choiceCanvas.localScale = new Vector3(0.1f, 0.2f, 1f);
+            curChat.choiceCanvas.gameObject.name = "ChoiceCanvas";
             openChatButtons[i].chat = curChat;
+            curChat.InitiateChat();
         }
     }
 }
