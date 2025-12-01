@@ -13,7 +13,7 @@ public class SendMessageScript
     public SendMessageScript(ChatScript chat) { this.chat = chat; }
     public IEnumerator SendText((string text, int players, Texture2D image) data)
     {
-        GameObject newText = Object.Instantiate(ChatScript.messagePrefab, chat.content);
+        GameObject newText = Object.Instantiate(chat.messagePrefab, chat.content);
         newText.SetActive(true);
         MessageScript newTextScript = newText.GetComponentInChildren<MessageScript>();
         newTextScript.textField.text = data.text;

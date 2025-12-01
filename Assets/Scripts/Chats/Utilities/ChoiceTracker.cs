@@ -15,7 +15,7 @@ public class ChoiceTracker
         while (!chat.open) yield return null;
         for (int i = 0; i < data.choicesText.Count; i++)
         {
-            GameObject curObj = GameObject.Instantiate(ChatScript.choiceButtonPrefab,chat.choiceCanvas);
+            GameObject curObj = GameObject.Instantiate(chat.choiceButtonPrefab,chat.choiceCanvas);
             curObj.SetActive(true);
             ChoiceButton curCB = curObj.GetComponent<ChoiceButton>();
             curCB.chat = chat;

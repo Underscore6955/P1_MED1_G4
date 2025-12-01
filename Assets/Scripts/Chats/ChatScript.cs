@@ -20,22 +20,18 @@ public class ChatScript : MonoBehaviour
     [HideInInspector] public bool choosing = false;
     public string dataFileName;
 
-    public static GameObject messagePrefab;
-    public static GameObject choiceButtonPrefab;
-    [SerializeField] GameObject messagePrefabAssign;
-    [SerializeField] GameObject choiceButtonPrefabAssign;
+    public GameObject messagePrefab;
+    public GameObject choiceButtonPrefab;
 
     bool started;
     public bool open {  get; private set; }
 
-    [SerializeField] Scrollable scroll;
+    public Scrollable scroll;
     private void Awake()
     {
         SMS = new SendMessageScript(this);
         CT = new ChoiceTracker(this);
         GT = new GetText(this);
-        if(messagePrefabAssign) messagePrefab = messagePrefabAssign;
-        if(choiceButtonPrefabAssign) choiceButtonPrefab = choiceButtonPrefabAssign;
         Close();
     }
     public void Open()

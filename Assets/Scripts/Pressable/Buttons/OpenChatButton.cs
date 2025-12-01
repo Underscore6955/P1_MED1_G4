@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OpenChatButton : PressableObject
 {
-    [SerializeField] ChatScript chat;
+    public ChatScript chat;
     public override void Pressed()
     {
         if (chat.gameObject.activeSelf) 
