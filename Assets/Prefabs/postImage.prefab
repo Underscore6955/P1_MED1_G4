@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 5487353140614902856}
   - component: {fileID: 3371893352348311266}
   m_Layer: 0
-  m_Name: virus_0
+  m_Name: img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 6370ff2472be8ae44a4ab109f017976a, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 997343159517833960}
   - component: {fileID: 6509367903047841471}
   m_Layer: 0
-  m_Name: pfp_0
+  m_Name: pfp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: dd4492769433a484482dcfe2e82dca6f, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
