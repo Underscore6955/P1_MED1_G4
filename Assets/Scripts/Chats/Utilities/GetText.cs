@@ -50,7 +50,7 @@ public class GetText
             if (img) imgNameBuild += lineText[i];
             else textBuild += lineText[i];
         }
-        return (textBuild, lineText[1] == '*' ? 1 : -1, FindImg(imgNameBuild));
+        return (textBuild, lineText[1] == '*' ? 1 : -1, FindImg("test/" + imgNameBuild));
     }
     (List<string>, int) BuildChoice(int line)
     {
@@ -71,6 +71,6 @@ public class GetText
     }
     public static Texture2D FindImg(string name)
     {
-        return Resources.Load<Texture2D>("Social Media/profile pictures/" + name);
+        return Resources.Load<Texture2D>(name);
     }
 }

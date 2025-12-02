@@ -6,11 +6,10 @@ using UnityEngine.UI;
 public class SocialMediaFeed : MonoBehaviour
 {
     [SerializeField] Scrollable scroll;
-    [SerializeField] Canvas feedCanvas;
+    [SerializeField] Transform content;
     [SerializeField] GameObject postimagePrefab;
     [SerializeField] GameObject posttextPrefab;
     [SerializeField] TextAsset posts;
-    Transform contentBottom;
 
     private void Awake()
     {
@@ -19,27 +18,31 @@ public class SocialMediaFeed : MonoBehaviour
     void InitiateFeed()
     {
         string[] lines = posts.text.Split('\n');
-        for(int i = 0; i < lines.Length; i++)
+        for (int i = 0; i < lines.Length -1; i++)
         {
-            SendPost(BuildNextPost(lines,i));
+            GameObject curPost = SendPost(BuildNextPost(lines, i));
+            curPost.transform.position = FindNextPos(curPost.transform.Find("Top").position.y - curPost.transform.Find("Bottom").position.y);
+            if (i == 0) {scroll.origin = Instantiate(new GameObject(),transform).transform; scroll.contentTop = curPost.transform.Find("Top"); scroll.origin.position = scroll.contentTop.position; }
+            scroll.contentBottom = curPost.transform.Find("Bottom");
+            curPost.transform.localPosition = new Vector3(curPost.transform.localPosition.x, curPost.transform.localPosition.y, 0);
         }
     }
-    void SendPost((string text, string name, Texture2D pfp, Texture2D img) data)
+    GameObject SendPost((string text, string name, Texture2D pfp, Texture2D img) data)
     {
-        Debug.Log(data.text + " " + data.name + " " + data.pfp + " " + data.img);
-        GameObject currPost = Instantiate(data.img ? postimagePrefab : posttextPrefab, feedCanvas.transform);
-        currPost.transform.localScale = OSMechanics.ResizeImageToSize((Texture2D)currPost.GetComponent<RawImage>().texture, currPost.GetComponent<RectTransform>(), 1f);
+        GameObject curPost = Instantiate(data.img ? postimagePrefab : posttextPrefab, content.transform);
+        curPost.transform.localScale = OSMechanics.ResizeImageToSize((Texture2D)curPost.GetComponent<RawImage>().texture, curPost.GetComponent<RectTransform>(), 9f);
         if (data.img)
         {
-            currPost.transform.Find("img").gameObject.GetComponent<RawImage>().texture = data.img;
+            curPost.transform.Find("img").gameObject.GetComponent<RawImage>().texture = data.img;
         }
-        currPost.transform.Find("pfp").gameObject.GetComponent<RawImage>().texture = data.pfp;
-        currPost.transform.Find("username").gameObject.GetComponent<TMP_Text>().text = data.name;
-        currPost.transform.Find("postText").gameObject.GetComponent<TMP_Text>().text = data.text;
+        curPost.transform.Find("pfp").gameObject.GetComponent<RawImage>().texture = data.pfp;
+        curPost.transform.Find("username").gameObject.GetComponent<TMP_Text>().text = data.name;
+        curPost.transform.Find("postText").gameObject.GetComponent<TMP_Text>().text = data.text;
+        return curPost;
     }
-    Vector2 FindNextPos()
+    Vector2 FindNextPos(float height)
     {
-        return contentBottom.position + Vector3.down * 0.1f;
+        return new Vector2 (transform.position.x,(scroll.contentBottom ? scroll.contentBottom.position.y - 0.2f : transform.position.y-2.5f) - 0.5f*height);
     }
     public static (string, string, Texture2D, Texture2D) BuildNextPost(string[] curLines, int line)
     {
@@ -49,15 +52,15 @@ public class SocialMediaFeed : MonoBehaviour
         string imgNameBuild = null;
         string pfpfNameBuild = null;
         int building = 0;
-        for (int i = 2; i < lineText.Length; i++)
+        for (int i = 2; i < lineText.Length-1; i++)
         {
-            Debug.Log(building + " " +  lineText[i]);
             if (lineText[i] == '|') { building++; continue; }
             if (building == 1) nameNameBuild += lineText[i];
             else if (building == 2) pfpfNameBuild += lineText[i];
             else if (building ==3) imgNameBuild += lineText[i];
             else textBuild += lineText[i];
         }
-        return ((textBuild,nameNameBuild, GetText.FindImg(pfpfNameBuild),GetText.FindImg(imgNameBuild)));
+        string path = "Social Media/profile pictures/";
+        return ((textBuild,nameNameBuild, GetText.FindImg(path + pfpfNameBuild),GetText.FindImg(path + imgNameBuild)));
     }
 }
