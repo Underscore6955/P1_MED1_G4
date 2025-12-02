@@ -25,7 +25,7 @@ public class SendMessageScript
         newText.transform.position = FindNextPos(newTextScript);
         newText.transform.localPosition = new Vector3(newText.transform.localPosition.x, newText.transform.localPosition.y, 0);
         lastMessage = newText;
-        if (newTextScript.image) { newTextScript.BuildImg(); newTextScript.findImgPos(chat); }
+        if (newTextScript.image) { newTextScript.BuildImg(); newTextScript.FindImgPos(chat); }
         if (chat.open) chat.gameObject.GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
         chat.bottomScroll = newTextScript.bottomPos;
     }
