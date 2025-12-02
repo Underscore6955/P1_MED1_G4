@@ -69,8 +69,8 @@ public class GetText
         }
         return (listToReturn,num);
     }
-    static Texture2D FindImg(string name)
+    public static Texture2D FindImg(string name)
     {
-        return Resources.Load<Texture2D>("Test/" + name);
+        return Resources.Load<Texture2D>("Social Media/profile pictures/" + name);
     }
 }
