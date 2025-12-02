@@ -1,25 +1,19 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using System.IO;
-using System.Runtime.CompilerServices;
 
-public class SendMessageScript : MonoBehaviour
+public class SendMessageScript 
 {
+    ChatScript chat;
     public GameObject lastMessage;
-    Transform topScroll;
-    [SerializeField] Transform scrollArea;
-    [SerializeField] GameObject messagePrefab;
-    public Transform content;
-    [SerializeField] float xOffset;
+    public SendMessageScript(ChatScript chat) { this.chat = chat; }
     public IEnumerator SendText((string text, int players, Texture2D image) data)
     {
-        GameObject newText = Instantiate(messagePrefab, content);
+        GameObject newText = Object.Instantiate(chat.messagePrefab, chat.content);
         newText.SetActive(true);
         MessageScript newTextScript = newText.GetComponentInChildren<MessageScript>();
         newTextScript.textField.text = data.text;
@@ -29,9 +23,11 @@ public class SendMessageScript : MonoBehaviour
         yield return null;
         newTextScript.Sizing();
         newText.transform.position = FindNextPos(newTextScript);
+        newText.transform.localPosition = new Vector3(newText.transform.localPosition.x, newText.transform.localPosition.y, 0);
         lastMessage = newText;
-        if (newTextScript.image) { newTextScript.BuildImg(); newTextScript.findImgPos(this); }
-        GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
+        if (newTextScript.image) { newTextScript.BuildImg(); newTextScript.findImgPos(chat); }
+        if (chat.open) chat.gameObject.GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
+        chat.bottomScroll = newTextScript.bottomPos;
     }
     Vector2 FindNextPos(MessageScript thisMessage)
     {
@@ -58,17 +54,16 @@ public class SendMessageScript : MonoBehaviour
     }
     Vector2 FindFirstPos(MessageScript thisMessage)
     {
-        topScroll = thisMessage.gameObject.transform.Find("topIndicator");
-        GetComponent<Scrollable>().contentTop = topScroll;
-        return new Vector2(FindNextX(thisMessage), content.transform.position.y -0.5f * (thisMessage.topPos.position.y - thisMessage.bottomPos.position.y));
+        chat.gameObject.GetComponent<Scrollable>().contentTop = thisMessage.gameObject.transform.Find("topIndicator");
+        return new Vector2(FindNextX(thisMessage), chat.content.transform.position.y -0.5f * (thisMessage.topPos.position.y - thisMessage.bottomPos.position.y));
     }
     float FindNextX(MessageScript thisMessage)
     {
-        return content.transform.position.x + thisMessage.players*xOffset- thisMessage.players*(thisMessage.width.position.x - thisMessage.bottomPos.position.x);
+        return chat.content.transform.position.x + thisMessage.players*chat.xOffset- thisMessage.players*(thisMessage.width.position.x - thisMessage.bottomPos.position.x);
     }
     float FindNextX(float width, float center, int players)
     {
-        return center + players * xOffset - players * width*0.5f;
+        return center + players * chat.xOffset - players * width*0.5f;
     }
     float BottomPrevTextY()
     {
