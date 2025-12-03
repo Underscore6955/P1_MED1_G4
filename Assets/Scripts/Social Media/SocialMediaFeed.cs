@@ -11,7 +11,7 @@ public class SocialMediaFeed : MonoBehaviour
     [SerializeField] GameObject posttextPrefab;
     [SerializeField] TextAsset posts;
 
-    private void Awake()
+    private void Start()
     {
         InitiateFeed();
     }
