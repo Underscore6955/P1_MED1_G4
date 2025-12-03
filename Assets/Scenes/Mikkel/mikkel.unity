@@ -858,7 +858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &463372336
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1906,7 +1906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scroll: {fileID: 0}
-  feedCanvas: {fileID: 1732227650}
+  content: {fileID: 0}
   postimagePrefab: {fileID: 8066044813209848275, guid: 5031a3639bc314944a6bae8b659a2b93, type: 3}
   posttextPrefab: {fileID: 0}
   posts: {fileID: 4900000, guid: c5ad219209b84e148b32af1004e99f4c, type: 3}
