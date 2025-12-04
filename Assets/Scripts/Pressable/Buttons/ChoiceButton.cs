@@ -19,6 +19,7 @@ public class ChoiceButton : PressableObject
     IEnumerator SendMessage()
     {
         chat.CT.curLine = chat.CT.FindChoice(choiceIndex, choiceValue);
+        foreach (GameObject g in chat.CT.buttons) { g.transform.position += Vector3.left * 999f; }
         yield return StartCoroutine(chat.SMS.SendText((textElement.text, 1, null)));
         chat.choosing = false;
     }

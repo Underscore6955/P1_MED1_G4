@@ -78,15 +78,14 @@ public class SendMessageScript
         string textBuild = "";
         for(int i = 0; i<text.Length; i++)
         {
-            
             while (!Input.anyKeyDown)
             {
                 yield return null;
             }
             yield return null;
-            Debug.Log(textBuild);
             textBuild += text[i];
+            Debug.Log(textBuild);
         }
-        while (!Input.GetKeyDown(KeyCode.Return)) yield return null;
+        while (!Input.GetKeyDown(KeyCode.Return)) { yield return null; }
     }
 }
