@@ -76,11 +76,11 @@ public class SendMessageScript
         for(int i = 0; i<text.Length; i++)
         {
             Debug.Log(textBuild);
-            while (Input.inputString != null)
+            while (!Input.GetKeyDown(KeyCode.Space))
             {
-                textBuild += text[i];
                 yield return null;
             }
+            textBuild += text[i];
         }
         while (!Input.GetKeyDown(KeyCode.KeypadEnter)) yield return null;
     }
