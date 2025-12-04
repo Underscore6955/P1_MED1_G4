@@ -40,6 +40,7 @@ public class Scrollable : MonoBehaviour
         {
             // checks each gameobject under the mouse for scrollable script, and the first one it finds will be the one closest to the camerea, which will be the top one
             // if the top scroll is this one, then that means this should return true
+            // if there is no scrollable, or the wrong scollable is on top, we return false
             try { if (curCol.transform.parent.gameObject.GetComponent<Scrollable>()) return curCol == scrollArea; } catch { }
         }
         return false;
