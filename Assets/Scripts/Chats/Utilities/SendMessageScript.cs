@@ -13,6 +13,7 @@ public class SendMessageScript
     public SendMessageScript(ChatScript chat) { this.chat = chat; }
     public IEnumerator SendText((string text, int players, Texture2D image) data)
     {
+        yield return chat.StartCoroutine(KeypressMessage(data.text));
         GameObject newText = Object.Instantiate(chat.messagePrefab, chat.content);
         newText.SetActive(true);
         MessageScript newTextScript = newText.GetComponentInChildren<MessageScript>();
@@ -68,5 +69,19 @@ public class SendMessageScript
     float BottomPrevTextY()
     {
         return lastMessage.GetComponentInChildren<MessageScript>().bottomPos.position.y;
+    }
+    IEnumerator KeypressMessage(string text)
+    {
+        string textBuild = "";
+        for(int i = 0; i<text.Length; i++)
+        {
+            Debug.Log(textBuild);
+            while (Input.inputString != null)
+            {
+                textBuild += text[i];
+                yield return null;
+            }
+        }
+        while (!Input.GetKeyDown(KeyCode.KeypadEnter)) yield return null;
     }
 }
