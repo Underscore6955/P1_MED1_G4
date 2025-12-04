@@ -4,19 +4,29 @@ using System.Collections.Generic;
 
 public class ChatApp : MonoBehaviour
 {
+    // sets how far text messages go out in a chat
     [SerializeField] float xOffset;
+    // text files for chats
     [SerializeField] List<TextAsset> chatTexts = new List<TextAsset>();
+    // choice files for chats
+    // these two are very important the corresponding files are in the same order in the lists
     [SerializeField] List<TextAsset> choiceTexts = new List<TextAsset>();
+    // friend list buttons, only temporary 
     [SerializeField] List<OpenChatButton> openChatButtons = new List<OpenChatButton>();
+    // prefabs
     [SerializeField] GameObject messagePrefab;
     [SerializeField] GameObject choicePrefab;
+    // the correct scroll script and text bar
     [SerializeField] Scrollable scroll;
     [SerializeField] GameObject textBar;
     private void Awake()
     {
+        // go through each chat on the app, so each on in chatTexts list
         for (int i = 0; i<chatTexts.Count; i++)
         {
+            // create a new chatscript on the gameobject
             ChatScript curChat = gameObject.AddComponent<ChatScript>();
+            // assign aaaaallll the correct variables to the new chat
             curChat.enabled = false;
             curChat.textFile = chatTexts[i];
             curChat.choiceFile = choiceTexts[i];
@@ -26,14 +36,15 @@ public class ChatApp : MonoBehaviour
             curChat.scroll = this.scroll;
             curChat.textBar = this.textBar;
 
+            // make the things that need to be there, like content container and choice canvas, which holds the choice buttons
             curChat.content = Instantiate(new GameObject(), transform).transform;
             curChat.content.localScale = new Vector3(0.1f, 0.2f, 1f);
             curChat.content.gameObject.SetActive(true);
             curChat.choiceCanvas = Instantiate(new GameObject(), transform).transform;
             curChat.choiceCanvas.gameObject.SetActive(true);
             curChat.choiceCanvas.localScale = new Vector3(0.1f, 0.2f, 1f);
-            curChat.choiceCanvas.gameObject.name = "ChoiceCanvas";
             openChatButtons[i].chat = curChat;
+            // begin the chat
             curChat.InitiateChat();
         }
     }
