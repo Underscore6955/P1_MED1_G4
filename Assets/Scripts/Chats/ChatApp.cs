@@ -11,6 +11,7 @@ public class ChatApp : MonoBehaviour
     [SerializeField] GameObject messagePrefab;
     [SerializeField] GameObject choicePrefab;
     [SerializeField] Scrollable scroll;
+    [SerializeField] GameObject textBar;
     private void Awake()
     {
         for (int i = 0; i<chatTexts.Count; i++)
@@ -23,6 +24,7 @@ public class ChatApp : MonoBehaviour
             curChat.messagePrefab = this.messagePrefab;
             curChat.choiceButtonPrefab = this.choicePrefab;
             curChat.scroll = this.scroll;
+            curChat.textBar = this.textBar;
 
             curChat.content = Instantiate(new GameObject(), transform).transform;
             curChat.content.localScale = new Vector3(0.1f, 0.2f, 1f);

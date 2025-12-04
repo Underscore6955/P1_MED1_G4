@@ -12,16 +12,17 @@ public class ChatScript : MonoBehaviour
 
     public Transform content;
     public float xOffset;
-    [HideInInspector] public Transform topScroll;
-    [HideInInspector] public Transform bottomScroll;
+    public Transform topScroll;
+    public Transform bottomScroll;
 
     public TextAsset textFile;
     public TextAsset choiceFile;
-    [HideInInspector] public bool choosing = false;
+    public bool choosing = false;
     public string dataFileName;
 
     public GameObject messagePrefab;
     public GameObject choiceButtonPrefab;
+    public GameObject textBar;
 
     bool started;
     public bool open {  get; private set; }
@@ -45,6 +46,7 @@ public class ChatScript : MonoBehaviour
             scroll.origin.transform.position = content.transform.position;
             GT.StartChat(); 
         }
+        textBar.SetActive(true);
         scroll.enabled = true;
         scroll.content = content.gameObject;
         scroll.contentTop = topScroll;
@@ -56,6 +58,7 @@ public class ChatScript : MonoBehaviour
     {
         open = false;
         scroll.enabled = false;
+        textBar.SetActive(false);
         choiceCanvas.gameObject.SetActive(false);
         content.position -= Vector3.left*100f;
     }

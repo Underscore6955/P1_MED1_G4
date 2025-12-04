@@ -78,14 +78,23 @@ public class SendMessageScript
         string textBuild = "";
         for(int i = 0; i<text.Length; i++)
         {
-            while (!Input.anyKeyDown)
+            while (!IsPressingLetter())
             {
                 yield return null;
             }
             yield return null;
             textBuild += text[i];
-            Debug.Log(textBuild);
+            chat.textBar.GetComponentInChildren<TMP_Text>().text = textBuild;
         }
         while (!Input.GetKeyDown(KeyCode.Return)) { yield return null; }
+        chat.textBar.GetComponentInChildren<TMP_Text>().text = "";
+    }
+    bool IsPressingLetter()
+    {
+        foreach (char c in Input.inputString)
+        {
+            if (char.IsLetter(c)) return true;
+        }
+        return false;
     }
 }
