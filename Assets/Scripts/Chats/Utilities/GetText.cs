@@ -19,7 +19,7 @@ public class GetText
     {
         if (lines[line][0] == '"')
         {
-            chat.StartCoroutine(chat.SMS.SendText(BuildNextText(lines,line)));
+            yield return chat.StartCoroutine(chat.SMS.SendText(BuildNextText(lines,line)));
             yield return new WaitForSeconds(1);
             chat.CT.curLine++;
         }
