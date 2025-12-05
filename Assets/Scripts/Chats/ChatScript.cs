@@ -4,6 +4,7 @@ using static UnityEngine.UI.Image;
 
 public class ChatScript : MonoBehaviour 
 {
+    // bunch of variables we need, many from ChatApp
     public SendMessageScript SMS;
     public GetText GT;
     public ChoiceTracker CT;
@@ -12,51 +13,69 @@ public class ChatScript : MonoBehaviour
 
     public Transform content;
     public float xOffset;
-    [HideInInspector] public Transform topScroll;
-    [HideInInspector] public Transform bottomScroll;
+    public Transform topScroll;
+    public Transform bottomScroll;
 
     public TextAsset textFile;
     public TextAsset choiceFile;
-    [HideInInspector] public bool choosing = false;
+    public bool choosing = false;
     public string dataFileName;
 
     public GameObject messagePrefab;
     public GameObject choiceButtonPrefab;
+    public GameObject textBar;
 
+    // we need some bools to keep track of whether the chat is open, and whether it has been opened before
     bool started;
     public bool open {  get; private set; }
 
     public Scrollable scroll;
+    // this method prepares the chat to be used
     public void InitiateChat()
     {
+        // uses the constructors on the scripts to make the new scripts
         SMS = new SendMessageScript(this);
         CT = new ChoiceTracker(this);
         GT = new GetText(this);
+        // app starts closed
         Close();
     }
     public void Open()
     {
+        // we move the chat back to the app, see why in Closed()
         content.position += Vector3.left * 100f;
         open = true;
+        // if it is the first time we open the app we start the chat
         if (!started)
         {
+            // important for scrolling
             scroll.origin = Instantiate(new GameObject(), content.transform.parent).transform;
-            started = true;
             scroll.origin.transform.position = content.transform.position;
+            // make sure this doesnt go again
+            started = true;
+            // begin the chat
             GT.StartChat(); 
         }
+        // make sure that everything is on and correctly displayed 
+        textBar.SetActive(true);
         scroll.enabled = true;
         scroll.content = content.gameObject;
         scroll.contentTop = topScroll;
         scroll.contentBottom = bottomScroll;
+        // scroll to the bottom
         scroll.curScroll = 0;
         choiceCanvas.gameObject.SetActive(true);
     }
     public void Close()
     {
+        // hide everything
         open = false;
         scroll.enabled = false;
+        textBar.SetActive(false);
         choiceCanvas.gameObject.SetActive(false);
+        // it is very important that the messages still exist, and are rendered even when the chat is off, since a message can still be sent when the chat is disabled
+        // this means that if the canvas is disabled, the text is not rendered and will therefore be -infinity large for whatever reason
+        // so instead of disabling it we just kinda push it to the side
         content.position -= Vector3.left*100f;
     }
 }

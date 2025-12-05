@@ -10,8 +10,8 @@ public class SocialMediaFeed : MonoBehaviour
     [SerializeField] GameObject postimagePrefab;
     [SerializeField] GameObject posttextPrefab;
     [SerializeField] TextAsset posts;
-
-    private void Awake()
+    // ask the expert :3
+    private void Start()
     {
         InitiateFeed();
     }
@@ -20,16 +20,19 @@ public class SocialMediaFeed : MonoBehaviour
         string[] lines = posts.text.Split('\n');
         for (int i = 0; i < lines.Length -1; i++)
         {
+            // scrolly things
             GameObject curPost = SendPost(BuildNextPost(lines, i));
             curPost.transform.position = FindNextPos(curPost.transform.Find("Top").position.y - curPost.transform.Find("Bottom").position.y);
             if (i == 0) {scroll.origin = Instantiate(new GameObject(),transform).transform; scroll.contentTop = curPost.transform.Find("Top"); scroll.origin.position = scroll.contentTop.position; }
             scroll.contentBottom = curPost.transform.Find("Bottom");
+            // once again weird z axis stuff
             curPost.transform.localPosition = new Vector3(curPost.transform.localPosition.x, curPost.transform.localPosition.y, 0);
         }
     }
     GameObject SendPost((string text, string name, Texture2D pfp, Texture2D img) data)
     {
         GameObject curPost = Instantiate(data.img ? postimagePrefab : posttextPrefab, content.transform);
+        // place the post
         curPost.transform.localScale = OSMechanics.ResizeImageToSize((Texture2D)curPost.GetComponent<RawImage>().texture, curPost.GetComponent<RectTransform>(), 9f);
         if (data.img)
         {
@@ -40,6 +43,7 @@ public class SocialMediaFeed : MonoBehaviour
         curPost.transform.Find("postText").gameObject.GetComponent<TMP_Text>().text = data.text;
         return curPost;
     }
+    // method to find the correct location of the next post
     Vector2 FindNextPos(float height)
     {
         return new Vector2 (transform.position.x,(scroll.contentBottom ? scroll.contentBottom.position.y - 0.2f : transform.position.y-2.5f) - 0.5f*height);

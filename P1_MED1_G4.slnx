@@ -1,3 +1,4 @@
 ﻿<Solution>
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="../../../Desktop/AAU/AAU 1. semester/P1/ConsoleApp1/ConsoleApp1.csproj" />
 </Solution>
