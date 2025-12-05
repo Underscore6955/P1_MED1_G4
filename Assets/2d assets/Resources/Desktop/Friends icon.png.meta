@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: d9062aff9942e704bbbed48c4c6db030
+guid: ef667c8b7830bdf49975378f60c1c114
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1117955334080558102
-    second: Side frins_0
+      213: -6290486477514377033
+    second: Friends icon_0
+  - first:
+      213: -6896818826349657441
+    second: Friends icon_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,12 +103,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Side frins_0
+      name: Friends icon_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 37
+        width: 28
         height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 614ff920476c38f00800000000000000
-      internalID: 1117955334080558102
+      spriteID: 7b87b5b80e3b3b8a0800000000000000
+      internalID: -6290486477514377033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Friends icon_1
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 28
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f92c33f71d39940a0800000000000000
+      internalID: -6896818826349657441
       vertices: []
       indices: 
       edges: []
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Side frins_0: 1117955334080558102
+      Friends icon_0: -6290486477514377033
+      Friends icon_1: -6896818826349657441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

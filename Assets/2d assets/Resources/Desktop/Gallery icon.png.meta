@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 346e1ab12f1294a41a50322f90a07419
+guid: 307165dd73c3127448070789692cb1d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1179063404600208743
-    second: Side frins press_0
+      213: 7066757764164366640
+    second: Gallery icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Side frins press_0
+      name: Gallery icon_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 37
-        height: 37
+        width: 46
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 76dabd66befdc5010800000000000000
-      internalID: 1179063404600208743
+      spriteID: 03130c6ceba221260800000000000000
+      internalID: 7066757764164366640
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Side frins press_0: 1179063404600208743
+      Gallery icon_0: 7066757764164366640
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

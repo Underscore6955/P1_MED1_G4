@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 790726e149235ca46bfc739f4ce3108c
+guid: f62d5e6482685ee46b8033dd7c5a0f51
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -49327430842446627
-    second: Side poweroff_0
+      213: 189770717583955479
+    second: collection icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Side poweroff_0
+      name: collection icon_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 37
-        height: 37
+        x: 4
+        y: 5
+        width: 39
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ddc04f686f0c05ff0800000000000000
-      internalID: -49327430842446627
+      spriteID: 716dc52567332a200800000000000000
+      internalID: 189770717583955479
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Side poweroff_0: -49327430842446627
+      collection icon_0: 189770717583955479
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

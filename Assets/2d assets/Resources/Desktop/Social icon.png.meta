@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b91835bec379ca14e8bbfa6b20bae286
+guid: 8d0cd76efa6e4264d99933c137eaff20
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1574689068824804194
-    second: Side menu_0
+      213: 1831846330797209694
+    second: Social icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Side menu_0
+      name: Social icon_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 92
-        height: 304
+        x: 3
+        y: 2
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e94c10d82a4952ae0800000000000000
-      internalID: -1574689068824804194
+      spriteID: e58354648860c6910800000000000000
+      internalID: 1831846330797209694
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Side menu_0: -1574689068824804194
+      Social icon_0: 1831846330797209694
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
