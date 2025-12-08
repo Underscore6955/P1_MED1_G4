@@ -21,7 +21,7 @@ public class Scrollable : MonoBehaviour
     // does some funky math stuff to find where you can scroll
     void FindScroll()
     {
-        if (contentTop) curScroll = Mathf.Clamp(curScroll + Input.mouseScrollDelta.y, 0, Mathf.Clamp(MaxScroll() - (0.5f * transform.localScale.y), 0, Mathf.Infinity));
+        if (contentTop) curScroll = Mathf.Clamp(curScroll + Input.mouseScrollDelta.y, 0, Mathf.Clamp(MaxScroll() /*- (0.5f * transform.localScale.y)*/, 0, Mathf.Infinity));
     }
     // scrolls to the position that it needs to, that means moving the content properly 
     void ScrollToPos(float pos)
@@ -29,7 +29,7 @@ public class Scrollable : MonoBehaviour
         content.transform.position = new Vector2(content.transform.position.x, origin.position.y + pos);
     }
     // finds the maximum distance you can scroll
-    float MaxScroll()
+    public float MaxScroll()
     {
         return (contentTop.position-contentBottom.position).y;
     }

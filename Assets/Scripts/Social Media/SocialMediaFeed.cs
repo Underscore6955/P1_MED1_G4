@@ -28,6 +28,7 @@ public class SocialMediaFeed : MonoBehaviour
             // once again weird z axis stuff
             curPost.transform.localPosition = new Vector3(curPost.transform.localPosition.x, curPost.transform.localPosition.y, 0);
         }
+        scroll.curScroll = scroll.MaxScroll() /*- (0.5f * scroll.transform.localScale.y)*/;
     }
     GameObject SendPost((string text, string name, Texture2D pfp, Texture2D img) data)
     {

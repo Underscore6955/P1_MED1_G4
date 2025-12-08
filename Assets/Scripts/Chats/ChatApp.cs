@@ -11,8 +11,6 @@ public class ChatApp : MonoBehaviour
     // choice files for chats
     // these two are very important the corresponding files are in the same order in the lists
     [SerializeField] List<TextAsset> choiceTexts = new List<TextAsset>();
-    // friend list buttons, only temporary 
-    [SerializeField] List<OpenChatButton> openChatButtons = new List<OpenChatButton>();
     // prefabs
     [SerializeField] GameObject messagePrefab;
     [SerializeField] GameObject choicePrefab;
@@ -43,8 +41,8 @@ public class ChatApp : MonoBehaviour
             curChat.choiceCanvas = Instantiate(new GameObject(), transform).transform;
             curChat.choiceCanvas.gameObject.SetActive(true);
             curChat.choiceCanvas.localScale = new Vector3(0.1f, 0.2f, 1f);
-            openChatButtons[i].chat = curChat;
-            // begin the chat
+            GetComponent<FriendList>().AddFriend(curChat,"Joe");
+            // prepare some more things for the chat
             curChat.InitiateChat();
         }
     }
