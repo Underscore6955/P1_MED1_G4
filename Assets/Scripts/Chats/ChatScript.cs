@@ -48,9 +48,6 @@ public class ChatScript : MonoBehaviour
         // if it is the first time we open the app we start the chat
         if (!started)
         {
-            // important for scrolling
-            scroll.origin = Instantiate(new GameObject(), content.transform.parent).transform;
-            scroll.origin.transform.position = content.transform.position;
             // make sure this doesnt go again
             started = true;
             // begin the chat

@@ -1008,6 +1008,7 @@ MonoBehaviour:
   curScroll: 0
   origin: {fileID: 0}
   contentTop: {fileID: 0}
+  firstSize: 0
   contentBottom: {fileID: 0}
   scrollArea: {fileID: 364173048}
 --- !u!114 &463372348
@@ -1128,8 +1129,10 @@ MonoBehaviour:
   - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
   - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
   - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
+  - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
   choiceTexts:
   - {fileID: 4900000, guid: 8ad656c105bde2942a53a947db75ff42, type: 3}
+  - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
   - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
   - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
   - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
@@ -1171,6 +1174,7 @@ MonoBehaviour:
   curScroll: 0
   origin: {fileID: 0}
   contentTop: {fileID: 0}
+  firstSize: 0
   contentBottom: {fileID: 0}
   scrollArea: {fileID: 364173048}
 --- !u!1 &464637804
@@ -1903,6 +1907,7 @@ MonoBehaviour:
   curScroll: 0
   origin: {fileID: 0}
   contentTop: {fileID: 0}
+  firstSize: 0
   contentBottom: {fileID: 0}
   scrollArea: {fileID: 547937946}
 --- !u!222 &1157786744

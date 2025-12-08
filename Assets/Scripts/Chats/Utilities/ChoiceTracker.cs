@@ -25,6 +25,7 @@ public class ChoiceTracker
         {
             // Create the choice button obj and add the required stuff to it
             GameObject curObj = GameObject.Instantiate(chat.choiceButtonPrefab,chat.choiceCanvas);
+            curObj.gameObject.name = "choiceButton";
             curObj.SetActive(true);
             ChoiceButton curCB = curObj.GetComponent<ChoiceButton>();
             curCB.chat = chat;

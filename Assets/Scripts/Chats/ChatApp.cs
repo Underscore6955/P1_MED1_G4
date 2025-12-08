@@ -17,7 +17,7 @@ public class ChatApp : MonoBehaviour
     // the correct scroll script and text bar
     [SerializeField] Scrollable scroll;
     [SerializeField] GameObject textBar;
-    private void Awake()
+    private void Start()
     {
         // go through each chat on the app, so each on in chatTexts list
         for (int i = 0; i<chatTexts.Count; i++)
@@ -33,14 +33,17 @@ public class ChatApp : MonoBehaviour
             curChat.choiceButtonPrefab = this.choicePrefab;
             curChat.scroll = this.scroll;
             curChat.textBar = this.textBar;
-
             // make the things that need to be there, like content container and choice canvas, which holds the choice buttons
-            curChat.content = Instantiate(new GameObject(), transform).transform;
+            curChat.content = new GameObject().transform;
+            curChat.content.SetParent(transform);
             curChat.content.localScale = new Vector3(0.1f, 0.2f, 1f);
             curChat.content.gameObject.SetActive(true);
-            curChat.choiceCanvas = Instantiate(new GameObject(), transform).transform;
+            curChat.content.gameObject.name = "content";
+            curChat.choiceCanvas = new GameObject().transform;
+            curChat.choiceCanvas.SetParent(transform);
             curChat.choiceCanvas.gameObject.SetActive(true);
             curChat.choiceCanvas.localScale = new Vector3(0.1f, 0.2f, 1f);
+            curChat.choiceCanvas.gameObject.name = "choiceCanvas";
             GetComponent<FriendList>().AddFriend(curChat,"Joe");
             // prepare some more things for the chat
             curChat.InitiateChat();

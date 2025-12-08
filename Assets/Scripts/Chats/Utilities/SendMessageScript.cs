@@ -22,6 +22,7 @@ public class SendMessageScript
         }
         // we create the new message and do some stuff to it, and get the message script from it
         GameObject newText = Object.Instantiate(chat.messagePrefab, chat.content);
+        newText.name = "message";
         newText.SetActive(true);
         MessageScript newTextScript = newText.GetComponentInChildren<MessageScript>();
         // assign the values
@@ -76,8 +77,7 @@ public class SendMessageScript
     // very similar logic to FindNextNotFirst, just dosent use lastMessage, since that doesnt exist, obviously
     Vector2 FindFirstPos(MessageScript thisMessage)
     {
-        // just realized this shit dont work at all lol skull emoji or at least it shouldnt idk
-        chat.gameObject.GetComponent<Scrollable>().contentTop = thisMessage.gameObject.transform.Find("topIndicator");
+        chat.scroll.SetTop(thisMessage.topPos, thisMessage.bottomPos);
         // well this works the math is fine
         return new Vector2(FindNextX(thisMessage), chat.content.transform.position.y -0.5f * (thisMessage.topPos.position.y - thisMessage.bottomPos.position.y));
     }

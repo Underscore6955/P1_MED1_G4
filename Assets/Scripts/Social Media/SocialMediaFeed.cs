@@ -23,12 +23,12 @@ public class SocialMediaFeed : MonoBehaviour
             // scrolly things
             GameObject curPost = SendPost(BuildNextPost(lines, i));
             curPost.transform.position = FindNextPos(curPost.transform.Find("Top").position.y - curPost.transform.Find("Bottom").position.y);
-            if (i == 0) {scroll.origin = Instantiate(new GameObject(),transform).transform; scroll.contentTop = curPost.transform.Find("Top"); scroll.origin.position = scroll.contentTop.position; }
+            if (i == 0) { scroll.SetTop(curPost.transform.Find("Top"), curPost.transform.Find("Bottom")); }
             scroll.contentBottom = curPost.transform.Find("Bottom");
             // once again weird z axis stuff
             curPost.transform.localPosition = new Vector3(curPost.transform.localPosition.x, curPost.transform.localPosition.y, 0);
         }
-        scroll.curScroll = scroll.MaxScroll() /*- (0.5f * scroll.transform.localScale.y)*/;
+        scroll.curScroll = scroll.MaxScroll() - scroll.firstSize;
     }
     GameObject SendPost((string text, string name, Texture2D pfp, Texture2D img) data)
     {

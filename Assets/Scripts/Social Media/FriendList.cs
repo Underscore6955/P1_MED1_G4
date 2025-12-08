@@ -33,6 +33,7 @@ public class FriendList : MonoBehaviour
         friends.Add(new Friend(name, chat));
         // create the button
         OpenChatButton curButton = Instantiate(friendButtonPrefab, friendList).GetComponent<OpenChatButton>();
+        curButton.gameObject.name = "curButton";
         // assign the correct values to the button
         curButton.friendName.text = name;
         curButton.chat = chat;
@@ -45,11 +46,9 @@ public class FriendList : MonoBehaviour
         // if it is the first time a friend is being added (no other friends exist) add some things to scroll
         if (friends.Count == 1) 
         {
-            scroll.origin = Instantiate(new GameObject(), transform).transform;
-            scroll.origin.position = curTrans.position;
-            scroll.contentTop = curTrans.Find("top"); 
+            scroll.SetTop(curTrans.Find("top"), curTrans.Find("bottom"));
         }
-        scroll.curScroll = scroll.MaxScroll() - (0.5f * scroll.transform.localScale.y);
+        scroll.curScroll = scroll.MaxScroll() - scroll.firstSize;
     }
 }
 public class Friend 

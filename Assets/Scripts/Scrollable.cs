@@ -7,6 +7,7 @@ public class Scrollable : MonoBehaviour
     public float curScroll = 0;
     public Transform origin;
     public Transform contentTop;
+    public float firstSize;
     public Transform contentBottom;
     [SerializeField] Collider2D scrollArea;
     private void Update()
@@ -21,7 +22,7 @@ public class Scrollable : MonoBehaviour
     // does some funky math stuff to find where you can scroll
     void FindScroll()
     {
-        if (contentTop) curScroll = Mathf.Clamp(curScroll + Input.mouseScrollDelta.y, 0, Mathf.Clamp(MaxScroll() /*- (0.5f * transform.localScale.y)*/, 0, Mathf.Infinity));
+        if (contentTop) curScroll = Mathf.Clamp(curScroll + Input.mouseScrollDelta.y, 0, Mathf.Clamp(MaxScroll() - firstSize, 0, Mathf.Infinity));
     }
     // scrolls to the position that it needs to, that means moving the content properly 
     void ScrollToPos(float pos)
@@ -32,6 +33,15 @@ public class Scrollable : MonoBehaviour
     public float MaxScroll()
     {
         return (contentTop.position-contentBottom.position).y;
+    }
+    public void SetTop(Transform top, Transform bottom)
+    {
+        origin = new GameObject().transform;
+        origin.SetParent(transform);
+        origin.name = "origin";
+        origin.position = top.position;
+        contentTop = top;
+        firstSize = 0.5f*(top.position.y - bottom.position.y);
     }
     // checks if the mouse is over the thing, and it is the scrollable that is highest in the sorting order
     bool IsHovered()
