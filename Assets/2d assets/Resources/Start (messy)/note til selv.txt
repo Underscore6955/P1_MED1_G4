@@ -1,0 +1,4 @@
+Images/canvases
+- Højerklik Hierarchy, vælg UI og Image.
+
+- med Image, i Inspector, vælg Sprite under Scouce Image. Image Rect x og y sammen dimension som sprite

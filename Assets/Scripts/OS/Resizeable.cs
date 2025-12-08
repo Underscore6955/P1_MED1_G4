@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.InputSystem;
 
+// ignore this script it fucking SUCKS </3 it kindaaa works but only barely 
+// look at moveable object instead
 public class Resizeable : PressableObject
 {
     RectTransform sizingObject;
