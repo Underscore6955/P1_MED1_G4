@@ -33,7 +33,7 @@ public class FriendList : MonoBehaviour
         friends.Add(new Friend(name, chat));
         // create the button
         OpenChatButton curButton = Instantiate(friendButtonPrefab, friendList).GetComponent<OpenChatButton>();
-        curButton.gameObject.name = "curButton";
+        curButton.gameObject.name = friends.Count.ToString();
         // assign the correct values to the button
         curButton.friendName.text = name;
         curButton.chat = chat;
