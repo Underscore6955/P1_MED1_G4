@@ -16,6 +16,7 @@ public class ChatScript : MonoBehaviour
     public Transform topScroll;
     public Transform bottomScroll;
     public float centerXOffset;
+    public float choiceOffset;
 
     public TextAsset textFile;
     public TextAsset choiceFile;
@@ -44,7 +45,7 @@ public class ChatScript : MonoBehaviour
     public void Open()
     {
         // we move the chat back to the app, see why in Closed()
-        content.position += Vector3.left * 100f;
+        content.localPosition = new Vector3(0, content.localPosition.y, content.localPosition.z);
         open = true;
         // if it is the first time we open the app we start the chat
         if (!started)
@@ -74,6 +75,6 @@ public class ChatScript : MonoBehaviour
         // it is very important that the messages still exist, and are rendered even when the chat is off, since a message can still be sent when the chat is disabled
         // this means that if the canvas is disabled, the text is not rendered and will therefore be -infinity large for whatever reason
         // so instead of disabling it we just kinda push it to the side
-        content.position -= Vector3.left*100f;
+        content.position += Vector3.left * 100f;
     }
 }

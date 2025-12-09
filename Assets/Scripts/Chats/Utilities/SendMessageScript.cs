@@ -1,10 +1,11 @@
 ﻿using NUnit.Framework;
-using UnityEngine;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using System.Collections;
-using TMPro;
+using System.Collections.Generic;
 using System.IO;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class SendMessageScript 
 {
@@ -69,13 +70,13 @@ public class SendMessageScript
         // cus it needs to be aligned with the side, and also below the previous message, with a distance depending on whether the last message was from the same person
         return new Vector2(FindNextX(thisMessage), 
             BottomPrevTextY() -
-            0.5f*(thisMessage.topPos.position.y-thisMessage.bottomPos.position.y)
-            -(((thisMessage.players != lastMessage.GetComponentInChildren<MessageScript>().players) ? 0.3f:0.1f)));
+             0.5f *(thisMessage.topPos.position.y-thisMessage.bottomPos.position.y)
+            -(chat.transform.localScale.x / 10f)*(((thisMessage.players != lastMessage.GetComponentInChildren<MessageScript>().players) ? 0.3f:0.1f)));
     }
     // same as the other one, this just uses something called overloading, this just makes it kinda easier maybe ask me for more if need be
     public Vector2 FindNextNotFirst(float width, float center, int players, float height)
     {
-        return new Vector2(FindNextX(width,center,players), BottomPrevTextY() - 0.5f * (height)-0.1f);
+        return new Vector2(FindNextX(width,center,players), BottomPrevTextY() - (chat.transform.localScale.x / 10f)*0.5f * (height)-0.1f);
     }
     // very similar logic to FindNextNotFirst, just dosent use lastMessage, since that doesnt exist, obviously
     Vector2 FindFirstPos(MessageScript thisMessage)
@@ -86,12 +87,12 @@ public class SendMessageScript
     // finds the correct x value for where the next message needs to be, according to its size and sender
     float FindNextX(MessageScript thisMessage)
     {
-        return chat.content.transform.position.x + chat.centerXOffset + thisMessage.players*chat.xOffset- thisMessage.players*(thisMessage.width.position.x - thisMessage.bottomPos.position.x);
+        return chat.content.transform.position.x + chat.centerXOffset * (chat.gameObject.transform.localScale.x / 10) + thisMessage.players*chat.xOffset * (chat.gameObject.transform.localScale.x / 10) - thisMessage.players*(thisMessage.width.position.x - thisMessage.bottomPos.position.x);
     }
     // overloading again, but same method
     float FindNextX(float width, float center, int players)
     {
-        return center + chat.centerXOffset + players * chat.xOffset - players * width*0.5f;
+        return center + chat.centerXOffset*(chat.gameObject.transform.localScale.x/10) + players * chat.xOffset * (chat.gameObject.transform.localScale.x / 10) - players * width*0.5f;
     }
     // used to find the bottom of the last message
     float BottomPrevTextY()

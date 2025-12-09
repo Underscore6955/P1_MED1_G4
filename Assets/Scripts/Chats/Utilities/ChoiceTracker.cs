@@ -33,7 +33,7 @@ public class ChoiceTracker
             curCB.choiceIndex = data.choiceIndex;
             curCB.choiceValue = i;
             // place it correctly and scale it according to the size of the text
-            curObj.transform.position = chat.choiceCanvas.transform.position-new Vector3(0,i);
+            curObj.transform.position = chat.choiceCanvas.transform.position-new Vector3(0,i*chat.choiceOffset * (chat.gameObject.transform.localScale.x / 10));
             buttons.Add(curObj);
             yield return null;
             Vector2 curScale = MessageScript.FindSize(curCB.textElement);
