@@ -38,7 +38,7 @@ public class MessageScript : MonoBehaviour
     public void FindImgPos(ChatScript chat)
     {
         // does a little funky math manuvere and places it according to the size of the image and what side of the screen it is on (players)
-        Vector2 loc = chat.SMS.FindNextNotFirst(curImg.sizeDelta.x * curImg.localScale.x, chat.content.transform.position.x, players, curImg.sizeDelta.y * curImg.localScale.y); ;
+        Vector2 loc = chat.SMS.FindNextNotFirst(transform.parent.parent.parent.parent.localScale.x/10f*(curImg.sizeDelta.x * curImg.localScale.x), chat.content.transform.position.x, players, (curImg.sizeDelta.y * curImg.localScale.y)); ;
         // the bottom of the message should now be the bottom of the image, not the text
         bottomPos = curImg.Find("Bottom");
         curImg.transform.position = loc;
@@ -50,7 +50,7 @@ public class MessageScript : MonoBehaviour
         Vector2 size = FindSize(textField);
         testBox.transform.localScale = size;
         // places the corners, cornerBL will always be true here, just ignore the if statement
-        if (cornerBL) PlaceCorners(size);
+        if (cornerBL) PlaceCorners(size * transform.parent.parent.parent.parent.localScale.x/10, size);
     }
     // we need to check who the message was sent by
     public void CheckIfPlayers()
@@ -73,6 +73,9 @@ public class MessageScript : MonoBehaviour
             imgBR.sprite = spriteBL;
             imgBL.transform.localScale = Vector3.Scale(imgBL.transform.localScale,new Vector3(-1,1,1));
             imgBR.transform.localScale = Vector3.Scale(imgBR.transform.localScale, new Vector3(-1, 1, 1));
+            imgBR.GetComponent<RectTransform>().pivot = Vector2.right;
+            imgBL.GetComponent<RectTransform>().pivot = Vector2.zero;
+
         }
     }
     // find the correct size of the box that fits around the text
@@ -83,19 +86,18 @@ public class MessageScript : MonoBehaviour
         size.y = (int)text.renderedHeight*text.rectTransform.localScale.y;
         return size;
     }
-    void PlaceCorners(Vector3 size)
+    void PlaceCorners(Vector3 size, Vector3 unscaledSize)
     {
         // this is just a bunch of boring math, but it works
         RectTransform cornerRT = cornerTL.GetComponent<RectTransform>();
-        Vector3 offset = new Vector3(0.4f*cornerRT.rect.width, -0.2f * cornerRT.rect.width);
-        cornerBL.transform.position = (transform.position - size / 2f) - offset;
-        cornerTL.transform.position = cornerBL.transform.position + new Vector3(0, size.y+2*offset.y);
-        cornerBR.transform.position = cornerBL.transform.position + new Vector3(size.x+ 2 * offset.x,0);
-        cornerTR.transform.position = cornerTL.transform.position + new Vector3(size.x+ 2 * offset.x, 0);
+        cornerBL.transform.position = (transform.position - size / 2f);
+        cornerTL.transform.position = cornerBL.transform.position + new Vector3(0, size.y);
+        cornerBR.transform.position = cornerBL.transform.position + new Vector3(size.x,0);
+        cornerTR.transform.position = cornerTL.transform.position + new Vector3(size.x, 0);
 
-        leftFill.transform.localScale = new Vector2(cornerRT.rect.width*cornerRT.localScale.x, size.y+4*offset.y);
-        leftFill.transform.position = cornerBL.transform.position + new Vector3(offset.x -0.5f* leftFill.transform.localScale.x, size.y*0.5f+offset.y);
+        leftFill.transform.localScale = new Vector2(cornerRT.rect.width*cornerRT.localScale.x, Mathf.Clamp(unscaledSize.y-cornerRT.rect.height*0.8f*2f,0,Mathf.Infinity));
+        leftFill.transform.position = cornerBL.transform.position+Vector3.up * cornerRT.rect.height*0.8f*(transform.parent.parent.parent.parent.localScale.y / 5);
         rightFill.transform.localScale = leftFill.transform.localScale;
-        rightFill.transform.position = leftFill.transform.position + Vector3.right*(size.x+ leftFill.transform.localScale.x);
+        rightFill.transform.position = leftFill.transform.position + Vector3.right*(size.x);
     }
 }
