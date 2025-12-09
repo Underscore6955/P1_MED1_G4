@@ -33,13 +33,14 @@ public class FriendList : MonoBehaviour
         friends.Add(new Friend(name, chat));
         // create the button
         OpenChatButton curButton = Instantiate(friendButtonPrefab, friendList).GetComponent<OpenChatButton>();
+        curButton.gameObject.SetActive(true);
         curButton.gameObject.name = friends.Count.ToString();
         // assign the correct values to the button
         curButton.friendName.text = name;
         curButton.chat = chat;
         Transform curTrans = curButton.gameObject.transform;
         // place the button according to how many other buttons there 
-        curTrans.position = friendList.position + Vector3.down * buttonSpacing * (friends.Count - 1);
+        curTrans.position = friendList.position + Vector3.down * buttonSpacing * (friends.Count - 1) + Vector3.back*0.1f;
         curTrans.localScale = OSMechanics.ResizeImageToSize((Texture2D)curTrans.gameObject.GetComponent<RawImage>().texture, curTrans.gameObject.GetComponent<RectTransform>(),2);
         // find the bottom of the button for the scrolling
         scroll.contentBottom = curTrans.Find("bottom");
@@ -48,7 +49,8 @@ public class FriendList : MonoBehaviour
         {
             scroll.SetTop(curTrans.Find("top"), curTrans.Find("bottom"));
         }
-        scroll.curScroll = scroll.MaxScroll() - scroll.firstSize;
+        scroll.curScroll = scroll.MaxScroll();
+        scroll.ScrollToPos();
     }
 }
 public class Friend 

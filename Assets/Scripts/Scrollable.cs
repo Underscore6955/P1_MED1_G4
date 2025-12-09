@@ -15,24 +15,28 @@ public class Scrollable : MonoBehaviour
         // if there is nothing to scroll in dont scroll
         if (content == null) return;
         // if you are scrolling, and your mouse is over the thing, we can change where your scroll is
-        if (Input.mouseScrollDelta.y != 0 && IsHovered()) FindScroll();
-        // scroll to the correct location
-        if (contentTop) ScrollToPos(MaxScroll() - curScroll);
+        if (Input.mouseScrollDelta.y != 0 && IsHovered()) 
+        { 
+            FindScroll();
+            // scroll to the correct location
+            if (contentTop) ScrollToPos(); 
+        }
+
     }
     // does some funky math stuff to find where you can scroll
     void FindScroll()
     {
-        if (contentTop) curScroll = Mathf.Clamp(curScroll + Input.mouseScrollDelta.y, 0, Mathf.Clamp(MaxScroll() - firstSize, 0, Mathf.Infinity));
+        if (contentTop) curScroll = Mathf.Clamp(curScroll + Input.mouseScrollDelta.y, 0, Mathf.Clamp(MaxScroll(), 0, Mathf.Infinity));
     }
     // scrolls to the position that it needs to, that means moving the content properly 
-    void ScrollToPos(float pos)
+    public void ScrollToPos()
     {
-        content.transform.position = new Vector2(content.transform.position.x, origin.position.y + pos);
+        content.transform.position = new Vector3(content.transform.position.x, origin.position.y + (MaxScroll() - curScroll) - firstSize,content.transform.position.z);
     }
     // finds the maximum distance you can scroll
     public float MaxScroll()
     {
-        return (contentTop.position-contentBottom.position).y;
+        return (contentTop.position-contentBottom.position).y - firstSize;
     }
     public void SetTop(Transform top, Transform bottom)
     {
