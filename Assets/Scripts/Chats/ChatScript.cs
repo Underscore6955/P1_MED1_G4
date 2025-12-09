@@ -15,6 +15,7 @@ public class ChatScript : MonoBehaviour
     public float xOffset;
     public Transform topScroll;
     public Transform bottomScroll;
+    public float centerXOffset;
 
     public TextAsset textFile;
     public TextAsset choiceFile;

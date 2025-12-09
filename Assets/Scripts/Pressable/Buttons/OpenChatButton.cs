@@ -8,6 +8,7 @@ public class OpenChatButton : PressableObject
     // kinda temperary will be heavily changed
     public override void Pressed()
     {
+        Debug.Log("Hello");
         if (chat.gameObject.activeSelf) 
         {
             if (!chat.open) chat.Open(); else chat.Close(); 

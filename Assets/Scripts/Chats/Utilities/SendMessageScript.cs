@@ -36,7 +36,9 @@ public class SendMessageScript
         // size the message correctly (see message script)
         newTextScript.Sizing();
         // finds the correct position
-        newText.transform.position = FindNextPos(newTextScript);
+        (Vector2, bool) nextPos = FindNextPos(newTextScript);
+        newText.transform.position = nextPos.Item1;
+        if (nextPos.Item2) { chat.scroll.SetTop(newTextScript.topPos, newTextScript.bottomPos); }
         // sometimes the message would be placed in a weird way on the z axis, meaning kinda like behind the camera so it cannot be seen
         // not entirely sure why, but we just place it at 0
         newText.transform.localPosition = new Vector3(newText.transform.localPosition.x, newText.transform.localPosition.y, 0);
@@ -44,19 +46,20 @@ public class SendMessageScript
         // if there is an image in the text, we create that (see image script)
         if (newTextScript.image) { newTextScript.BuildImg(); newTextScript.FindImgPos(chat); }
         // if the chat is open, we set the bottom of the scroll to this message, otherwise just remember it, so it does become the bottom when you do open the chat
-        if (chat.open) chat.gameObject.GetComponent<Scrollable>().contentBottom = newTextScript.bottomPos;
+        if (chat.open) chat.scroll.contentBottom = newTextScript.bottomPos;
         chat.bottomScroll = newTextScript.bottomPos;
+        chat.scroll.ScrollToPos();
     }
     // checks if first or not first message
-    Vector2 FindNextPos(MessageScript thisMessage)
+    (Vector2, bool) FindNextPos(MessageScript thisMessage)
     {
         if (lastMessage != null)
         {
-            return FindNextNotFirst(thisMessage);
+            return (FindNextNotFirst(thisMessage),false);
         }
         else 
         {
-            return FindFirstPos(thisMessage); 
+            return (FindFirstPos(thisMessage),true); 
         }
     }
     // name explains it
@@ -77,19 +80,18 @@ public class SendMessageScript
     // very similar logic to FindNextNotFirst, just dosent use lastMessage, since that doesnt exist, obviously
     Vector2 FindFirstPos(MessageScript thisMessage)
     {
-        chat.scroll.SetTop(thisMessage.topPos, thisMessage.bottomPos);
         // well this works the math is fine
         return new Vector2(FindNextX(thisMessage), chat.content.transform.position.y -0.5f * (thisMessage.topPos.position.y - thisMessage.bottomPos.position.y));
     }
     // finds the correct x value for where the next message needs to be, according to its size and sender
     float FindNextX(MessageScript thisMessage)
     {
-        return chat.content.transform.position.x + thisMessage.players*chat.xOffset- thisMessage.players*(thisMessage.width.position.x - thisMessage.bottomPos.position.x);
+        return chat.content.transform.position.x + chat.centerXOffset + thisMessage.players*chat.xOffset- thisMessage.players*(thisMessage.width.position.x - thisMessage.bottomPos.position.x);
     }
     // overloading again, but same method
     float FindNextX(float width, float center, int players)
     {
-        return center + players * chat.xOffset - players * width*0.5f;
+        return center + chat.centerXOffset + players * chat.xOffset - players * width*0.5f;
     }
     // used to find the bottom of the last message
     float BottomPrevTextY()

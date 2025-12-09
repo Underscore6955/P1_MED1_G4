@@ -25,10 +25,11 @@ public class SocialMediaFeed : MonoBehaviour
             curPost.transform.position = FindNextPos(curPost.transform.Find("Top").position.y - curPost.transform.Find("Bottom").position.y);
             if (i == 0) { scroll.SetTop(curPost.transform.Find("Top"), curPost.transform.Find("Bottom")); }
             scroll.contentBottom = curPost.transform.Find("Bottom");
+            scroll.ScrollToPos();
             // once again weird z axis stuff
             curPost.transform.localPosition = new Vector3(curPost.transform.localPosition.x, curPost.transform.localPosition.y, 0);
         }
-        scroll.curScroll = scroll.MaxScroll() - scroll.firstSize;
+        scroll.curScroll = scroll.MaxScroll();
     }
     GameObject SendPost((string text, string name, Texture2D pfp, Texture2D img) data)
     {
@@ -47,7 +48,7 @@ public class SocialMediaFeed : MonoBehaviour
     // method to find the correct location of the next post
     Vector2 FindNextPos(float height)
     {
-        return new Vector2 (transform.position.x,(scroll.contentBottom ? scroll.contentBottom.position.y - 0.2f : transform.position.y-2.5f) - 0.5f*height);
+        return new Vector2 (transform.position.x,(scroll.contentBottom ? scroll.contentBottom.position.y - 0.2f - 0.5f * height : transform.position.y-2.5f) );
     }
     public static (string, string, Texture2D, Texture2D) BuildNextPost(string[] curLines, int line)
     {
