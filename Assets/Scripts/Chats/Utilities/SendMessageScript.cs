@@ -82,17 +82,17 @@ public class SendMessageScript
     Vector2 FindFirstPos(MessageScript thisMessage)
     {
         // well this works the math is fine
-        return new Vector2(FindNextX(thisMessage), chat.content.transform.position.y -0.5f * (thisMessage.topPos.position.y - thisMessage.bottomPos.position.y));
+        return new Vector2(FindNextX(thisMessage), chat.content.transform.position.y -0.5f * (thisMessage.topPos.position.y - thisMessage.bottomPos.position.y)-chat.transform.localScale.x/10*0.4f);
     }
     // finds the correct x value for where the next message needs to be, according to its size and sender
     float FindNextX(MessageScript thisMessage)
     {
-        return chat.content.transform.position.x + chat.centerXOffset * (chat.gameObject.transform.localScale.x / 10) + thisMessage.players*chat.xOffset * (chat.gameObject.transform.localScale.x / 10) - thisMessage.players*(thisMessage.width.position.x - thisMessage.bottomPos.position.x);
+        return chat.content.transform.position.x  + thisMessage.players*chat.xOffset * (chat.gameObject.transform.localScale.x / 10) - thisMessage.players*(thisMessage.width.position.x - thisMessage.bottomPos.position.x);
     }
     // overloading again, but same method
     float FindNextX(float width, float center, int players)
     {
-        return center + chat.centerXOffset*(chat.gameObject.transform.localScale.x/10) + players * chat.xOffset * (chat.gameObject.transform.localScale.x / 10) - players * width*0.5f;
+        return center + players * chat.xOffset * (chat.gameObject.transform.localScale.x / 10) - players * width*0.5f;
     }
     // used to find the bottom of the last message
     float BottomPrevTextY()

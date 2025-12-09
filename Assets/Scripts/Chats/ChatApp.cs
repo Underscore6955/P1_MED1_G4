@@ -6,7 +6,6 @@ public class ChatApp : MonoBehaviour
 {
     // sets how far text messages go out in a chat
     [SerializeField] float xOffset;
-    [SerializeField] float centerXOffset;
     [SerializeField] float choiceOffset;
     // text files for chats
     [SerializeField] List<TextAsset> chatTexts = new List<TextAsset>();
@@ -22,6 +21,7 @@ public class ChatApp : MonoBehaviour
 
     [SerializeField] Transform chatContent;
     [SerializeField] Transform choiceLoc;
+    static ChatScript activeChat;
     private void Start()
     {
         // go through each chat on the app, so each on in chatTexts list
@@ -34,7 +34,6 @@ public class ChatApp : MonoBehaviour
             curChat.textFile = chatTexts[i];
             curChat.choiceFile = choiceTexts[i];
             curChat.xOffset = this.xOffset;
-            curChat.centerXOffset = this.centerXOffset;
             curChat.choiceOffset = this.choiceOffset;
             curChat.messagePrefab = this.messagePrefab;
             curChat.choiceButtonPrefab = this.choicePrefab;
@@ -59,5 +58,10 @@ public class ChatApp : MonoBehaviour
             // prepare some more things for the chat
             curChat.InitiateChat();
         }
+    }
+    public static void ChangeChat(ChatScript chat)
+    {
+        if (activeChat && activeChat != chat) activeChat.Close();
+        activeChat = chat;
     }
 }

@@ -26,7 +26,7 @@ public class Scrollable : MonoBehaviour
     // does some funky math stuff to find where you can scroll
     void FindScroll()
     {
-        if (contentTop) curScroll = Mathf.Clamp(curScroll + transform.localScale.x / 10f*Input.mouseScrollDelta.y, 0, Mathf.Clamp(MaxScroll(), 0, Mathf.Infinity));
+        if (contentTop) curScroll = Mathf.Clamp(curScroll + transform.localScale.x / 10f*Input.mouseScrollDelta.y, transform.localScale.x / 10f * firstSize, Mathf.Clamp(MaxScroll(), transform.localScale.x / 10f * firstSize, Mathf.Infinity));
     }
     // scrolls to the position that it needs to, that means moving the content properly 
     public void ScrollToPos()

@@ -16,7 +16,7 @@ public class MessageScript : MonoBehaviour
     public Transform topPos;
     public Transform width;
     // prooooobbabbllyy should be seralized but i cant be bothered
-    static int imgSize = 4;
+    static int imgSize = 2;
     // corners, assigned in prefab
     [SerializeField] GameObject cornerTL;
     [SerializeField] GameObject cornerTR;
