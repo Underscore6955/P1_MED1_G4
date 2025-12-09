@@ -878,6 +878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bc: {fileID: 351621023}
   chat: {fileID: 0}
+  friendName: {fileID: 0}
 --- !u!61 &351621023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1271,7 +1272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bc: {fileID: 449059901}
   app: {fileID: 1157786737}
-  icon: {fileID: 2800000, guid: 8d0cd76efa6e4264d99933c137eaff20, type: 3}
   opened: 0
 --- !u!61 &449059901
 BoxCollider2D:
@@ -1422,6 +1422,7 @@ MonoBehaviour:
   curScroll: 0
   origin: {fileID: 0}
   contentTop: {fileID: 0}
+  firstSize: 0
   contentBottom: {fileID: 0}
   scrollArea: {fileID: 364173048}
 --- !u!114 &463372348
@@ -1509,7 +1510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+  m_Color: {r: 0.427451, g: 0.8235295, b: 0.77647066, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1542,9 +1543,6 @@ MonoBehaviour:
   choiceTexts:
   - {fileID: 4900000, guid: 8ad656c105bde2942a53a947db75ff42, type: 3}
   - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
-  openChatButtons:
-  - {fileID: 2129509837}
-  - {fileID: 351621022}
   messagePrefab: {fileID: 844565717877064653, guid: 6dca7f9dea426d74080ce999d6069930, type: 3}
   choicePrefab: {fileID: 5420535651261952562, guid: dc93681aa388c6d47b1f551af82ab0c6, type: 3}
   scroll: {fileID: 463372345}
@@ -2095,7 +2093,7 @@ PrefabInstance:
       objectReference: {fileID: 463372334}
     - target: {fileID: 7999126172591291139, guid: d5944071216fd9548821453b9ba90fa5, type: 3}
       propertyPath: m_Name
-      value: CloseButton (1)
+      value: CloseButton (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2258,7 +2256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+  m_Color: {r: 0.427451, g: 0.8235295, b: 0.77647066, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2360,6 +2358,7 @@ MonoBehaviour:
   curScroll: 0
   origin: {fileID: 0}
   contentTop: {fileID: 0}
+  firstSize: 0
   contentBottom: {fileID: 0}
   scrollArea: {fileID: 547937946}
 --- !u!222 &1157786744
@@ -2524,7 +2523,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bc: {fileID: 1193354859}
   app: {fileID: 463372334}
-  icon: {fileID: 2800000, guid: ef667c8b7830bdf49975378f60c1c114, type: 3}
   opened: 0
 --- !u!114 &1193354861
 MonoBehaviour:
@@ -2604,7 +2602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  m_Color: {r: 0.4039216, g: 0.6666667, b: 0.75294125, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2908,15 +2906,15 @@ RectTransform:
   m_GameObject: {fileID: 1510842425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.55452, y: 0.55452, z: 0.55452}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1425863088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 584, y: -347}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 601.4, y: -348.8}
+  m_SizeDelta: {x: 171.87, y: 58.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510842427
 MonoBehaviour:
@@ -2932,8 +2930,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartTimer: 22
   StartMins: 55
-  TimeDelay: 1
-  MinuteLeap: 5
+  TimeDelay: 5
+  MinuteLeap: 1
   DisplayClock: {fileID: 1510842428}
 --- !u!114 &1510842428
 MonoBehaviour:
@@ -2948,7 +2946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7607844, g: 0.9960785, b: 0.9333334, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2957,11 +2955,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9ad009d32935deb49b49f2e3b10fa063, type: 3}
-    m_FontSize: 29
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2992,8 +2990,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2725696797291140930, guid: 58285127c20b77f43a738dce3fdc31a0, type: 3}
       propertyPath: m_Name
-      value: resize (1)
+      value: resize (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6789365974572877202, guid: 58285127c20b77f43a738dce3fdc31a0, type: 3}
+      propertyPath: bc
+      value: 
+      objectReference: {fileID: 1748396103}
     - target: {fileID: 9222319964104236637, guid: 58285127c20b77f43a738dce3fdc31a0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3084,6 +3086,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9222319964104236637, guid: 58285127c20b77f43a738dce3fdc31a0, type: 3}
   m_PrefabInstance: {fileID: 1748396098}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1748396103 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 32082087635055222, guid: 58285127c20b77f43a738dce3fdc31a0, type: 3}
+  m_PrefabInstance: {fileID: 1748396098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2129509833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,6 +3179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bc: {fileID: 2129509838}
   chat: {fileID: 0}
+  friendName: {fileID: 0}
 --- !u!61 &2129509838
 BoxCollider2D:
   m_ObjectHideFlags: 0
