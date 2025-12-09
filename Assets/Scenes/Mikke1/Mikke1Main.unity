@@ -607,7 +607,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364173046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -720,7 +720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &436649744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -730,7 +730,7 @@ RectTransform:
   m_GameObject: {fileID: 436649743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.00376255, y: 0.0075251, z: -0.0020873633}
+  m_LocalScale: {x: 0.0029505682, y: 0.0059011364, z: -0.0016368972}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 188519447}
@@ -738,7 +738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.416}
+  m_AnchoredPosition: {x: 0.11, y: -0.42}
   m_SizeDelta: {x: 256, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &436649745
@@ -920,6 +920,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 463372336}
+  - component: {fileID: 463372356}
   - component: {fileID: 463372341}
   - component: {fileID: 463372343}
   - component: {fileID: 463372345}
@@ -927,7 +928,6 @@ GameObject:
   - component: {fileID: 463372349}
   - component: {fileID: 463372354}
   - component: {fileID: 463372355}
-  - component: {fileID: 463372356}
   - component: {fileID: 463372357}
   - component: {fileID: 463372358}
   m_Layer: 0
@@ -1122,7 +1122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2279ddc0e10e18245957216f30d85c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xOffset: 5
+  xOffset: 3.5
+  centerXOffset: 1
   chatTexts:
   - {fileID: 4900000, guid: 9bf4ca16815e1554a9cef0757f2eb618, type: 3}
   - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
@@ -1153,7 +1154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3aad128f82fe0b438838972a846d4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSpacing: 2
+  buttonSpacing: 3
   friendButtonPrefab: {fileID: 1192280451584937465, guid: 37ef7378155c7f448ab8b090323e8e32, type: 3}
   friendList: {fileID: 831570491}
   scroll: {fileID: 463372358}
@@ -1652,7 +1653,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 463372336}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1745,7 +1746,7 @@ Transform:
   m_GameObject: {fileID: 831570490}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.378, y: -0.001, z: -73.927795}
+  m_LocalPosition: {x: -0.378, y: -0.001, z: 0}
   m_LocalScale: {x: 0.1, y: 0.2, z: 0.8299101}
   m_ConstrainProportionsScale: 0
   m_Children: []

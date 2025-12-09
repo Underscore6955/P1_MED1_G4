@@ -6,6 +6,7 @@ public class ChatApp : MonoBehaviour
 {
     // sets how far text messages go out in a chat
     [SerializeField] float xOffset;
+    [SerializeField] float centerXOffset;
     // text files for chats
     [SerializeField] List<TextAsset> chatTexts = new List<TextAsset>();
     // choice files for chats
@@ -29,6 +30,7 @@ public class ChatApp : MonoBehaviour
             curChat.textFile = chatTexts[i];
             curChat.choiceFile = choiceTexts[i];
             curChat.xOffset = this.xOffset;
+            curChat.centerXOffset = this.centerXOffset;
             curChat.messagePrefab = this.messagePrefab;
             curChat.choiceButtonPrefab = this.choicePrefab;
             curChat.scroll = this.scroll;
@@ -42,6 +44,7 @@ public class ChatApp : MonoBehaviour
             curChat.choiceCanvas = new GameObject().transform;
             curChat.choiceCanvas.SetParent(transform);
             curChat.choiceCanvas.gameObject.SetActive(true);
+            curChat.choiceCanvas.localPosition = Vector3.zero+Vector3.back *0.1f;
             curChat.choiceCanvas.localScale = new Vector3(0.1f, 0.2f, 1f);
             curChat.choiceCanvas.gameObject.name = "choiceCanvas";
             GetComponent<FriendList>().AddFriend(curChat,"Joe");
