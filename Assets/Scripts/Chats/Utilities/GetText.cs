@@ -73,7 +73,7 @@ public class GetText
             else textBuild += lineText[i];
         }
         // returns the text, 1 if there is a * and -1 if there is a ., and an image, or maybe null, depending on the line
-        return (textBuild, lineText[1] == '*' ? 1 : -1, FindImg("test/" + imgNameBuild));
+        return (textBuild.Replace("y/n", "Frank"), lineText[1] == '*' ? 1 : -1, FindImg("test/" + imgNameBuild));
     }
     // Method to decode what choices should be available
     // Returns a list of choices and an int, which is the choice index, used to see which choice should be used from choice file later (see BuildChoice in choicetracker)
@@ -93,7 +93,7 @@ public class GetText
                 // if the choice index has not been found yet, meaning it is less than 0, we know that what we have MUST be a number and the choice index
                 // if choice index has been found we add what we found to the choices, since it must be text
                 // this is due to how we have written the files 
-                if (num < 0) num = Convert.ToInt32(textBuild); else listToReturn.Add(textBuild);
+                if (num < 0) num = Convert.ToInt32(textBuild); else listToReturn.Add(textBuild.Replace("y/n","Frank"));
                     textBuild = "";
             }
             // if not £ then add the character to textbuild
