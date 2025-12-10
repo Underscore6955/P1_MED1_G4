@@ -80,7 +80,7 @@ public class GetText
             else textBuild += lineText[i];
         }
         // returns the text, 1 if there is a * and -1 if there is a ., and an image, or maybe null, depending on the line
-        return (textBuild.Replace("y/n", ChatScript.yourName), lineText[1] == '*' ? 1 : -1, FindImg("test/" + imgNameBuild));
+        return (textBuild.Replace("y/n", ChatScript.yourName), lineText[1] == '*' ? 1 : -1, FindImg("2dAssets/test/" + imgNameBuild));
     }
     // Method to decode what choices should be available
     // Returns a list of choices and an int, which is the choice index, used to see which choice should be used from choice file later (see BuildChoice in choicetracker)

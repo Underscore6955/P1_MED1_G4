@@ -1,6 +1,7 @@
-using UnityEngine;
-using TMPro;
+using System;
 using System.Collections;
+using TMPro;
+using UnityEngine;
 
 public class ScaleButton : PressableObject
 {
@@ -14,6 +15,7 @@ public class ScaleButton : PressableObject
     }
     IEnumerator Answered()
     {
+        foreach (GameObject g in SC.buttons) { g.transform.position += Vector3.left * 999f; }
         yield return StartCoroutine(SC.chat.SMS.SendText((value.ToString(),1,null)));
         if (disc) { SC.disc += value; } else { SC.stand += value; }
         SC.choosing = false;
