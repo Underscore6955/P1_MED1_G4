@@ -14,7 +14,7 @@ public class ScaleScript : MonoBehaviour
     public int disc;
     public int stand;
     public bool choosing;
-    List<GameObject> buttons = new List<GameObject>();
+    public List<GameObject> buttons = new List<GameObject>();
     private void Start()
     {
         lines = questions.text.Split("\n");
