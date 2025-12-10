@@ -30,18 +30,11 @@ public class GetText
         if (lines[line][0] == '"')
         {
             // wait for this message to be sent (will either be just 1 frame, if it is the other guy texting, otherwise it is until the player has finished typing)
-            (string, int, Texture2D) nextText = BuildNextText(lines, line);
-            yield return chat.StartCoroutine(chat.SMS.SendText(nextText));
+            yield return chat.StartCoroutine(chat.SMS.SendText(BuildNextText(lines, line)));
             // go to the next line
             chat.CT.curLine++;
         }
-        // if first message is ~ then cancel the code for now, doesnt do anything yet might never
-        else if (lines[line][0] == '~')
-        {
-            yield break;
-        }
-        // finally if it is neither (means it should be -) it mean there is a choice
-        else
+        else if (lines[line][0] == '-')
         {
             // make sure the thing keeps going until a choice is made (see ChoiceButton)
             chat.choosing = true;
@@ -54,6 +47,12 @@ public class GetText
             foreach (GameObject g in chat.CT.buttons) { GameObject.Destroy(g); }
             chat.CT.buttons.Clear();
             // youll never guess it...
+        }
+        // finally if it is neither (means it should be -) it mean there is a choice
+        else
+        {
+            yield return chat.StartCoroutine(chat.SC.SendMessages(Convert.ToInt32(lines[line][0])));
+            chat.CT.curLine++;
         }
         // curline has now either been increased by 1, if normal text message, or set to another number if choice, so now do whatever it needs to do
         if (chat.CT.curLine == lines.Length - 1) { yield break; }

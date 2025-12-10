@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 
 public class ChatApp : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class ChatApp : MonoBehaviour
     [SerializeField] Transform chatContent;
     [SerializeField] Transform choiceLoc;
     static ChatScript activeChat;
+
+    [SerializeField] ScaleScript SC;
     private void Start()
     {
         // go through each chat on the app, so each on in chatTexts list
@@ -59,10 +62,16 @@ public class ChatApp : MonoBehaviour
         curChat.choiceCanvas.localScale = new Vector3(0.1f, 0.2f, 1f);
         curChat.choiceCanvas.transform.position = choiceLoc.position;
         curChat.choiceCanvas.gameObject.name = "choiceCanvas";
+        curChat.AS = gameObject.AddComponent<AudioSource>();
         // prepare some more things for the chat
         curChat.InitiateChat();
         curChat.GT.PrepText();
         GetComponent<FriendList>().AddFriend(curChat, curChat.friendName);
+        if (curChat.friendName == "Phillip")
+        {
+            curChat.SC = this.SC;
+            curChat.SC.chat = curChat;
+        }
     }
     public static void ChangeChat(ChatScript chat)
     {

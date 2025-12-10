@@ -427,7 +427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15, y: -18.3}
+  m_AnchoredPosition: {x: -15, y: -19.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188519448
@@ -450,12 +450,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be506a37f9bb9bb4dbd7d235dc9a3b9c, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 6837523477906388842, guid: be506a37f9bb9bb4dbd7d235dc9a3b9c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -520,7 +518,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 1.679285, z: 0, w: 36.366917}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &188519449
@@ -1127,6 +1125,7 @@ GameObject:
   - component: {fileID: 463372355}
   - component: {fileID: 463372357}
   - component: {fileID: 463372358}
+  - component: {fileID: 463372359}
   m_Layer: 0
   m_Name: MessageApp
   m_TagString: Untagged
@@ -1333,6 +1332,7 @@ MonoBehaviour:
   textBar: {fileID: 436649743}
   chatContent: {fileID: 364173047}
   choiceLoc: {fileID: 1628086895}
+  SC: {fileID: 463372359}
 --- !u!114 &463372357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,6 +1369,24 @@ MonoBehaviour:
   firstSize: 0
   contentBottom: {fileID: 0}
   scrollArea: {fileID: 939656380}
+--- !u!114 &463372359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463372334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042964c471318bd46a0d41589f87b8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions: {fileID: 4900000, guid: faa5b233d21e3fc4fb9a808c59faae99, type: 3}
+  questionPrefab: {fileID: 5420535651261952562, guid: 78016ab0ddfb14b40806c7782bc0e43d, type: 3}
+  chat: {fileID: 0}
+  disc: 0
+  stand: 0
+  choosing: 0
 --- !u!1 &464637804
 GameObject:
   m_ObjectHideFlags: 0

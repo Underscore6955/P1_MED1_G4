@@ -22,9 +22,11 @@ public class SendMessageScript
         if (data.players == 1)
         {
             yield return chat.StartCoroutine(KeypressMessage(data.text));
+            chat.AS.PlayOneShot((AudioClip)Resources.Load("MessageSent"));
         }
-        // we create the new message and do some stuff to it, and get the message script from it
-        GameObject newText = Object.Instantiate(chat.messagePrefab, chat.content);
+        else chat.AS.PlayOneShot((AudioClip)Resources.Load("MessageReceive"));
+            // we create the new message and do some stuff to it, and get the message script from it
+            GameObject newText = Object.Instantiate(chat.messagePrefab, chat.content);
         newText.name = "message";
         newText.SetActive(true);
         MessageScript newTextScript = newText.GetComponentInChildren<MessageScript>();
@@ -113,6 +115,7 @@ public class SendMessageScript
             {
                 yield return null;
             }
+            chat.AS.PlayOneShot((AudioClip)Resources.Load("click_" + Random.Range(1, 9)));
             yield return null;
             textBuild += text[i];
             chat.textBar.GetComponentInChildren<TMP_Text>().text = textBuild;

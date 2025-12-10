@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8614543740672952145}
-  - component: {fileID: 7727539815922228594}
   - component: {fileID: 3217471186368905461}
   - component: {fileID: 4921736987434815616}
+  - component: {fileID: -5047998148838971133}
   m_Layer: 0
-  m_Name: ChoicePrefab
+  m_Name: ScaleButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,23 +40,6 @@ RectTransform:
   m_AnchoredPosition: {x: -229, y: 2.43}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7727539815922228594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420535651261952562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50fbca533695f9c458233afdfc91e718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bc: {fileID: 0}
-  textElement: {fileID: 4009620524289794432}
-  filePath: 
-  chat: {fileID: 0}
-  button: {fileID: 5449762431160370468}
 --- !u!61 &3217471186368905461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -111,6 +94,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5420535651261952562}
   m_CullTransparentMesh: 1
+--- !u!114 &-5047998148838971133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420535651261952562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f94b6b3afe5ef4478e2211eedd9b513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bc: {fileID: 0}
+  value: 0
+  text: {fileID: 4009620524289794432}
+  disc: 0
+  SC: {fileID: 0}
 --- !u!1 &5449762431160370468
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.672, y: -0.153}
+  m_AnchoredPosition: {x: -2.672, y: -0.15}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7473160438321941452
@@ -252,6 +252,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: '0
+
 
 '
   m_isRightToLeft: 0

@@ -8,6 +8,7 @@ public class ChatScript : MonoBehaviour
     public SendMessageScript SMS;
     public GetText GT;
     public ChoiceTracker CT;
+    public ScaleScript SC;
 
     public Transform choiceCanvas;
 
@@ -27,6 +28,8 @@ public class ChatScript : MonoBehaviour
     public GameObject messagePrefab;
     public GameObject choiceButtonPrefab;
     public GameObject textBar;
+    
+    public AudioSource AS; 
 
     // we need some bools to keep track of whether the chat is open, and whether it has been opened before
     bool started;
