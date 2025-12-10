@@ -68,8 +68,8 @@ MonoBehaviour:
   m_text: Lorem ipsum is placeholder text commonly used in the graphic, print, and
     publishing industries for previewing layouts and visual mockups.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be506a37f9bb9bb4dbd7d235dc9a3b9c, type: 2}
-  m_sharedMaterial: {fileID: 6837523477906388842, guid: be506a37f9bb9bb4dbd7d235dc9a3b9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 99e44c1b39345d44aae6e6947447dd24, type: 2}
+  m_sharedMaterial: {fileID: -3782474847520472848, guid: 99e44c1b39345d44aae6e6947447dd24, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -204,8 +204,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Navn Navnsen
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be506a37f9bb9bb4dbd7d235dc9a3b9c, type: 2}
-  m_sharedMaterial: {fileID: 6837523477906388842, guid: be506a37f9bb9bb4dbd7d235dc9a3b9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 99e44c1b39345d44aae6e6947447dd24, type: 2}
+  m_sharedMaterial: {fileID: -3782474847520472848, guid: 99e44c1b39345d44aae6e6947447dd24, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

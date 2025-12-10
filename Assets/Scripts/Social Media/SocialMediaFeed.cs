@@ -67,6 +67,6 @@ public class SocialMediaFeed : MonoBehaviour
             else textBuild += lineText[i];
         }
         string path = "Social Media/profile pictures/";
-        return ((textBuild,nameNameBuild, GetText.FindImg(path + pfpfNameBuild),GetText.FindImg(path + imgNameBuild)));
+        return ((textBuild.Replace("y/n","Frank"),nameNameBuild, GetText.FindImg(path + pfpfNameBuild),GetText.FindImg(path + imgNameBuild)));
     }
 }

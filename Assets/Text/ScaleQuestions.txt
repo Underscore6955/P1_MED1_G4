@@ -1,0 +1,19 @@
+.I have high standards for my performance at work or at school.
+!I often feel frustrated because I can’t meet my goals.
+.If you don’t expect much out of yourself, you will never succeed.
+!My best just never seems to be good enough for me.
+.I have high expectations for myself.
+!I rarely live up to my high standards.
+!Doing my best never seems to be enough.
+.I set very high standards for myself.
+!I am never satisfied with my accomplishments.
+.I expect the best from myself.
+!I often worry about not measuring up to my own expectations.
+!My performance rarely measures up to my standards.
+!I am not satisfied even when I know I have done my best.
+.I try to do my best at everything I do.
+!I am seldom able to meet my own high standards of performance.
+!I am hardly ever satisfied with my performance.
+!I hardly ever feel that what I’ve done is good enough.
+.I have a strong need to strive for excellence.
+!I often feel disappointment after completing a task because I know I could have done better.
