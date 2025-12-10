@@ -21,6 +21,8 @@ public class ChatScript : MonoBehaviour
     public TextAsset choiceFile;
     public bool choosing = false;
     public string dataFileName;
+    public string friendName;
+    public static string yourName;
 
     public GameObject messagePrefab;
     public GameObject choiceButtonPrefab;

@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,7 @@ public class SendMessageScript
     public IEnumerator SendText((string text, int players, Texture2D image) data)
     {
         // ask frederik :p good practice for everyone involved
+        yield return new WaitForSeconds(GetText.CalcDelay(data.text.Length * -data.players));
         if (data.players == 1)
         {
             yield return chat.StartCoroutine(KeypressMessage(data.text));
@@ -103,6 +105,8 @@ public class SendMessageScript
     IEnumerator KeypressMessage(string text)
     {
         string textBuild = "";
+        RawImage bar = chat.textBar.GetComponent<RawImage>();
+        Coroutine flash = chat.StartCoroutine(BarFlash(bar));
         for(int i = 0; i<text.Length; i++)
         {
             while (!IsPressingLetter())
@@ -115,6 +119,8 @@ public class SendMessageScript
         }
         // return key is enter
         while (!Input.GetKeyDown(KeyCode.Return)) { yield return null; }
+        chat.StopCoroutine(flash);
+        bar.color = Color.white;
         // set the text bar text correctly
         chat.textBar.GetComponentInChildren<TMP_Text>().text = "";
     }
@@ -126,5 +132,15 @@ public class SendMessageScript
             if (char.IsLetter(c)) return true;
         }
         return false;
+    }
+    IEnumerator BarFlash(RawImage bar)
+    {
+        bool gray = false;
+        while (true)
+        {
+            bar.color = gray ? new Color(0.75f,0.75f,0.75f) : Color.white;
+            gray = !gray;
+            yield return new WaitForSeconds(0.7f);
+        }
     }
 }
