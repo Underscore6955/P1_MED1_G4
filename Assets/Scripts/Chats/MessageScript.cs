@@ -55,15 +55,12 @@ public class MessageScript : MonoBehaviour
     // we need to check who the message was sent by
     public void CheckIfPlayers()
     {
+        Color curColor = Color.white;
         // if the player sent the message, make all images in the message green
         if (players == 1)
         {
-            foreach (Image img in transform.parent.GetComponentsInChildren<Image>())
-            {
-                img.color = new Color(144f/256f, 238f / 256f, 144f / 256f);
-            }
+            curColor = new Color(144f / 256f, 238f / 256f, 144f / 256f);
         }
-        // if it is the other guy, move the corner around a bit
         else
         {
             Image imgBL = cornerBL.GetComponent<Image>();
@@ -71,12 +68,18 @@ public class MessageScript : MonoBehaviour
             Sprite spriteBL = imgBL.sprite;
             imgBL.sprite = imgBR.sprite;
             imgBR.sprite = spriteBL;
-            imgBL.transform.localScale = Vector3.Scale(imgBL.transform.localScale,new Vector3(-1,1,1));
+            imgBL.transform.localScale = Vector3.Scale(imgBL.transform.localScale, new Vector3(-1, 1, 1));
             imgBR.transform.localScale = Vector3.Scale(imgBR.transform.localScale, new Vector3(-1, 1, 1));
             imgBR.GetComponent<RectTransform>().pivot = Vector2.right;
             imgBL.GetComponent<RectTransform>().pivot = Vector2.zero;
 
         }
+        foreach (Image img in transform.parent.GetComponentsInChildren<Image>())
+            {
+                img.color = curColor;
+            }
+        // if it is the other guy, move the corner around a bit
+        
     }
     // find the correct size of the box that fits around the text
     public static Vector2 FindSize(TMP_Text text)
