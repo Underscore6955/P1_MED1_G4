@@ -15,7 +15,6 @@ public class ChatScript : MonoBehaviour
     public float xOffset;
     public Transform topScroll;
     public Transform bottomScroll;
-    public float centerXOffset;
     public float choiceOffset;
 
     public TextAsset textFile;
@@ -45,6 +44,7 @@ public class ChatScript : MonoBehaviour
     public void Open()
     {
         // we move the chat back to the app, see why in Closed()
+        ChatApp.ChangeChat(this);
         content.localPosition = new Vector3(0, content.localPosition.y, content.localPosition.z);
         open = true;
         // if it is the first time we open the app we start the chat
