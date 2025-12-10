@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 307165dd73c3127448070789692cb1d5
+guid: 2cd52e36fbb58144db14035369aad083
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7066757764164366640
-    second: Gallery icon_0
+      213: 7908329815936852231
+    second: sunsetbackground_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gallery icon_0
+      name: sunsetbackground_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 46
-        height: 46
+        width: 180
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 03130c6ceba221260800000000000000
-      internalID: 7066757764164366640
+      spriteID: 701eb85411800cd60800000000000000
+      internalID: 7908329815936852231
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Gallery icon_0: 7066757764164366640
+      sunsetbackground_0: 7908329815936852231
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

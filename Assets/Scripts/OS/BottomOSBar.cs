@@ -23,11 +23,12 @@ public class BottomOSBar : MonoBehaviour
     public static void AddToBar(GameObject app, Texture2D icon)
     {
         // create a new gameobject and add the stuff to it
-        GameObject newApp = Instantiate(new GameObject(), canvasObj);
+        GameObject newApp = new GameObject("AAA");
+        newApp.transform.SetParent(canvasObj);
         RectTransform rt = newApp.AddComponent<RectTransform>();
         newApp.AddComponent<RawImage>();
         // apply the image, this dosen't work rn for whatever reason ill have to look into it
-        newApp.transform.localScale = OSMechanics.ResizeImageToSize(icon,rt,20f);
+        newApp.transform.localScale = OSMechanics.ResizeImageToSize(icon,rt,25f);
         // make the collider and size it
         newApp.AddComponent<BoxCollider2D>().size = rt.sizeDelta;
         // add the app shortcut script, and give it the correct variables
@@ -38,7 +39,7 @@ public class BottomOSBar : MonoBehaviour
         // add this shortcut to the dictionary
         apps.Add(app,newApp);
         // place the shortcut correctly
-        rt.position = Camera.main.ScreenToWorldPoint(Vector3.one*30) + Vector3.right*apps.Keys.ToList().IndexOf(app);
+        rt.position = Camera.main.ScreenToWorldPoint(Vector3.one*15) +  0.5f*Vector3.right*(apps.Keys.ToList().IndexOf(app));
         ;
     }
 }

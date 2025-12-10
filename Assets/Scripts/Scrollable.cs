@@ -7,6 +7,7 @@ public class Scrollable : MonoBehaviour
     public float curScroll = 0;
     public Transform origin;
     public Transform contentTop;
+    public float firstSize;
     public Transform contentBottom;
     [SerializeField] Collider2D scrollArea;
     private void Update()
@@ -14,24 +15,37 @@ public class Scrollable : MonoBehaviour
         // if there is nothing to scroll in dont scroll
         if (content == null) return;
         // if you are scrolling, and your mouse is over the thing, we can change where your scroll is
-        if (Input.mouseScrollDelta.y != 0 && IsHovered()) FindScroll();
-        // scroll to the correct location
-        if (contentTop) ScrollToPos(MaxScroll() - curScroll);
+        if (Input.mouseScrollDelta.y != 0 && IsHovered()) 
+        { 
+            FindScroll();
+            // scroll to the correct location
+            if (contentTop) ScrollToPos(); 
+        }
+
     }
     // does some funky math stuff to find where you can scroll
     void FindScroll()
     {
-        if (contentTop) curScroll = Mathf.Clamp(curScroll + Input.mouseScrollDelta.y, 0, Mathf.Clamp(MaxScroll() - (0.5f * transform.localScale.y), 0, Mathf.Infinity));
+        if (contentTop) curScroll = Mathf.Clamp(curScroll + transform.localScale.x / 10f*Input.mouseScrollDelta.y, transform.localScale.x / 10f * firstSize, Mathf.Clamp(MaxScroll(), transform.localScale.x / 10f * firstSize, Mathf.Infinity));
     }
     // scrolls to the position that it needs to, that means moving the content properly 
-    void ScrollToPos(float pos)
+    public void ScrollToPos()
     {
-        content.transform.position = new Vector2(content.transform.position.x, origin.position.y + pos);
+        content.transform.position = new Vector3(content.transform.position.x, origin.position.y + MaxScroll() - curScroll - transform.localScale.x / 10f*(firstSize),content.transform.position.z);
     }
     // finds the maximum distance you can scroll
-    float MaxScroll()
+    public float MaxScroll()
     {
-        return (contentTop.position-contentBottom.position).y;
+        return (contentTop.position-contentBottom.position).y - transform.localScale.x / 10f*firstSize;
+    }
+    public void SetTop(Transform top, Transform bottom)
+    {
+        origin = new GameObject().transform;
+        origin.SetParent(transform);
+        origin.name = "origin";
+        origin.position = top.position;
+        contentTop = top;
+        firstSize = 0.5f*(top.position.y - bottom.position.y);
     }
     // checks if the mouse is over the thing, and it is the scrollable that is highest in the sorting order
     bool IsHovered()

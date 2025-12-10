@@ -1,8 +1,10 @@
 using UnityEngine;
+using TMPro;
 
 public class OpenChatButton : PressableObject
 {
     public ChatScript chat;
+    public TMP_Text friendName;
     // kinda temperary will be heavily changed
     public override void Pressed()
     {
