@@ -31,11 +31,9 @@ public class ScaleScript : MonoBehaviour
     IEnumerator BuildChoice()
     {
         (string, bool) curQ = ReadQuestion();
-        Debug.Log("AA");
         yield return StartCoroutine(chat.SMS.SendText((curQ.Item1, -1, null)));
         for (int i = 1; i <= 7; i++)
         {
-            Debug.Log(curQ.Item1);
             ScaleButton curButton = Instantiate(questionPrefab, chat.choiceCanvas).GetComponent<ScaleButton>();
             buttons.Add(curButton.gameObject);
             curButton.transform.localPosition = new Vector3(i-4, 0, 0);
@@ -48,12 +46,15 @@ public class ScaleScript : MonoBehaviour
     }
     public IEnumerator SendMessages(int questions)
     {
-        for (int i = 0; i < questions; i++)
+        int endQ = qNumber + questions;
+        for (int i = qNumber; i <= endQ; i++)
         {
-            qNumber++;
+            Debug.Log(i);
+            Debug.Log(endQ);
             choosing = true;
             StartCoroutine(BuildChoice());
             while (choosing) yield return null;
+            qNumber++;
             foreach (GameObject button in buttons) { Destroy(button);  }
             buttons.Clear();
         }

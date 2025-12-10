@@ -22,7 +22,7 @@ public class ChatApp : MonoBehaviour
 
     [SerializeField] Transform chatContent;
     [SerializeField] Transform choiceLoc;
-    static ChatScript activeChat;
+    public static ChatScript activeChat;
 
     [SerializeField] ScaleScript SC;
     private void Start()
@@ -33,7 +33,7 @@ public class ChatApp : MonoBehaviour
             AddChat(chatTexts[i], choiceTexts[i]);
         }
     }
-    public void AddChat(TextAsset textFile, TextAsset choiceFile)
+    public ChatScript AddChat(TextAsset textFile, TextAsset choiceFile)
     {
         // create a new chatscript on the gameobject
         ChatScript curChat = gameObject.AddComponent<ChatScript>();
@@ -70,8 +70,8 @@ public class ChatApp : MonoBehaviour
         if (curChat.friendName == "Phillip")
         {
             curChat.SC = this.SC;
-            curChat.SC.chat = curChat;
         }
+        return curChat;
     }
     public static void ChangeChat(ChatScript chat)
     {

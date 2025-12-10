@@ -47,7 +47,7 @@ public class FriendList : MonoBehaviour
         // if it is the first time a friend is being added (no other friends exist) add some things to scroll
         if (friends.Count == 1) 
         {
-            scroll.SetTop(curTrans.Find("top"), curTrans.Find("bottom"));
+            scroll.SetTop(curTrans.Find("top"), curTrans.Find("bottom"),true);
         }
         scroll.curScroll = scroll.MaxScroll();
         scroll.ScrollToPos();

@@ -32,10 +32,12 @@ public class ChatScript : MonoBehaviour
     public AudioSource AS; 
 
     // we need some bools to keep track of whether the chat is open, and whether it has been opened before
-    bool started;
+    public bool started;
     public bool open {  get; private set; }
 
     public Scrollable scroll;
+    public float firstSize;
+    public Transform origin;
     // this method prepares the chat to be used
     public void InitiateChat()
     {
@@ -66,6 +68,8 @@ public class ChatScript : MonoBehaviour
         scroll.content = content.gameObject;
         scroll.contentTop = topScroll;
         scroll.contentBottom = bottomScroll;
+        scroll.firstSize = firstSize;
+        scroll.origin = origin;
         // scroll to the bottom
         scroll.curScroll = 0;
         choiceCanvas.gameObject.SetActive(true);
@@ -74,8 +78,11 @@ public class ChatScript : MonoBehaviour
     {
         // hide everything
         open = false;
-        scroll.enabled = false;
-        textBar.SetActive(false);
+        if (ChatApp.activeChat == this) 
+        {
+            scroll.enabled = false;
+            textBar.SetActive(false); 
+        }
         choiceCanvas.gameObject.SetActive(false);
         // it is very important that the messages still exist, and are rendered even when the chat is off, since a message can still be sent when the chat is disabled
         // this means that if the canvas is disabled, the text is not rendered and will therefore be -infinity large for whatever reason

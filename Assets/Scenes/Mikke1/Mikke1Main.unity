@@ -1314,18 +1314,8 @@ MonoBehaviour:
   choiceOffset: 0.5
   chatTexts:
   - {fileID: 4900000, guid: 9bf4ca16815e1554a9cef0757f2eb618, type: 3}
-  - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
-  - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
-  - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
-  - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
-  - {fileID: 4900000, guid: ff6d3bdcfc015ad45b8da5a2acc1ade1, type: 3}
   choiceTexts:
   - {fileID: 4900000, guid: 8ad656c105bde2942a53a947db75ff42, type: 3}
-  - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
-  - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
-  - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
-  - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
-  - {fileID: 4900000, guid: f20981223cba32b47bcc8cfed85d52db, type: 3}
   messagePrefab: {fileID: 844565717877064653, guid: 6dca7f9dea426d74080ce999d6069930, type: 3}
   choicePrefab: {fileID: 5420535651261952562, guid: dc93681aa388c6d47b1f551af82ab0c6, type: 3}
   scroll: {fileID: 463372345}
@@ -1387,6 +1377,7 @@ MonoBehaviour:
   disc: 0
   stand: 0
   choosing: 0
+  buttons: []
 --- !u!1 &464637804
 GameObject:
   m_ObjectHideFlags: 0

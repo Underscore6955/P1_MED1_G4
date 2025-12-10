@@ -51,8 +51,10 @@ public class GetText
         // finally if it is neither (means it should be -) it mean there is a choice
         else
         {
-            yield return chat.StartCoroutine(chat.SC.SendMessages(Convert.ToInt32(lines[line][0])));
+            if (!chat.SC.chat) { chat.SC.chat = chat.gameObject.GetComponent<ChatApp>().AddChat((TextAsset)Resources.Load("StrangerChat"),null); chat.SC.chat.started = true; }
+            yield return chat.StartCoroutine(chat.SC.SendMessages(Convert.ToInt32(lines[line][0].ToString())));
             chat.CT.curLine++;
+            Debug.Log("Hi");
         }
         // curline has now either been increased by 1, if normal text message, or set to another number if choice, so now do whatever it needs to do
         if (chat.CT.curLine == lines.Length - 1) { yield break; }

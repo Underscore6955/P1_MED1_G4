@@ -23,7 +23,7 @@ public class SocialMediaFeed : MonoBehaviour
             // scrolly things
             GameObject curPost = SendPost(BuildNextPost(lines, i));
             curPost.transform.position = FindNextPos(curPost.transform.Find("Top").position.y - curPost.transform.Find("Bottom").position.y);
-            if (i == 0) { scroll.SetTop(curPost.transform.Find("Top"), curPost.transform.Find("Bottom")); }
+            if (i == 0) { scroll.SetTop(curPost.transform.Find("Top"), curPost.transform.Find("Bottom"),true); }
             scroll.contentBottom = curPost.transform.Find("Bottom");
             scroll.ScrollToPos();
             // once again weird z axis stuff

@@ -6,7 +6,6 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class SendMessageScript 
 {
@@ -24,7 +23,7 @@ public class SendMessageScript
             yield return chat.StartCoroutine(KeypressMessage(data.text));
             chat.AS.PlayOneShot((AudioClip)Resources.Load("Sound/MessageSent"));
         }
-        else chat.AS.PlayOneShot((AudioClip)Resources.Load("Sound/MessageReceive"));
+        else chat.AS.PlayOneShot(chat.open ? (AudioClip)Resources.Load("Sound/MessageSent") : (AudioClip)Resources.Load("Sound/MessageReceive"));
             // we create the new message and do some stuff to it, and get the message script from it
             GameObject newText = Object.Instantiate(chat.messagePrefab, chat.content);
         newText.name = "message";
@@ -43,7 +42,7 @@ public class SendMessageScript
         // finds the correct position
         (Vector2, bool) nextPos = FindNextPos(newTextScript);
         newText.transform.position = nextPos.Item1;
-        if (nextPos.Item2) { chat.scroll.SetTop(newTextScript.topPos, newTextScript.bottomPos); }
+        if (nextPos.Item2) { (float,Transform) newTop = chat.scroll.SetTop(newTextScript.topPos, newTextScript.bottomPos,chat.open); chat.firstSize = newTop.Item1; chat.origin = newTop.Item2; chat.topScroll = newTextScript.topPos; }
         // sometimes the message would be placed in a weird way on the z axis, meaning kinda like behind the camera so it cannot be seen
         // not entirely sure why, but we just place it at 0
         newText.transform.localPosition = new Vector3(newText.transform.localPosition.x, newText.transform.localPosition.y, 0);
@@ -130,6 +129,7 @@ public class SendMessageScript
     // added this which just checks if any of the keys you pressed this frame are letters
     bool IsPressingLetter()
     {
+        if (!chat.open) return false;
         foreach (char c in Input.inputString)
         {
             if (char.IsLetter(c) || char.IsNumber(c)) return true;
