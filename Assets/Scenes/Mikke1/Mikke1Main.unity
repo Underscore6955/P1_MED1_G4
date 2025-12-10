@@ -765,7 +765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &436649744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1156,7 +1156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xOffset: 3.5
-  centerXOffset: 0
   choiceOffset: 0.5
   chatTexts:
   - {fileID: 4900000, guid: 9bf4ca16815e1554a9cef0757f2eb618, type: 3}
