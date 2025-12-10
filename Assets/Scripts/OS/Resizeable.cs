@@ -28,7 +28,7 @@ public class Resizeable : PressableObject
             float scaleFactor = Mathf.Min(moveDif.x, moveDif.y);
             Vector2 scaleBy = scaleFactor < 0 ? startSize.normalized * 2f * scaleFactor : startSize.normalized * 4f * scaleFactor;
             Vector2 newSize = startSize + scaleBy;
-            sizingObject.localScale = newSize;
+            sizingObject.localScale = new Vector3(Mathf.Clamp(newSize.x,startSize.x/10,Mathf.Infinity), Mathf.Clamp(newSize.y, startSize.y / 10, Mathf.Infinity), 1);
             if (Input.GetMouseButtonUp(0) || Input.mousePosition.y > Screen.height) yield break;
             yield return null;
         }

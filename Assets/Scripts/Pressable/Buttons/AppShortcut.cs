@@ -4,19 +4,13 @@ using UnityEngine.UI;
 public class AppShortcut : PressableObject
 {
     public GameObject app;
-    [SerializeField] Texture2D icon;
     public bool opened;
-    private void Start()
-    {
-        // oh this explains why bottombaros doesnt work lol it just gets overwritten here ill fix that sometime
-        GetComponent<RawImage>().texture = icon;
-    }
     public override void Pressed()
     {
         // if the app hasnt been opened, we open it
         if (!opened)
         {
-            OSMechanics.mechInstance.OpenApp(app, icon);
+            OSMechanics.mechInstance.OpenApp(app, (Texture2D)GetComponent<RawImage>().texture);
         }
         else
         {

@@ -23,7 +23,8 @@ public class BottomOSBar : MonoBehaviour
     public static void AddToBar(GameObject app, Texture2D icon)
     {
         // create a new gameobject and add the stuff to it
-        GameObject newApp = Instantiate(new GameObject(), canvasObj);
+        GameObject newApp = new GameObject("AAA");
+        newApp.transform.SetParent(canvasObj);
         RectTransform rt = newApp.AddComponent<RectTransform>();
         newApp.AddComponent<RawImage>();
         // apply the image, this dosen't work rn for whatever reason ill have to look into it

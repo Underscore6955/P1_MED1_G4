@@ -3,52 +3,52 @@ using UnityEngine.SceneManagement;
 
 public class SceneButton : PressableObject
 {
-    public string SceneName; //clicking button leads to scene (write scene-name in unity inspector)
-    public Sprite ClickSprite; //Sprite of button being clicked on (assign in unity inspector)
+    public string sceneName; //clicking button leads to scene (write scene-name in unity inspector)
+    public Sprite clickSprite; //Sprite of button being clicked on (assign in unity inspector)
 
-    public Sprite OverSprite; //mouse over sprite
-    private Sprite OriginalSprite;
+    public Sprite overSprite; //mouse over sprite
+    private Sprite originalSprite;
 
     void Start()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        OriginalSprite = spriteRenderer.sprite;
+        originalSprite = spriteRenderer.sprite;
     }
 
     public void OnMouseEnter()
     {
-        if (OverSprite != null)
+        if (overSprite != null)
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = OverSprite;
+            spriteRenderer.sprite = overSprite;
         }
     }
     public void OnMouseExit()
     {
-        if (OverSprite != null)
+        if (overSprite != null)
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = OriginalSprite;
+            spriteRenderer.sprite = originalSprite;
         }
     }
 
     public override void Pressed()
     {
-        if (ClickSprite != null) //Changes to "clicked" sprite if one is assigned
+        if (clickSprite != null) //Changes to "clicked" sprite if one is assigned
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = ClickSprite;
+            spriteRenderer.sprite = clickSprite;
         }
     }
 
     public override void Release() 
     {
-        if (ClickSprite != null) //Changes back to og. sprite
+        if (clickSprite != null) //Changes back to og. sprite
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = OriginalSprite;
+            spriteRenderer.sprite = originalSprite;
         }
 
-        SceneManager.LoadScene(SceneName); //Scene change
+        SceneManager.LoadScene(sceneName); //Scene change
     }
 }
