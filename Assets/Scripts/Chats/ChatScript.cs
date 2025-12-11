@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
+using UnityEngine.UI;
 using static UnityEngine.UI.Image;
 
 public class ChatScript : MonoBehaviour 
@@ -39,6 +40,8 @@ public class ChatScript : MonoBehaviour
     public Scrollable scroll;
     public float firstSize;
     public Transform origin;
+
+    public RawImage newNotif;
     // this method prepares the chat to be used
     public void InitiateChat()
     {
@@ -55,6 +58,7 @@ public class ChatScript : MonoBehaviour
         ChatApp.ChangeChat(this);
         content.localPosition = new Vector3(0, content.localPosition.y, content.localPosition.z);
         open = true;
+        started = true;
         // if it is the first time we open the app we start the chat
         if (!started)
         {
@@ -65,6 +69,7 @@ public class ChatScript : MonoBehaviour
         }
         // make sure that everything is on and correctly displayed 
         textBar.SetActive(true);
+        newNotif.enabled = false;
         scroll.enabled = true;
         scroll.content = content.gameObject;
         scroll.contentTop = topScroll;

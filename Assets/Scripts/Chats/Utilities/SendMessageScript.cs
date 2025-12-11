@@ -24,6 +24,7 @@ public class SendMessageScript
             chat.AS.PlayOneShot((AudioClip)Resources.Load("Sound/MessageSent"));
         }
         else chat.AS.PlayOneShot(chat.open ? (AudioClip)Resources.Load("Sound/MessageSent") : (AudioClip)Resources.Load("Sound/MessageReceive"));
+        if (!chat.open) { chat.newNotif.enabled = true; }
             // we create the new message and do some stuff to it, and get the message script from it
             GameObject newText = Object.Instantiate(chat.messagePrefab, chat.content);
         newText.name = "message";
@@ -50,9 +51,9 @@ public class SendMessageScript
         // if there is an image in the text, we create that (see image script)
         if (newTextScript.image) { newTextScript.BuildImg(); newTextScript.FindImgPos(chat); }
         // if the chat is open, we set the bottom of the scroll to this message, otherwise just remember it, so it does become the bottom when you do open the chat
-        if (chat.open) chat.scroll.contentBottom = newTextScript.bottomPos;
+        if (chat.open) { chat.scroll.contentBottom = newTextScript.bottomPos; }
         chat.bottomScroll = newTextScript.bottomPos;
-        chat.scroll.ScrollToPos();
+        if (chat.open) { chat.scroll.ScrollToPos(); }
     }
     // checks if first or not first message
     (Vector2, bool) FindNextPos(MessageScript thisMessage)
@@ -129,6 +130,7 @@ public class SendMessageScript
     // added this which just checks if any of the keys you pressed this frame are letters
     bool IsPressingLetter()
     {
+        Debug.Log(chat.open);
         if (!chat.open) return false;
         foreach (char c in Input.inputString)
         {
