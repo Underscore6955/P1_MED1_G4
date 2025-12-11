@@ -23,15 +23,9 @@ public class SocialMediaFeed : MonoBehaviour
         for (int i = 0; i < lines.Length -1; i++)
         {
             // scrolly things
-<<<<<<< HEAD
-            GameObject curPost = SendPost(BuildNextPost(lines, i)); //Sends the current line of text to the SendPost method to create a post GameObject.
-            curPost.transform.position = FindNextPos(curPost.transform.Find("Top").position.y - curPost.transform.Find("Bottom").position.y); //Sets the position of the current post using the FindNextPos method to determine the correct position based on the height of the post.
-            if (i == 0) {scroll.origin = Instantiate(new GameObject(),transform).transform; scroll.contentTop = curPost.transform.Find("Top"); scroll.origin.position = scroll.contentTop.position; } //If this is the first post, it sets the origin and contentTop of the scrollable component to the top of the current post.
-=======
-            GameObject curPost = SendPost(BuildNextPost(lines, i));
+            GameObject curPost = SendPost(BuildNextPost(lines, i));//Sends the current line of text to the SendPost method to create a post GameObject.
             curPost.transform.position = FindNextPos(curPost.transform.Find("Top").position.y - curPost.transform.Find("Bottom").position.y);
             if (i == 0) { scroll.SetTop(curPost.transform.Find("Top"), curPost.transform.Find("Bottom"),true); }
->>>>>>> main
             scroll.contentBottom = curPost.transform.Find("Bottom");
             scroll.ScrollToPos();
             // once again weird z axis stuff
@@ -74,12 +68,7 @@ public class SocialMediaFeed : MonoBehaviour
             else if (building ==3) imgNameBuild += lineText[i]; //If building is 3 it builds the image, and if there isnt one skips this part.
             else textBuild += lineText[i];
         }
-<<<<<<< HEAD
-        string path = "Social Media/profile pictures/"; //Sets the path for the images
-        return ((textBuild,nameNameBuild, GetText.FindImg(path + pfpNameBuild),GetText.FindImg(path + imgNameBuild))); //The return value and which order the file must be written.
-=======
         string path = "2dAssets/Social Media/profile pictures/";
-        return ((textBuild.Replace("y/n","Frank"),nameNameBuild, GetText.FindImg(path + pfpfNameBuild),GetText.FindImg(path + imgNameBuild)));
->>>>>>> main
+        return ((textBuild.Replace("y/n","Frank"),nameNameBuild, GetText.FindImg(path + pfpNameBuild),GetText.FindImg(path + imgNameBuild)));
     }
 }
