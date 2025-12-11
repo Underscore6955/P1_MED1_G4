@@ -26,7 +26,7 @@ public class ScaleScript : MonoBehaviour
         {
             qBuild += lines[qNumber][i];
         }
-        return (qBuild, lines[qNumber][0] == '!');
+        return (qBuild, lines[qNumber][0] == '*');
     }
     IEnumerator BuildChoice()
     {
