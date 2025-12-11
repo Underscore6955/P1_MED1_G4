@@ -22,6 +22,7 @@ public class GetText
     public void StartChat()
     {
         // we start the program with the first line in the story file
+        Debug.Log("started");
         chat.StartCoroutine(FindAction(0));
     }
     // used to decide what should happen, based on the line
@@ -63,7 +64,6 @@ public class GetText
             }
             yield return chat.StartCoroutine(chat.SC.SendMessages(Convert.ToInt32(lines[line][0].ToString())));
             chat.CT.curLine++;
-            Debug.Log("Hi");
         }
         // curline has now either been increased by 1, if normal text message, or set to another number if choice, so now do whatever it needs to do
         chat.StartCoroutine(FindAction(chat.CT.curLine));

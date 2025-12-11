@@ -11,7 +11,9 @@ public class OSMechanics : MonoBehaviour
     // we make this script static kinda, just makes it easier to refer to in other places
     public static OSMechanics mechInstance;
     // we have a list of minimized apps, with their original locations and sizes stored
-    static Dictionary<GameObject, (Vector3, Vector3)> minimized = new Dictionary<GameObject, (Vector3, Vector3)>();
+    public static Dictionary<GameObject, (Vector3, Vector3)> minimized = new Dictionary<GameObject, (Vector3, Vector3)>();
+    public TextAsset jackText;
+    public TextAsset jackChoice;
     // remember which things it is resizing currently, cuz if you try to resize something multiple times at once it creates conflict
     List<GameObject> resizing = new List<GameObject>();
     [SerializeField] RectTransform desktopCanvas;
@@ -57,7 +59,7 @@ public class OSMechanics : MonoBehaviour
     {
         resizing.Add(app);
         // if the app is being maximized we show it
-        if (opening) { app.SetActive(true); }
+        if (opening) { app.gameObject.transform.position -= Vector3.right * 500; }
         // amount of frames it should take this is good on my pc, but kinda slow for others cough cough
         int steps = 60;
         // find out how much it needs to move, to get to the correct place
@@ -74,7 +76,7 @@ public class OSMechanics : MonoBehaviour
         app.transform.position = loc;
         app.transform.localScale = size;
        // if the app has been minimized we hide it
-        if (!opening) { app.SetActive(false); }
+        if (!opening) { app.gameObject.transform.position += Vector3.right * 500; }
         resizing.Remove(app);
     }
     // method used a few times for making images correct
