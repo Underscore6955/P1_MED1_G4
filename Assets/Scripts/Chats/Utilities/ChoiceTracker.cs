@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ChoiceTracker 
 {
@@ -25,6 +26,7 @@ public class ChoiceTracker
         {
             // Create the choice button obj and add the required stuff to it
             GameObject curObj = GameObject.Instantiate(chat.choiceButtonPrefab,chat.choiceCanvas);
+            curObj.gameObject.name = "choiceButton";
             curObj.SetActive(true);
             ChoiceButton curCB = curObj.GetComponent<ChoiceButton>();
             curCB.chat = chat;
@@ -32,7 +34,7 @@ public class ChoiceTracker
             curCB.choiceIndex = data.choiceIndex;
             curCB.choiceValue = i;
             // place it correctly and scale it according to the size of the text
-            curObj.transform.position = chat.choiceCanvas.transform.position-new Vector3(0,i);
+            curObj.transform.position = chat.choiceCanvas.transform.position-new Vector3(0,i*chat.choiceOffset * (chat.gameObject.transform.localScale.x / 10));
             buttons.Add(curObj);
             yield return null;
             Vector2 curScale = MessageScript.FindSize(curCB.textElement);
