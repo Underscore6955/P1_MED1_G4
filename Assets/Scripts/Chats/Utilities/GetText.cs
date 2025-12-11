@@ -20,7 +20,6 @@ public class GetText
         lines = chat.textFile.text.Split('\n');
         chat.friendName = lines[^1];
         chat.pfp = FindImg("2dAssets/Social Media/profile pictures/" + BuildPfp(lines,lines.Length-2));
-        Debug.Log(chat.pfp);
     }
     string BuildPfp(string[] lines,int line)
     {
@@ -34,7 +33,6 @@ public class GetText
     public void StartChat()
     {
         // we start the program with the first line in the story file
-        Debug.Log("started");
         chat.StartCoroutine(FindAction(0));
     }
     // used to decide what should happen, based on the line

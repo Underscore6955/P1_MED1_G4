@@ -41,7 +41,7 @@ public class FriendList : MonoBehaviour
         chat.newNotif = curButton.newNotif;
         Transform curTrans = curButton.gameObject.transform;
         // place the button according to how many other buttons there 
-        curTrans.position = friendList.position + Vector3.down * buttonSpacing * (friends.Count - 1) + Vector3.back*0.1f;
+        curTrans.position = friendList.position + Vector3.down * buttonSpacing * (friends.Count - 1)*transform.localScale.x/10 + Vector3.back*0.1f;
         curButton.GetComponentInChildren<RawImage>().texture = pfp;
         curTrans.localScale = OSMechanics.ResizeImageToSize((Texture2D)curTrans.gameObject.GetComponent<RawImage>().texture, curTrans.gameObject.GetComponent<RectTransform>(),2);
         // find the bottom of the button for the scrolling

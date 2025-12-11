@@ -34,7 +34,6 @@ public class AppShortcut : PressableObject
     {
         yield return new WaitForSeconds(5);
         ChatScript curChat = ChatApp.chatInstance.AddChat(OSMechanics.mechInstance.jackText, OSMechanics.mechInstance.jackChoice);
-        Debug.Log(curChat);
         curChat.GT.StartChat();
     }
 }

@@ -60,7 +60,7 @@ public class ScaleScript : MonoBehaviour
     }
     public IEnumerator StartTest()
     {
-        for (int i = 0; i < chat.GT.lines.Length - 1; i++)
+        for (int i = 0; i < chat.GT.lines.Length - 2; i++)
         {
             yield return StartCoroutine(chat.SMS.SendText(GetText.BuildNextText(chat.GT.lines,i)));
         }

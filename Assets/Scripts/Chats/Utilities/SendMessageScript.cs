@@ -130,7 +130,6 @@ public class SendMessageScript
     // added this which just checks if any of the keys you pressed this frame are letters
     bool IsPressingLetter()
     {
-        Debug.Log(chat.open);
         if (!chat.open) return false;
         foreach (char c in Input.inputString)
         {

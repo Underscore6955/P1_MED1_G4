@@ -35,7 +35,7 @@ public class ChatScript : MonoBehaviour
 
     // we need some bools to keep track of whether the chat is open, and whether it has been opened before
     public bool started;
-    public bool open {  get; private set; }
+    public bool open;
 
     public Scrollable scroll;
     public float firstSize;
