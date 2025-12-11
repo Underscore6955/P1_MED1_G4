@@ -9,19 +9,20 @@ public class ChatApp : MonoBehaviour
     [SerializeField] float xOffset;
     [SerializeField] float choiceOffset;
     // text files for chats
-    [SerializeField] List<TextAsset> chatTexts = new List<TextAsset>();
-    // choice files for chats
-    // these two are very important the corresponding files are in the same order in the lists
-    [SerializeField] List<TextAsset> choiceTexts = new List<TextAsset>();
+    //[SerializeField] List<TextAsset> chatTexts = new List<TextAsset>();
+    //// choice files for chats
+    //// these two are very important the corresponding files are in the same order in the lists
+    //[SerializeField] List<TextAsset> choiceTexts = new List<TextAsset>();
     // prefabs
+    [SerializeField] GameObject textBarPrefab;
     [SerializeField] GameObject messagePrefab;
     [SerializeField] GameObject choicePrefab;
     // the correct scroll script and text bar
     [SerializeField] Scrollable scroll;
-    [SerializeField] GameObject textBar;
 
     [SerializeField] Transform chatContent;
     [SerializeField] Transform choiceLoc;
+    [SerializeField] Transform textBarLoc;
     public static ChatScript activeChat;
 
     [SerializeField] ScaleScript SC;
@@ -49,7 +50,9 @@ public class ChatApp : MonoBehaviour
         curChat.messagePrefab = this.messagePrefab;
         curChat.choiceButtonPrefab = this.choicePrefab;
         curChat.scroll = this.scroll;
-        curChat.textBar = this.textBar;
+        curChat.textBar = Instantiate(textBarPrefab,transform);
+        curChat.textBar.transform.position = textBarLoc.position;
+        curChat.textBar.SetActive(false);
         // make the things that need to be there, like content container and choice canvas, which holds the choice buttons
         curChat.content = new GameObject().transform;
         curChat.content.SetParent(chatContent);
