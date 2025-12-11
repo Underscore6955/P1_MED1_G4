@@ -2,6 +2,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class SocialMediaFeed : MonoBehaviour
 {
@@ -10,14 +11,16 @@ public class SocialMediaFeed : MonoBehaviour
     [SerializeField] GameObject postimagePrefab;
     [SerializeField] GameObject posttextPrefab;
     [SerializeField] TextAsset posts;
+    [SerializeField] TextAsset jackText;
+    [SerializeField] TextAsset jackChoice;
     // ask the expert :3
 
     //Crazily enough? It starts the feed.
     private void Start()
     {
-        InitiateFeed(); 
+        StartCoroutine(InitiateFeed());
     }
-    void InitiateFeed()
+    IEnumerator InitiateFeed()
     {
         string[] lines = posts.text.Split('\n');
         for (int i = 0; i < lines.Length -1; i++)
@@ -32,6 +35,8 @@ public class SocialMediaFeed : MonoBehaviour
             curPost.transform.localPosition = new Vector3(curPost.transform.localPosition.x, curPost.transform.localPosition.y, 0);
         }
         scroll.curScroll = scroll.MaxScroll();
+        yield return new WaitForSeconds(5);
+        ChatApp.chatInstance.AddChat(jackText,jackChoice);
     }
     GameObject SendPost((string text, string name, Texture2D pfp, Texture2D img) data)
     {

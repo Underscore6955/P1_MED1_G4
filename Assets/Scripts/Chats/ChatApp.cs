@@ -25,13 +25,15 @@ public class ChatApp : MonoBehaviour
     public static ChatScript activeChat;
 
     [SerializeField] ScaleScript SC;
+    public static ChatApp chatInstance;
     private void Start()
     {
+        chatInstance = this;
         // go through each chat on the app, so each on in chatTexts list
-        for (int i = 0; i<chatTexts.Count; i++)
-        {
-            AddChat(chatTexts[i], choiceTexts[i]);
-        }
+        //for (int i = 0; i<chatTexts.Count; i++)
+        //{
+        //    AddChat(chatTexts[i], choiceTexts[i]);
+        //}
     }
     public ChatScript AddChat(TextAsset textFile, TextAsset choiceFile)
     {

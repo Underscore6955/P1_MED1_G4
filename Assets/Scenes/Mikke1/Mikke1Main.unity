@@ -1374,8 +1374,6 @@ MonoBehaviour:
   questions: {fileID: 4900000, guid: faa5b233d21e3fc4fb9a808c59faae99, type: 3}
   questionPrefab: {fileID: 5420535651261952562, guid: 78016ab0ddfb14b40806c7782bc0e43d, type: 3}
   chat: {fileID: 0}
-  disc: 0
-  stand: 0
   choosing: 0
   buttons: []
 --- !u!1 &464637804
@@ -2625,6 +2623,8 @@ MonoBehaviour:
   postimagePrefab: {fileID: 8066044813209848275, guid: 5031a3639bc314944a6bae8b659a2b93, type: 3}
   posttextPrefab: {fileID: 8066044813209848275, guid: dfe33f83b6bec564bb5f1dca8d2cc9f8, type: 3}
   posts: {fileID: 4900000, guid: c5ad219209b84e148b32af1004e99f4c, type: 3}
+  jackText: {fileID: 4900000, guid: 6d778e29ce2442a43b6da017f4a91634, type: 3}
+  jackChoice: {fileID: 4900000, guid: 651fb69819f81554587a34c562e14d2c, type: 3}
 --- !u!114 &1157786739
 MonoBehaviour:
   m_ObjectHideFlags: 0
