@@ -25,6 +25,7 @@ public class ChatScript : MonoBehaviour
     public string dataFileName;
     public string friendName;
     public static string yourName;
+    public Texture2D pfp;
 
     public GameObject messagePrefab;
     public GameObject choiceButtonPrefab;

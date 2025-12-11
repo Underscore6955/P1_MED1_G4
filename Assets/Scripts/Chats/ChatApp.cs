@@ -64,7 +64,7 @@ public class ChatApp : MonoBehaviour
         curChat.choiceCanvas = new GameObject().transform;
         curChat.choiceCanvas.SetParent(transform);
         curChat.choiceCanvas.gameObject.SetActive(true);
-        curChat.choiceCanvas.localPosition = Vector3.zero + Vector3.back * 0.1f;
+        curChat.choiceCanvas.localPosition = Vector3.zero + Vector3.back * 0.12f;
         curChat.choiceCanvas.localScale = new Vector3(0.1f, 0.2f, 1f);
         curChat.choiceCanvas.transform.position = choiceLoc.position;
         curChat.choiceCanvas.gameObject.name = "choiceCanvas";
@@ -72,7 +72,7 @@ public class ChatApp : MonoBehaviour
         // prepare some more things for the chat
         curChat.InitiateChat();
         curChat.GT.PrepText();
-        GetComponent<FriendList>().AddFriend(curChat, curChat.friendName);
+        GetComponent<FriendList>().AddFriend(curChat, curChat.friendName,curChat.pfp);
         if (curChat.friendName == "Jack")
         {
             curChat.SC = this.SC;

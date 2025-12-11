@@ -1,10 +1,11 @@
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using NUnit.Framework.Constraints;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class GetText 
 {
@@ -18,6 +19,17 @@ public class GetText
         // split the textfile into lines, like choicetracker
         lines = chat.textFile.text.Split('\n');
         chat.friendName = lines[^1];
+        chat.pfp = FindImg("2dAssets/Social Media/profile pictures/" + BuildPfp(lines,lines.Length-2));
+        Debug.Log(chat.pfp);
+    }
+    string BuildPfp(string[] lines,int line)
+    {
+        string buildText = "";
+        for (int i = 0; i < lines[line].Length-1; i++)
+        {
+            buildText += lines[line][i];
+        }
+        return buildText;
     }
     public void StartChat()
     {

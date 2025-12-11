@@ -62,7 +62,7 @@ public class SocialMediaFeed : MonoBehaviour
         string imgNameBuild = null; //Variable to build the image.
         string pfpNameBuild = null; //Variable to build the profile picture.
         int building = 0; //A variable to keep track of what type of data it is currently building.
-        for (int i = 2; i < lineText.Length-1; i++) //A for-loop to iterate through the files it is going to read.
+        for (int i = 0; i < lineText.Length-1; i++) //A for-loop to iterate through the files it is going to read.
         {
             if (lineText[i] == '|') { building++; continue; } //Here it looks for the "|" character to figure out what type of data it is looking at.
             if (building == 1) nameNameBuild += lineText[i]; //Depending on the value of "building", it appends the character to the appropriate string variable.
