@@ -2,7 +2,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class SocialMediaFeed : MonoBehaviour
 {
@@ -16,8 +15,7 @@ public class SocialMediaFeed : MonoBehaviour
     //Crazily enough? It starts the feed.
     private void Start()
     {
-        transform.position += Vector3.right * 500;
-        InitiateFeed();
+        InitiateFeed(); 
     }
     void InitiateFeed()
     {

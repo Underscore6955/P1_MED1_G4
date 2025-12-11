@@ -1,59 +1,59 @@
 ".Hey y/n! Long time no see, how have you been?
--1£Yo! Im doing fine. Hows life treating you?£Hey Jack! It has been long! everything is good, how are things with you?£Hey man, im good. Whats new with you?£
+-1£Yo! Im doing fine. Hows life treating you?£Hey Jack! It has been long! everything is good, how are things with you?£Hey man, im good. Whats new with you?
 ".All good, just started uni
--2£Cool, hope the start hasnt been rough on u.£ahh right, hows that going?£Yeah i just saw your post, looks like fun!£
+-2£Cool, hope the start hasnt been rough on u.£ahh right, hows that going?£Yeah i just saw your post, looks like fun!
 ".Yeah i guess…
 "*U okay?
 ".Kinda... i can already feel the pressure...
 3
--3£Yeah its nothing like you have tried before£I know, it can be intimidating in the beginning£True, starting uni is a big adjustment£
+-3£Yeah its nothing like you have tried before£I know, it can be intimidating in the beginning£True, starting uni is a big adjustment
 ".Yeah I feel like i am already behind
--4£behind on what?£Dont worry, everybody feels like that in the beginning£
+-4£behind on what?£Dont worry, everybody feels like that in the beginning
 ".The assignment. Its still not done.
 4
--5£Are you finally taking a breather?£You don't have to make it perfect, dude£Want me to look at it with you?£
+-5£Are you finally taking a breather?£You don't have to make it perfect, dude£Want me to look at it with you?
 ".u know i cant
--6£Can't or won't?£Top grades aren't everything, u know?£I get it, but remember you'll burn out.£
+-6£Can't or won't?£Top grades aren't everything, u know?£I get it, but remember you'll burn out.
 ".u know it, my parents would freak otherwise
--7£sucks for u homie£just ignore them, thats what i do£How do you know that.Have you talked to them?£
+-7£sucks for u homie£just ignore them, thats what i do£How do you know that.Have you talked to them?
 ".gee thanks. I just wish they would back off a little still...
 4
--8£don't worry about them, you're work will speak for it self£yeah, I bet what you're doing is already amazing. don't sweat it£Dude, u should tell them. They'll probably understand more than you think£
+-8£don't worry about them, you're work will speak for it self£yeah, I bet what you're doing is already amazing. don't sweat it£Dude, u should tell them. They'll probably understand more than you think
 ".man idk. It just dosen't feel up to par.
--9£you know what they say. when life gives you lemons, make the best damn lemonade£You know, coal turns into diamonds under pressure.£
+-9£you know what they say. when life gives you lemons, make the best damn lemonade£You know, coal turns into diamonds under pressure.
 ".I don't think that's how it goes lol but thanks I needed a good laugh
 ".i just need to read it a few more times thats what i usually do
 4
--10£you want a break?£maybe have someone else look at it£u sure you dont want me to look at it with you£
+-10£you want a break?£maybe have someone else look at it£u sure you dont want me to look at it with you
 ".No im good
 ".Sorry y/n, I can't chat any more. I've got to get back to my assignemt. see ya
 "*alright, good night.
 ^
 ".Does everybody also stay up all night to fix their assignment?
 3
--11£You dont have to make it perfect, dude£Want me to look at it with you£Thats dedication, but you also need sleep£
+-11£You dont have to make it perfect, dude£Want me to look at it with you£Thats dedication, but you also need sleep
 ".i just cant stop
--6£Can't or won't?£Top grades aren't everything, u know?£I get it, but remember you'll burn out.£
+-6£Can't or won't?£Top grades aren't everything, u know?£I get it, but remember you'll burn out.
 ".Nah, its fine. U dont have to worry
--6£Can't or won't?£Top grades aren't everything, u know?£I get it, but remember you'll burn out.£
+-6£Can't or won't?£Top grades aren't everything, u know?£I get it, but remember you'll burn out.
 ".yeah, but i am scared of disappointing
 4
--12£Come on, you've always been the smart one, no one will be disappointed£Thats a lot to carry around man£Wanna talk about it?£
+-12£Come on, you've always been the smart one, no one will be disappointed£Thats a lot to carry around man£Wanna talk about it?
 ".you know my parents, they always expect the best
--13£How do you know that.Have you talked to them?£yeah, youre not a robot, relax£They shouldnt pressure you like that£
+-13£How do you know that.Have you talked to them?£yeah, youre not a robot, relax£They shouldnt pressure you like that
 ".i cant get myself to tell them. i keep it to myself
--14£Dude, u should tell them. They'll probably understand more than you think£Keeping it all inside just makes it worse£I used to do that too, but i felt like drowning£
+-14£Dude, u should tell them. They'll probably understand more than you think£Keeping it all inside just makes it worse£I used to do that too, but i felt like drowning
 ".yeah... maybe. I just have to achieve big things
 3
--15£Nobody's perfect, i mean im on the third year and still fuck up£You can mess up, thats how u learn£if you chase perfect, you'll burn out faster£
+-15£Nobody's perfect, i mean im on the third year and still fuck up£You can mess up, thats how u learn£if you chase perfect, you'll burn out faster
 ".True.. i  just dont want people to think less of me
--16£Trust me, they care more about you than your grades£Youre judging yourself too hard£Im sure your assignment is good enough£
+-16£Trust me, they care more about you than your grades£Youre judging yourself too hard£Im sure your assignment is good enough
 ".Haha, youre probably right. thanks y/n i needed to hear that
 ".i mean... you know what they say. Its the journey that counts not the destination right?
 3
--17£Now youre gettin it£Exactly£Thats the spirit!£
+-17£Now youre gettin it£Exactly£Thats the spirit!
 ".U know what? Done is done, ill send my assigment
--18£Great Jack, now u can relax£U have to go out and celebrate£U better wake up tomorrow with a hangover£
+-18£Great Jack, now u can relax£U have to go out and celebrate£U better wake up tomorrow with a hangover
 ".u know what, I think I will :)
 ^
 Icon_J

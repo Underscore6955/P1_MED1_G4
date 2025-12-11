@@ -38,7 +38,6 @@ public class FriendList : MonoBehaviour
         // assign the correct values to the button
         curButton.friendName.text = name;
         curButton.chat = chat;
-        chat.newNotif = curButton.newNotif;
         Transform curTrans = curButton.gameObject.transform;
         // place the button according to how many other buttons there 
         curTrans.position = friendList.position + Vector3.down * buttonSpacing * (friends.Count - 1) + Vector3.back*0.1f;
