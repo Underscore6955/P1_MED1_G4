@@ -17,7 +17,7 @@ public class ScaleButton : PressableObject
     {
         foreach (GameObject g in SC.buttons) { g.transform.position += Vector3.left * 999f; }
         yield return StartCoroutine(SC.chat.SMS.SendText((value.ToString(),1,null)));
-        if (disc) { SC.disc += value; } else { SC.stand += value; }
+        if (disc) { ScaleScript.disc += value; } else { ScaleScript.stand += value; }
         SC.choosing = false;
     }
 }

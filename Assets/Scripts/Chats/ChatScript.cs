@@ -71,7 +71,8 @@ public class ChatScript : MonoBehaviour
         scroll.firstSize = firstSize;
         scroll.origin = origin;
         // scroll to the bottom
-        scroll.curScroll = 0;
+        scroll.curScroll = -firstSize;
+        if (scroll.origin) scroll.ScrollToPos();
         choiceCanvas.gameObject.SetActive(true);
     }
     public void Close()

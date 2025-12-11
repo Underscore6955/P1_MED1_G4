@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using NUnit.Framework.Constraints;
 
 public class GetText 
 {
     // same as choicetracker
     ChatScript chat;
-    string[] lines;
+    public string[] lines;
     public GetText(ChatScript chat) { this.chat = chat; }
     // gets called when the chat gets opened for the first time
     public void PrepText()
@@ -48,16 +49,23 @@ public class GetText
             chat.CT.buttons.Clear();
             // youll never guess it...
         }
-        // finally if it is neither (means it should be -) it mean there is a choice
+        else if (lines[line][0] == '^')
+        {
+            if (chat.CT.curLine == lines.Length - 1) { chat.StartCoroutine(chat.SC.EndTest()); yield break; }
+        }
         else
         {
-            if (!chat.SC.chat) { chat.SC.chat = chat.gameObject.GetComponent<ChatApp>().AddChat((TextAsset)Resources.Load("StrangerChat"),null); chat.SC.chat.started = true; }
+            if (!chat.SC.chat)
+            {
+                chat.SC.chat = chat.gameObject.GetComponent<ChatApp>().AddChat((TextAsset)Resources.Load("StrangerChat"), null);
+                chat.SC.chat.started = true;
+                yield return chat.StartCoroutine(chat.SC.StartTest());
+            }
             yield return chat.StartCoroutine(chat.SC.SendMessages(Convert.ToInt32(lines[line][0].ToString())));
             chat.CT.curLine++;
             Debug.Log("Hi");
         }
         // curline has now either been increased by 1, if normal text message, or set to another number if choice, so now do whatever it needs to do
-        if (chat.CT.curLine == lines.Length - 1) { yield break; }
         chat.StartCoroutine(FindAction(chat.CT.curLine));
     }
     public static float CalcDelay(int length)
@@ -82,7 +90,7 @@ public class GetText
             else textBuild += lineText[i];
         }
         // returns the text, 1 if there is a * and -1 if there is a ., and an image, or maybe null, depending on the line
-        return (textBuild.Replace("y/n", ChatScript.yourName), lineText[1] == '*' ? 1 : -1, FindImg("2dAssets/test/" + imgNameBuild));
+        return (textBuild.Replace("y/n", ChatScript.yourName).Replace("§", ScaleScript.stand.ToString()).Replace("½",ScaleScript.disc.ToString()), lineText[1] == '*' ? 1 : -1, FindImg("2dAssets/test/" + imgNameBuild));
     }
     // Method to decode what choices should be available
     // Returns a list of choices and an int, which is the choice index, used to see which choice should be used from choice file later (see BuildChoice in choicetracker)

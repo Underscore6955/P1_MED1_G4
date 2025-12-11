@@ -11,8 +11,8 @@ public class ScaleScript : MonoBehaviour
     public ChatScript chat;
     string[] lines;
     int qNumber = 0;
-    public int disc;
-    public int stand;
+    public static int disc;
+    public static int stand;
     public bool choosing;
     public List<GameObject> buttons = new List<GameObject>();
     private void Start()
@@ -47,10 +47,9 @@ public class ScaleScript : MonoBehaviour
     public IEnumerator SendMessages(int questions)
     {
         int endQ = qNumber + questions;
-        for (int i = qNumber; i <= endQ; i++)
+        for (int i = qNumber; i < endQ; i++)
         {
-            Debug.Log(i);
-            Debug.Log(endQ);
+            if (qNumber >= lines.Length) { yield break; }
             choosing = true;
             StartCoroutine(BuildChoice());
             while (choosing) yield return null;
@@ -58,5 +57,21 @@ public class ScaleScript : MonoBehaviour
             foreach (GameObject button in buttons) { Destroy(button);  }
             buttons.Clear();
         }
+    }
+    public IEnumerator StartTest()
+    {
+        for (int i = 0; i < chat.GT.lines.Length - 1; i++)
+        {
+            yield return StartCoroutine(chat.SMS.SendText(GetText.BuildNextText(chat.GT.lines,i)));
+        }
+    }
+    public IEnumerator EndTest()
+    {
+        yield return StartCoroutine(SendMessages(20));
+        for (int i = 0; i < chat.GT.lines.Length; i++)
+        {
+            yield return StartCoroutine(chat.SMS.SendText(GetText.BuildNextText(chat.choiceFile.text.Split('\n'), i)));
+        }
+        yield return null;
     }
 }
