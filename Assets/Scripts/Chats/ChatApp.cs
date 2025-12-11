@@ -1,7 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 
 public class ChatApp : MonoBehaviour
 {
@@ -27,6 +26,7 @@ public class ChatApp : MonoBehaviour
 
     [SerializeField] ScaleScript SC;
     public static ChatApp chatInstance;
+    static public int notifs;
     private void Awake()
     {
         chatInstance = this;

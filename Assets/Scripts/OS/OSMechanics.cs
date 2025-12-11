@@ -55,28 +55,29 @@ public class OSMechanics : MonoBehaviour
         minimized.Remove(app);
     }
     // method that Sizes an object... and moves it to somewhere... no way
-    IEnumerator SizeAndMoveTo(GameObject app, Vector3 loc, Vector3 size, bool opening)
+    IEnumerator SizeAndMoveTo(GameObject app, Vector3 targetPos, Vector3 targetScale, bool opening)
     {
         resizing.Add(app);
-        // if the app is being maximized we show it
-        if (opening) { app.gameObject.transform.position -= Vector3.right * 500; }
-        // amount of frames it should take this is good on my pc, but kinda slow for others cough cough
-        int steps = 60;
-        // find out how much it needs to move, to get to the correct place
-        Vector3 scaleStep = (size-app.transform.localScale)/steps;
-        Vector3 locStop = (loc-app.transform.position) / steps;
-        // move it steps times toward where it needs to be and its size
-        for (int i = 0; i < steps; i++)
+        float duration = 0.2f;
+        if (opening) app.transform.position -= Vector3.right * 500;
+        Vector3 startPos = app.transform.position;
+        Vector3 startScale = app.transform.localScale;
+        float elapsed = 0f;
+        while (elapsed < duration)
         {
-            app.transform.localScale += scaleStep;
-            app.transform.position += locStop;
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+
+            app.transform.position = Vector3.Lerp(startPos, targetPos, t);
+            app.transform.localScale = Vector3.Lerp(startScale, targetScale, t);
+
             yield return null;
         }
-        // unity makes rounding errors so we make it exact
-        app.transform.position = loc;
-        app.transform.localScale = size;
-       // if the app has been minimized we hide it
-        if (!opening) { app.gameObject.transform.position += Vector3.right * 500; }
+        app.transform.position = targetPos;
+        app.transform.localScale = targetScale;
+
+        if (!opening) app.transform.position += Vector3.right * 500;
+
         resizing.Remove(app);
     }
     // method used a few times for making images correct

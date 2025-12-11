@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mikke1/Mikke1Main.unity
     guid: d5ceccc48ada48b42937df1528f5678e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Andrea/tests/collection.unity
     guid: 43f523142efa8d24c94fecbb8fd7619c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Andrea/tests/Gallery.unity
     guid: faa3a870afd5adf41910efac5506722c
   m_configObjects:

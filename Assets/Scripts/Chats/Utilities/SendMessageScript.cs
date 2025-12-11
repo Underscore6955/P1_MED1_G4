@@ -24,7 +24,7 @@ public class SendMessageScript
             chat.AS.PlayOneShot((AudioClip)Resources.Load("Sound/MessageSent"));
         }
         else chat.AS.PlayOneShot(chat.open ? (AudioClip)Resources.Load("Sound/MessageSent") : (AudioClip)Resources.Load("Sound/MessageReceive"));
-        if (!chat.open) { chat.newNotif.enabled = true; }
+        if (!chat.open) { chat.newNotif.enabled = true; ChatApp.notifs++; AppShortcut.UpdateNotifs(chat.gameObject,ChatApp.notifs); }
             // we create the new message and do some stuff to it, and get the message script from it
             GameObject newText = Object.Instantiate(chat.messagePrefab, chat.content);
         newText.name = "message";

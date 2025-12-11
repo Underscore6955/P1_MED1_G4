@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.UI;
@@ -69,6 +70,8 @@ public class ChatScript : MonoBehaviour
         }
         // make sure that everything is on and correctly displayed 
         textBar.SetActive(true);
+        if (newNotif.enabled) { ChatApp.notifs--; }
+        AppShortcut.UpdateNotifs(gameObject, ChatApp.notifs);
         newNotif.enabled = false;
         scroll.enabled = true;
         scroll.content = content.gameObject;

@@ -1,11 +1,24 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 public class AppShortcut : PressableObject
 {
     public GameObject app;
     public bool opened;
+    public static Dictionary<GameObject,List<AppShortcut>> shortcuts = new Dictionary<GameObject,List<AppShortcut>>();
+    [SerializeField] RawImage newNotif;
+    public void Start()
+    {
+        if (!shortcuts.ContainsKey(app)) { shortcuts.Add(app, new List<AppShortcut>()); }
+        shortcuts[app].Add(this);
+    }
+    public static void UpdateNotifs(GameObject updateApp, int notifs)
+    {
+        foreach (AppShortcut AS in shortcuts[updateApp]) { Debug.Log("hello"); AS.newNotif.enabled = notifs > 0; }
+    }
     public override void Pressed()
     {
         // if the app hasnt been opened, we open it
