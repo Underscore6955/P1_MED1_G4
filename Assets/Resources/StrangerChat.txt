@@ -1,0 +1,10 @@
+".Hello friend, i'm doing research regarding perfectionism. 
+".Can you please answer some questions?
+"*Sure, why not
+".Thank you! 
+".With the given statements, please rate them from 1-7
+".1 is strongly disagree and 7 is strongly agree
+"*Alright
+".Ok so. How do you feel about these statements
+Icon_M
+Michelle
