@@ -18,6 +18,7 @@ public class SocialMediaFeed : MonoBehaviour
     //Crazily enough? It starts the feed.
     private void Start()
     {
+        transform.position += Vector3.right * 500;
         StartCoroutine(InitiateFeed());
     }
     IEnumerator InitiateFeed()
@@ -36,7 +37,9 @@ public class SocialMediaFeed : MonoBehaviour
         }
         scroll.curScroll = scroll.MaxScroll();
         yield return new WaitForSeconds(5);
-        ChatApp.chatInstance.AddChat(jackText,jackChoice);
+        ChatScript curChat = ChatApp.chatInstance.AddChat(jackText,jackChoice);
+        Debug.Log(curChat);
+        curChat.GT.StartChat();
     }
     GameObject SendPost((string text, string name, Texture2D pfp, Texture2D img) data)
     {

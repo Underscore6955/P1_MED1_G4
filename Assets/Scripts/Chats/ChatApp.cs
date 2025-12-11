@@ -26,9 +26,10 @@ public class ChatApp : MonoBehaviour
 
     [SerializeField] ScaleScript SC;
     public static ChatApp chatInstance;
-    private void Start()
+    private void Awake()
     {
         chatInstance = this;
+        transform.position += Vector3.right * 500;
         // go through each chat on the app, so each on in chatTexts list
         //for (int i = 0; i<chatTexts.Count; i++)
         //{

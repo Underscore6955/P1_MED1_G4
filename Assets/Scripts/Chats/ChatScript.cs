@@ -57,6 +57,7 @@ public class ChatScript : MonoBehaviour
         ChatApp.ChangeChat(this);
         content.localPosition = new Vector3(0, content.localPosition.y, content.localPosition.z);
         open = true;
+        started = true;
         // if it is the first time we open the app we start the chat
         if (!started)
         {
