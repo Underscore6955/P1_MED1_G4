@@ -11,7 +11,9 @@ public class OSMechanics : MonoBehaviour
     // we make this script static kinda, just makes it easier to refer to in other places
     public static OSMechanics mechInstance;
     // we have a list of minimized apps, with their original locations and sizes stored
-    static Dictionary<GameObject, (Vector3, Vector3)> minimized = new Dictionary<GameObject, (Vector3, Vector3)>();
+    public static Dictionary<GameObject, (Vector3, Vector3)> minimized = new Dictionary<GameObject, (Vector3, Vector3)>();
+    public TextAsset jackText;
+    public TextAsset jackChoice;
     // remember which things it is resizing currently, cuz if you try to resize something multiple times at once it creates conflict
     List<GameObject> resizing = new List<GameObject>();
     [SerializeField] RectTransform desktopCanvas;

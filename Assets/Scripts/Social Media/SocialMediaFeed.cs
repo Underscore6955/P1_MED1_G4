@@ -11,17 +11,15 @@ public class SocialMediaFeed : MonoBehaviour
     [SerializeField] GameObject postimagePrefab;
     [SerializeField] GameObject posttextPrefab;
     [SerializeField] TextAsset posts;
-    [SerializeField] TextAsset jackText;
-    [SerializeField] TextAsset jackChoice;
     // ask the expert :3
 
     //Crazily enough? It starts the feed.
     private void Start()
     {
         transform.position += Vector3.right * 500;
-        StartCoroutine(InitiateFeed());
+        InitiateFeed();
     }
-    IEnumerator InitiateFeed()
+    void InitiateFeed()
     {
         string[] lines = posts.text.Split('\n');
         for (int i = 0; i < lines.Length -1; i++)
@@ -36,10 +34,6 @@ public class SocialMediaFeed : MonoBehaviour
             curPost.transform.localPosition = new Vector3(curPost.transform.localPosition.x, curPost.transform.localPosition.y, 0);
         }
         scroll.curScroll = scroll.MaxScroll();
-        yield return new WaitForSeconds(5);
-        ChatScript curChat = ChatApp.chatInstance.AddChat(jackText,jackChoice);
-        Debug.Log(curChat);
-        curChat.GT.StartChat();
     }
     GameObject SendPost((string text, string name, Texture2D pfp, Texture2D img) data)
     {

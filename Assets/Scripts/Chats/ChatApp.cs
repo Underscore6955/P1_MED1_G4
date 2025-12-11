@@ -70,7 +70,7 @@ public class ChatApp : MonoBehaviour
         curChat.InitiateChat();
         curChat.GT.PrepText();
         GetComponent<FriendList>().AddFriend(curChat, curChat.friendName);
-        if (curChat.friendName == "Phillip")
+        if (curChat.friendName == "Jack")
         {
             curChat.SC = this.SC;
         }
