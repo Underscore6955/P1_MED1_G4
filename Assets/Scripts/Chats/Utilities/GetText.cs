@@ -38,6 +38,7 @@ public class GetText
     // used to decide what should happen, based on the line
     public IEnumerator FindAction(int line)
     {
+        Debug.Log(line);
         // if first character is " then it is a text message
         if (lines[line][0] == '"')
         {
@@ -62,13 +63,15 @@ public class GetText
         }
         else if (lines[line][0] == '^')
         {
-            if (chat.CT.curLine == lines.Length - 1) { chat.StartCoroutine(chat.SC.EndTest()); yield break; }
+            Debug.Log("die...?");
+            yield return chat.StartCoroutine(chat.SC.EndTest()); 
+            yield break; 
         }
         else
         {
             if (!chat.SC.chat)
             {
-                chat.SC.chat = chat.gameObject.GetComponent<ChatApp>().AddChat((TextAsset)Resources.Load("StrangerChat"), null);
+                chat.SC.chat = chat.gameObject.GetComponent<ChatApp>().AddChat((TextAsset)Resources.Load("StrangerChat"), (TextAsset)Resources.Load("ScaleEnd"));
                 chat.SC.chat.started = true;
                 yield return chat.StartCoroutine(chat.SC.StartTest());
             }
@@ -80,7 +83,7 @@ public class GetText
     }
     public static float CalcDelay(int length)
     {
-        return length > 0 ? Mathf.Sqrt(0.4f*length)+1 : 0.5f;
+        return length > 0 ? Mathf.Sqrt(0.1f*length)+0.4f : 0.5f;
     }
     // method to decode text messages
     // returns a string (text in the message, int which is 1 for players and -1 for other guy, and texture2d which can be null if no image)
