@@ -1770,9 +1770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ab5b2a1124dd948934905c1881fa10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartTimer: 22
-  StartMins: 55
-  TimeDelay: 5
+  StartTimer: 18
+  StartMins: 7
+  TimeDelay: 15
   MinuteLeap: 1
   DisplayClock: {fileID: 745722478}
 --- !u!114 &745722478

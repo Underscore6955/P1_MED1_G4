@@ -68,8 +68,9 @@ public class ScaleScript : MonoBehaviour
     public IEnumerator EndTest()
     {
         yield return StartCoroutine(SendMessages(20));
-        for (int i = 0; i < chat.GT.lines.Length; i++)
+        for (int i = 0; i < chat.choiceFile.text.Split('\n').Length; i++)
         {
+            Debug.Log("Length: " + chat.GT.lines.Length);
             yield return StartCoroutine(chat.SMS.SendText(GetText.BuildNextText(chat.choiceFile.text.Split('\n'), i)));
         }
         yield return null;
